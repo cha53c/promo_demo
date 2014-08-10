@@ -4,13 +4,11 @@ class PromotionsController < ApplicationController
   end
 
   def create
+    @client = Client.find(params[:client_id])
+    @promotion = @client.promotions.create(promotion_params)
     @promotion = Promotion.new(promotion_params)
 
-    if @promotion.save
-      redirect_to @promotion
-    else
-      render 'new'
-    end
+    redirect_to client_path(@client)
   end
 
   def index
@@ -27,7 +25,7 @@ class PromotionsController < ApplicationController
 
 private
   def promotion_params
-    params.require(:promotion).permit(:client, :type)
+    params.require(:promotion).permit(:type)
   end
 end
 

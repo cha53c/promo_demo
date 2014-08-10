@@ -1,4 +1,4 @@
 class Promotion < ActiveRecord::Base
-  validates :client, presence: true
+  belongs_to :client
   validates :type, presence: true
 end
