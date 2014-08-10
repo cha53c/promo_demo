@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810132147) do
+ActiveRecord::Schema.define(version: 20140810150320) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -38,13 +38,15 @@ ActiveRecord::Schema.define(version: 20140810132147) do
   add_index "comments", ["article_id"], name: "index_comments_on_article_id"
 
   create_table "promotions", force: true do |t|
-    t.text     "client"
-    t.text     "type"
+    t.string   "promo_type"
+    t.string   "start_date"
+    t.string   "end_date"
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "start"
-    t.date     "end"
   end
+
+  add_index "promotions", ["client_id"], name: "index_promotions_on_client_id"
 
   create_table "users", force: true do |t|
     t.string   "username"

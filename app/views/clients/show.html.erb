@@ -7,16 +7,16 @@
 <h2>Add a promotion:</h2>
 <%= form_for([@client, @client.promotions.build]) do |f| %>
       <p>
-      <%= f.label :type %><br>
-      <%= f.text_field :type %>
+      <%= f.label :promo_type %><br>
+      <%= f.text_field :promo_type %>
     </p>
       <p>
-      <%= f.label :start %><br>
-      <%= f.text_area :start %>
+      <%= f.label :start_date %><br>
+      <%= f.text_area :start_date %>
     </p>
     <p>
-      <%= f.label :end %><br>
-      <%= f.text_area :end %>
+      <%= f.label :end_date %><br>
+      <%= f.text_area :end_date  %>
     </p>
       <p>
       <%= f.submit %>
