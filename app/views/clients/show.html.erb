@@ -4,8 +4,26 @@
   <%= @client.name %>
 </p>
 
+<h2>Promotions</h2>
+<% @client.promotions.each do |promotion| %>
+    <p>
+      <strong>Promotion Type</strong>
+      <%= promotion.promo_type %>
+    </p>
+    <p>
+      <strong>Starts</strong>
+      <%= promotion.start_date %>
+    </p>
+    <p>
+      <strong>Ends</strong>
+      <%= promotion.end_date %>
+    </p>
+
+<% end %>
+
 <h2>Add a promotion:</h2>
 <%= form_for([@client, @client.promotions.build]) do |f| %>
+
       <p>
       <%= f.label :promo_type %><br>
       <%= f.text_field :promo_type %>
