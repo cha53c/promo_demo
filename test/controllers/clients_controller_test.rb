@@ -7,10 +7,8 @@ class ClientsControllerTest < ActionController::TestCase
   # end
 
   test "should post create" do
-
     post :create, client: {name:'Maga Muffins'}
     assert_redirected_to client_path(assigns(:client))
-    # assert_select 'h1', "vClients#create"
   end
 
 #   test "should get show" do
