@@ -5,21 +5,30 @@
 </p>
 
 <h2>Promotions</h2>
-<% @client.promotions.each do |promotion| %>
-    <p>
-      <strong>Promotion Type</strong>
-      <%= promotion.promo_type %>
-    </p>
-    <p>
-      <strong>Starts</strong>
-      <%= promotion.start_date %>
-    </p>
-    <p>
-      <strong>Ends</strong>
-      <%= promotion.end_date %>
-    </p>
+<table border="'1" style="width:300px">
+<tr>
+  <th><strong>Promotion Type</strong></th>
+  <th> <strong>Starts</strong></th>
+  <th><strong>Ends</strong></th>
 
-<% end %>
+</tr>
+  <% @client.promotions.each do |promotion| %>
+      <tr>
+      <td>
+        <%= promotion.promo_type %>
+      </td>
+      <td>
+        <%= promotion.start_date %>
+      <td>
+      <td>
+        <%= promotion.end_date %>
+      <td>
+      </tr>
+
+  <% end %>
+
+</table>
+
 
 <h2>Add a promotion:</h2>
 <%= form_for([@client, @client.promotions.build]) do |f| %>
