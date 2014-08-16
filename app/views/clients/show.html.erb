@@ -24,7 +24,7 @@
             <%= promotion.end_date %>
           </td>
           <td><%= link_to 'Edit',  [promotion.client, promotion] %></td>
-          <td><%= link_to 'Destroy', [promotion.client, promotion],
+          <td><%= link_to 'Delete', [promotion.client, promotion],
                             method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
