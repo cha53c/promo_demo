@@ -12,7 +12,7 @@ class PromotionsController < ApplicationController
 
   def destroy
     @client = Client.find(params[:client_id])
-    @promotion = @client.promotions.create(promotion_params)
+    @promotion = @client.promotions.find(params[:id])
     @promotion.destroy
     redirect_to client_path(@client)
   end
@@ -22,6 +22,10 @@ class PromotionsController < ApplicationController
   end
 
   def show
+    @promotion = Promotion.find(params[:id])
+  end
+
+  def edit
     @promotion = Promotion.find(params[:id])
   end
 

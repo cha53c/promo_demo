@@ -14,17 +14,19 @@
 </tr>
   <% @client.promotions.each do |promotion| %>
       <tr>
-      <td>
-        <%= promotion.promo_type %>
-      </td>
-      <td>
-        <%= promotion.start_date %>
-      <td>
-      <td>
-        <%= promotion.end_date %>
-      <td>
+          <td>
+            <%= promotion.promo_type %>
+          </td>
+          <td>
+            <%= promotion.start_date %>
+          </td>
+          <td>
+            <%= promotion.end_date %>
+          </td>
+          <td><%= link_to 'Edit',  [promotion.client, promotion] %></td>
+          <td><%= link_to 'Destroy', [promotion.client, promotion],
+                            method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-
   <% end %>
 
 </table>
