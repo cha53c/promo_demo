@@ -3,8 +3,31 @@
   <strong>Name:</strong>
   <%= @client.name %>
 </p>
+<h2>Promotions div</h2>
+<div class="promo-block">
+  <% @client.promotions.each do |promotion| %>
+      <div class="promo-card">
+        <div class="promo-type">
+          <%= promotion.promo_type %>
+        </div>
+        <div class="promo-dates">
+          <b>Starts: </b><%= promotion.start_date %><br>
+          <b>Ends: </b><%= promotion.end_date %>
+        </div>
+        <div class="promo-admin">
+          <div class="action edit">
+        <%= link_to 'Edit',  [promotion.client, promotion] %>
+          </div>
+          <div class="action delete">
+        <%= link_to 'Delete', [promotion.client, promotion],
+                        method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+      </div> <!-- .card -->
+  <% end %>
+</div>
 
-<h2>Promotions</h2>
+<h2>Promotions Table</h2>
 <table border="'1" style="width:300px">
 <tr>
   <th><strong>Promotion Type</strong></th>
@@ -32,14 +55,15 @@
 </table>
 
 
+
 <h2>Add a promotion:</h2>
 <%= form_for([@client, @client.promotions.build]) do |f| %>
 
-      <p>
+    <p>
       <%= f.label :promo_type %><br>
       <%= f.text_field :promo_type %>
     </p>
-      <p>
+    <p>
       <%= f.label :start_date %><br>
       <%= f.text_area :start_date %>
     </p>
@@ -47,7 +71,7 @@
       <%= f.label :end_date %><br>
       <%= f.text_area :end_date  %>
     </p>
-      <p>
+    <p>
       <%= f.submit %>
     </p>
 <% end %>

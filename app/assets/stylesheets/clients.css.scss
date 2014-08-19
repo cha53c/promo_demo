@@ -1,3 +1,55 @@
 // Place all the styles related to the clients controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.promo-block {
+  display: -webkit-flex;
+  -webkit-flex: wrap;
+  // background: #e0ffe0; //colour for testing
+
+}
+
+.promo-card {
+  background: #ffc63e;
+  width: 160px;
+  min-width: 140px;
+  height: 240px;
+  min-height: 200px;
+  margin: 10px;
+}
+
+.promo-type {
+  background: palevioletred;
+  font-weight: bold;
+  height: 60%;
+}
+
+.promo-dates {
+  //-webkit-flex: 0 0 25%;
+  background: cornflowerblue;
+  height: 30%;
+}
+
+.promo-admin {
+  display: -webkit-flex;
+  background: floralwhite;
+  height: 10%;
+}
+
+.action {
+  text-align: center;
+  border-radius: 5px;
+  height: 100%;
+  width: 50%;
+  margin: auto;
+}
+
+.edit {
+  background: lawngreen;
+}
+
+.delete {
+  background: red;
+}
