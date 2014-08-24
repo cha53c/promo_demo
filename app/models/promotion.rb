@@ -1,13 +1,13 @@
 class Promotion < ActiveRecord::Base
   belongs_to :client
-  validates :promo_type, presence: true
+  # TODO show validation error in view
+  validates :description, :image, presence: true
   validate :start_date_cannot_be_before_today
+  #  TODO find out why installation of imageMagick is not working
   has_attached_file :image #, :styles => {:medium => "300x300>"}
   validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
-
-
-
-
+  # TODO you shoul only be able to enter either week days or days no both
+  # TODO  change validation to work with starts and ends
   def start_date_cannot_be_before_today
    if start_date.present?
      sd = Date.strptime(start_date, '%d-%m-%Y')
@@ -17,6 +17,6 @@ class Promotion < ActiveRecord::Base
    end
   end
   def end_date_cannot_be_before_start_date
-
+  # TODO
   end
 end

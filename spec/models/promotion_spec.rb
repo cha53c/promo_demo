@@ -16,14 +16,13 @@ describe Promotion do
   #   should_not be_valid
   # end
   it 'should only validate if start date present' do
-    promotion = Promotion.new(promo_type: '2-4-1')
+    promotion = Promotion.new(description: 'blah', :image => File.new(Rails.root + 'spec/fixtures/images/test_image.jpg'))
     promotion.should be_valid
   end
 
   it 'should not have a start date in the past' do
     promotion = Promotion.new(promo_type: '2-4-1', start_date: '1-2-2001')
     promotion.should_not be_valid
-    # promotion.errors[:start_date].should == 'start date cannot be in the past'
   end
 
   it 'should except start date in the future' do

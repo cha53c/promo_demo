@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140823175140) do
+ActiveRecord::Schema.define(version: 20140824142540) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -48,6 +48,12 @@ ActiveRecord::Schema.define(version: 20140823175140) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.text     "description"
+    t.boolean  "active"
+    t.time     "from"
+    t.time     "to"
+    t.date     "starts"
+    t.date     "ends"
   end
 
   add_index "promotions", ["client_id"], name: "index_promotions_on_client_id"

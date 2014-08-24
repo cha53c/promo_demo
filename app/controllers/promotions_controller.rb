@@ -35,7 +35,9 @@ class PromotionsController < ApplicationController
 
 private
   def promotion_params
-    params.require(:promotion).permit(:promo_type, :start_date, :end_date, :image)
+    # TODO remove start_date and end_date
+    params.require(:promotion).permit(:promo_type, :start_date, :end_date, :image,
+                                      :description, :active, :from, :to,:starts , :ends)
   end
 end
 

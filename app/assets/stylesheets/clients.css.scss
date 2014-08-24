@@ -13,11 +13,19 @@
 .promo-card {
   font-family: sans-serif;
   background: #ffc63e;
-  width: 160px;
+  width: 200px;
   min-width: 159px;
-  height: 240px;
-  min-height: 200px;
+  height: 300px;
+  min-height: 300px;
   margin: 10px;
+}
+
+#description {
+  color:white;
+  font-weight: bold;
+  font-size: 130%;
+  vertical-align: top;
+  high:15%;
 }
 
 .promo-type {
@@ -47,7 +55,7 @@
 
 .promo-dates {
   background: cornflowerblue;
-  height: 30%;
+  height: 15%;
 }
 
 .promo-admin {
@@ -73,7 +81,7 @@
 }
 
 img {
-  width: 160px;
+  width: 200px;
   min-width: 140;
   height: 100%;
 }
