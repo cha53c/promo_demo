@@ -20,8 +20,14 @@ describe Promotion do
     promotion.should be_valid
   end
 
+  it 'should fail if description is not present' do
+    promotion = Promotion.new(:image => File.new(Rails.root + 'spec/fixtures/images/test_image.jpg'))
+    promotion.should_not be_valid
+  end
+
   it 'should not have a start date in the past' do
     promotion = Promotion.new(promo_type: '2-4-1', start_date: '1-2-2001')
+    # TODO need to change the way this is tested as it passes when other validations fail
     promotion.should_not be_valid
   end
 

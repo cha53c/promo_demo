@@ -16,7 +16,8 @@
         <div class="promo-dates">
           <b>Starts: </b><%= promotion.starts%>
           <br>
-          <b>Ends: </b><%= promotion.ends %>
+          <b>Ends: </b><%= promotion.ends %><br>
+          <%= promotion.valid_days %>
         </div>
         <div class="promo-admin">
           <div class="action edit">
@@ -67,8 +68,8 @@
       <br>
       <% days = ['Night', 'Day', 'Weekend'] %>
       <% days.each do |d| %>
-          <%= label_tag(d) %>
-          <%= radio_button_tag(d,d,checked=false)%>
+          <%= f.label d %>
+          <%= f.radio_button :valid_days, d %>
       <% end %>
 
       <br>
