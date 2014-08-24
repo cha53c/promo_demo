@@ -6,28 +6,46 @@
 
 .promo-block {
   display: -webkit-flex;
-  -webkit-flex: wrap;
-  // background: #e0ffe0; //colour for testing
-
+  width: 1000px;
+  -webkit-flex-wrap: wrap;
 }
 
 .promo-card {
+  font-family: sans-serif;
   background: #ffc63e;
   width: 160px;
-  min-width: 140px;
+  min-width: 159px;
   height: 240px;
   min-height: 200px;
   margin: 10px;
 }
 
 .promo-type {
+  position: relative;
   background: palevioletred;
+  font-family: sans-serif;
+  color: white;
   font-weight: bold;
+  font-size: 150%;
+  text-transform: capitalize;
   height: 60%;
 }
 
+#promo-text{
+  z-index:100;
+  position: absolute;
+  left:0px;
+  top:0px;
+}
+
+#promo-image
+{
+  position: absolute;
+  left:0;
+  top:0;
+}
+
 .promo-dates {
-  //-webkit-flex: 0 0 25%;
   background: cornflowerblue;
   height: 30%;
 }
@@ -53,3 +71,10 @@
 .delete {
   background: red;
 }
+
+img {
+  width: 160px;
+  min-width: 140;
+  height: 100%;
+}
+

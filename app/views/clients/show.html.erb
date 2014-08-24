@@ -3,12 +3,14 @@
   <strong>Name:</strong>
   <%= @client.name %>
 </p>
-<h2>Promotions div</h2>
+<h2>Your Promotions</h2>
 <div class="promo-block">
   <% @client.promotions.each do |promotion| %>
       <div class="promo-card">
         <div class="promo-type">
-          <%= promotion.promo_type %>
+         <p id="promo-text"> <%= promotion.promo_type %></p>
+         <!-- <img id="promo-image" src="/assets/other-curry.jpg"><br> -->
+          <%= image_tag promotion.image.url %>
         </div>
         <div class="promo-dates">
           <b>Starts: </b><%= promotion.start_date %><br>
@@ -27,37 +29,9 @@
   <% end %>
 </div>
 
-<h2>Promotions Table</h2>
-<table border="'1" style="width:300px">
-<tr>
-  <th><strong>Promotion Type</strong></th>
-  <th> <strong>Starts</strong></th>
-  <th><strong>Ends</strong></th>
-
-</tr>
-  <% @client.promotions.each do |promotion| %>
-      <tr>
-          <td>
-            <%= promotion.promo_type %>
-          </td>
-          <td>
-            <%= promotion.start_date %>
-          </td>
-          <td>
-            <%= promotion.end_date %>
-          </td>
-          <td><%= link_to 'Edit',  [promotion.client, promotion] %></td>
-          <td><%= link_to 'Delete', [promotion.client, promotion],
-                            method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-
-</table>
-
-
 
 <h2>Add a promotion:</h2>
-<%= form_for([@client, @client.promotions.build]) do |f| %>
+<%= form_for([@client, @client.promotions.build], :html => {:multipart => true}) do |f| %>
 
     <p>
       <%= f.label :promo_type %><br>
@@ -72,6 +46,11 @@
       <%= f.text_area :end_date  %>
     </p>
     <p>
+     <p>
+       <%= f.file_field :image %>
+     </p>
+
+
       <%= f.submit %>
     </p>
 <% end %>
