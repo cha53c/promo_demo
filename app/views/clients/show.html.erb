@@ -60,8 +60,7 @@
 
     <h3> Occurs Every </h3>
     <p>
-      <% week_days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] %>
-      <% week_days.each do |d| %>
+          <% Promotion::WEEKDAYS.each do |d| %>
           <%= label_tag(d) %>
           <%= check_box_tag(d) %>
       <% end %>
