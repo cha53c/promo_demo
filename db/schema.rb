@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140824162156) do
+ActiveRecord::Schema.define(version: 20140826181028) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -55,6 +55,13 @@ ActiveRecord::Schema.define(version: 20140824162156) do
     t.date     "starts"
     t.date     "ends"
     t.string   "valid_days"
+    t.boolean  "mon"
+    t.boolean  "tue"
+    t.boolean  "wed"
+    t.boolean  "thu"
+    t.boolean  "fri"
+    t.boolean  "sat"
+    t.boolean  "sun"
   end
 
   add_index "promotions", ["client_id"], name: "index_promotions_on_client_id"

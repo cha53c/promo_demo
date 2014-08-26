@@ -1,7 +1,6 @@
 class Promotion < ActiveRecord::Base
-  WEEKDAYS = %w(Mon Tue Wed Thu Fri Sat Sun)
+  WEEKDAYS = %w(mon tue wed thu fri sat sun)
   belongs_to :client
-  before_save :output_params
   # TODO show validation error in view
   validates :description, :image, presence: true
   validate :start_date_cannot_be_before_today
@@ -12,13 +11,6 @@ class Promotion < ActiveRecord::Base
   # TODO may should only WEEKSDAYS and not valid_days
   # TODO you should only be able to enter either week days or days not both
   # TODO  change validation to work with starts and ends
-
-  def output_params
-    puts('saving')
-    puts(:description)
-    puts(:valid_days)
-  end
-
 
   def start_date_cannot_be_before_today
    if start_date.present?
