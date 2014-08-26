@@ -1,14 +1,3 @@
 <h1>Promotions#new</h1>
-<%= form_for :promotion, url: promotions_path do |p| %>
-    <p>
-      <%= p.label :client %><br>
-    <%= p.text_field :client %>
-    </p>
-    <p>
-      <%= p.label :type %><br>
-      <%= p.text_field :type %>
-    </p>
-    <p>
-      <%= p.submit %>
-    </p>
-<% end %>
+<%= render 'form' %>
+

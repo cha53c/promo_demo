@@ -55,59 +55,7 @@
 </div>
 
 <h2>Add a promotion:</h2>
-<%= form_for([@client, @client.promotions.build], :html => {:multipart => true}) do |f| %>
-    <h3>Describe the Promotion</h3>
-    <p>
-      <%= f.label :description %>
-      <%= f.text_field :description %>
-      <%= f.label :promo_type %>
-      <%= f.text_field :promo_type %>
-        
-
-    </p>
-    <p>
-      <%= f.file_field :image %>
-    </p>
-
-    <h3>Enter the Dates the Promotion is valid for</h3>
-    <p>
-          <%= f.label :starts %>
-          <%= f.date_select :starts %>
-
-      <%= f.label :ends %>
-      <%= f.date_select :ends %>
-    </p>
-    <p>
-
-    <h3> Occurs Every </h3>
-    <%= f.label :mon %> <%= f.check_box :mon %>
-    <%= f.label :tue %> <%= f.check_box :tue %>
-    <%= f.label :wed %> <%= f.check_box :wed %>
-    <%= f.label :thu %> <%= f.check_box :thu %>
-    <%=f.label :fri %> <%=f.check_box :fri %>
-    <%=f.label :sat %> <%=f.check_box :sat %>
-    <%= f.label :sun %> <%= f.check_box :sun %>
-      <br>
-
-
-      <br>
-    <p>
-      <%= f.label :from %>
-      <%= f.time_select :from %>
-      <%= f.label :to %>
-      <%= f.time_select :to %>
-    </p>
-    <h3>Activate Promotion</h3>
-    <p>
-      <%= f.label :active %>
-      <%= f.check_box :active %>
-
-    </p>
-    <p>
-          <%= f.submit %>
-        </p>
-<% end %>
-
+<%= render 'promotions/form' %>
 
 <%= link_to 'Back', clients_path %>
 <%= link_to 'Edit', edit_client_path(@client) %>
