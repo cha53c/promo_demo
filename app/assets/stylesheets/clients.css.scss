@@ -9,8 +9,10 @@
 
 .promo-block {
   display: -webkit-flex;
+  display: -moz-flex;
   width: 1000px;
   -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
 }
 
 .promo-card {
@@ -63,6 +65,7 @@
 
 .promo-admin {
   display: -webkit-flex;
+  display: -moz-flex;
   background: floralwhite;
   height: 10%;
 }

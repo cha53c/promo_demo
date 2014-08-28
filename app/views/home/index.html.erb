@@ -1,0 +1,53 @@
+
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+
+<div class="promo-block">
+  <% @promotions.each do |promotion| %>
+      <div class="promo-card">
+        <p id="description"> <%= promotion.description %></p>
+        <div class="promo-type">
+          <p id="promo-text"> <%= promotion.promo_type %></p>
+
+          <%= image_tag promotion.image.url %>
+        </div>
+        <div class="promo-dates">
+          <b>Starts: </b><%= promotion.starts%>
+          <br>
+          <b>Ends: </b><%= promotion.ends %><br>
+          <% if promotion.mon %>
+              <%= 'M'  %>
+          <%end%>
+          <% if promotion.tue %>
+              <%= 'T'  %>
+          <%end%>
+          <% if promotion.wed %>
+              <%= 'W'  %>
+          <%end%>
+          <% if promotion.thu %>
+              <%= 'Th'  %>
+          <%end%>
+          <% if promotion.fri %>
+              <%= 'F'  %>
+          <%end%>
+          <% if promotion.sat %>
+              <%= 'S'  %>
+          <%end%>
+          <% if promotion.sat %>
+              <%= 'S'  %>
+          <%end%>
+
+        </div>
+        <div class="promo-admin">
+          <div class="action edit">
+            <%= link_to 'Edit', [promotion.client, promotion] %>
+          </div>
+          <div class="action delete">
+            <%= link_to 'Delete', [promotion.client, promotion],
+                        method: :delete, data: {confirm: 'Are you sure?'} %>
+          </div>
+        </div>
+      </div>
+      <!-- .card -->
+  <% end %>
+</div>
