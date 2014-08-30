@@ -2,21 +2,6 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  # get 'clients/new'
-  #
-  # get 'clients/create'
-  #
-  # get 'clients/show'
-  #
-  # get 'clients/index'
-  #
-  # get 'clients/edit'
-  #
-  # get 'clients/update'
-  #
-  # get 'clients/destroy'
-
-
   resources :clients do
     resources :promotions
   end
