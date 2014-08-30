@@ -2,7 +2,8 @@
 <%= render 'carousel' %>
 
 <div class="promo-block">
+
   <% @promotions.each do |promotion| %>
-      <%= render 'promotions/card', :promotion => promotion %>
+      <%= render 'promotions/card', :promotion => promotion, :client => find_client(promotion.client_id) %>
   <% end %>
 </div>

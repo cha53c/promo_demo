@@ -23,6 +23,7 @@ class PromotionsController < ApplicationController
 
   def show
     @promotion = Promotion.find(params[:id])
+    @client = Client.find(@promotion.client_id)
   end
 
   def edit
