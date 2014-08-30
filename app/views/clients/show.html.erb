@@ -6,51 +6,16 @@
 <h2>Your Promotions</h2>
 <div class="promo-block">
   <% @client.promotions.each do |promotion| %>
-      <div class="promo-card">
-        <p id="description"> <%= promotion.description %></p>
-        <div class="promo-type">
-          <p id="promo-text"> <%= promotion.promo_type %></p>
-
-          <%= image_tag promotion.image.url %>
-        </div>
-        <div class="promo-dates">
-          <b>Starts: </b><%= promotion.starts%>
-          <br>
-          <b>Ends: </b><%= promotion.ends %><br>
-          <% if promotion.mon %>
-          <%= 'M'  %>
-          <%end%>
-          <% if promotion.tue %>
-              <%= 'T'  %>
-          <%end%>
-          <% if promotion.wed %>
-              <%= 'W'  %>
-          <%end%>
-          <% if promotion.thu %>
-              <%= 'Th'  %>
-          <%end%>
-          <% if promotion.fri %>
-              <%= 'F'  %>
-          <%end%>
-          <% if promotion.sat %>
-              <%= 'S'  %>
-          <%end%>
-          <% if promotion.sat %>
-              <%= 'S'  %>
-          <%end%>
-
-        </div>
+       <%= render 'promotions/card', :promotion => promotion %>
         <div class="promo-admin">
           <div class="action edit">
-            <%= link_to 'Edit', [promotion.client, promotion] %>
+            <%= link_to 'Edit', [promotion.client, promotion] %><br>
           </div>
           <div class="action delete">
             <%= link_to 'Delete', [promotion.client, promotion],
                         method: :delete, data: {confirm: 'Are you sure?'} %>
           </div>
         </div>
-      </div>
-      <!-- .card -->
   <% end %>
 </div>
 
