@@ -1,19 +1,31 @@
-<h1>Listing Clients</h1>
-<%= link_to 'New client', new_client_path %>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Text</th>
-  </tr>
+<h1>Clients#Index</h1>
+<button class="btn btn-default" type="button">
+  <%= link_to 'Add Client', new_client_path %>
+</button>
 
+<div class="container-fluid">
+<div class="row">
   <% @clients.each do |client| %>
-      <tr>
-        <td><%= client.name %></td>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <img data-src="holder.js/300x300" alt="img">
+            <div class="caption">
+              <h3><%= client.name %></h3>
+              <p>
+                Tel: <%=client.tel %><br>
+                Email: <%= client.email%><br>
+                WebSite: <%= client.website%><br>
 
-        <td><%= link_to 'Show', client_path(client) %></td>
-        <td><%= link_to 'Edit', edit_client_path(client) %></td>
-        <td><%= link_to 'Destroy', client_path(client),
-                        method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+              </p>
+              <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+          </div>
+          <%= link_to 'Show', client_path(client) %>
+          <%= link_to 'Edit', edit_client_path(client) %>
+          <%= link_to 'Destroy', client_path(client),
+                      method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+
   <% end %>
-</table>
+</div>
+</div>

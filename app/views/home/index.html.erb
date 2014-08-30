@@ -1,9 +1,9 @@
 <h1>Home#index</h1>
-<%= render 'carousel' %>
-
-<div class="promo-block">
-
+Blah blah blah
+<div class="container_fluid">
+  <div class="row">
   <% @promotions.each do |promotion| %>
-      <%= render 'promotions/card', :promotion => promotion, :client => find_client(promotion.client_id) %>
+      <%= render 'promotions/card2', :promotion => promotion, :client => find_client(promotion.client_id) %>
   <% end %>
+  </div>
 </div>
