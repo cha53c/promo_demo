@@ -29,10 +29,15 @@ class PromotionsController < ApplicationController
 
   def edit
     @promotion = Promotion.find(params[:id])
+    @client = Client.find(params[:client_id])
   end
 
   def update
-
+    # TODO why is this updating the wrong record
+    @promotion = Promotion.find{params[:id]}
+    @promotion.update(promotion_params)
+    @client = Client.find(params[:client_id])
+    redirect_to client_path(@client)
   end
 
 private

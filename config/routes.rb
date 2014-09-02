@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+  patch 'clients/:client_id/promotions/:id/edit' => 'promotions#update'
 
   # root 'welcome#index'
 

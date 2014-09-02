@@ -1,12 +1,12 @@
 class Promotion < ActiveRecord::Base
-  WEEKDAYS = %w(mon tue wed thu fri sat sun)
   belongs_to :client
   # TODO show validation error in view
-  validates :description, :image, presence: true
+  # TODO validate that a least one day of the week has been populated
+  validates :description, :image, presence: true, on: :create
   validate :start_date_cannot_be_before_today
   #  TODO find out why installation of imageMagick is not working
-  has_attached_file :image #, :styles => {:medium => "300x300>"}
-  validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+  has_attached_file :image , :styles => {:medium => "300x200#", :small => "150x150>"}
+  validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
   # TODO  change validation to work with starts and ends
 
   def start_date_cannot_be_before_today

@@ -1,12 +1,37 @@
-  <div class="col-sm-6 col-md-4">
+  <div class="col-sx-12 col-sm-6 col-md-3">
     <div class="thumbnail">
-      <img data-src="holder.js/300x300" alt="...">
-      <!--<%= image_tag promotion.image.url %>-->
+      <!--<img data-src="holder.js/300x300" alt="...">-->
+      <%= image_tag promotion.image.url(:medium)%>
       <div class="caption">
         <h4><%= promotion.description %></h4>
         <h5><%= promotion.promo_type %></h5>
-        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><%= promotion.details %> </p>
+<p><% if promotion.mon %>
+      <%= 'M'  %>
+  <%end%>
+  <% if promotion.tue %>
+      <%= 'T'  %>
+  <%end%>
+  <% if promotion.wed %>
+      <%= 'W'  %>
+  <%end%>
+  <% if promotion.thu %>
+      <%= 'Th'  %>
+  <%end%>
+  <% if promotion.fri %>
+      <%= 'F'  %>
+  <%end%>
+  <% if promotion.sat %>
+      <%= 'S'  %>
+  <%end%>
+  <% if promotion.sat %>
+      <%= 'S'  %>
+  <%end%></p>
+        <p>
+          <%= link_to 'Show', [promotion.client, promotion] %>
+          <%= link_to 'Edit', edit_client_promotion_path(client.id, promotion.id) %>
+          <%= link_to 'Delete', [promotion.client, promotion],
+                      method: :delete, data: {confirm: 'Are you sure?'} %></p>
       </div>
     </div>
   </div>

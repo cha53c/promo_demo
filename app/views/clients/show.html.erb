@@ -9,9 +9,6 @@
   <div class="row">
   <% @client.promotions.each do |promotion| %>
        <%= render 'promotions/card2', :promotion => promotion, :client => @client %>
-          <%= link_to 'Edit', [promotion.client, promotion] %>
-          <%= link_to 'Delete', [promotion.client, promotion],
-                        method: :delete, data: {confirm: 'Are you sure?'} %>
   <% end %>
   </div>
 </div>

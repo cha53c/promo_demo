@@ -5,7 +5,7 @@
 <div class="container-fluid">
 <div class="row">
   <% @clients.each do |client| %>
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sx-12 col-sm-6 col-md-3">
           <div class="thumbnail">
             <img data-src="holder.js/300x300" alt="img">
             <div class="caption">
@@ -16,13 +16,13 @@
                 WebSite: <%= client.website%><br>
 
               </p>
-              <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+              <p><%= link_to 'Show', client_path(client) %>
+                <%= link_to 'Edit', edit_client_path(client) %>
+                <%= link_to 'Destroy', client_path(client),
+                            method: :delete, data: { confirm: 'Are you sure?' } %></p>
             </div>
           </div>
-          <%= link_to 'Show', client_path(client) %>
-          <%= link_to 'Edit', edit_client_path(client) %>
-          <%= link_to 'Destroy', client_path(client),
-                      method: :delete, data: { confirm: 'Are you sure?' } %>
+
         </div>
 
   <% end %>
