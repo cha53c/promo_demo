@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'search/index'
+
   root 'home#index'
 
   resources :clients do
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
     resources :comments
   end
   patch 'clients/:client_id/promotions/:id/edit' => 'promotions#update'
+
+
 
   # root 'welcome#index'
 
