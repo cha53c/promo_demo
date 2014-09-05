@@ -3,10 +3,11 @@ class SearchController < ApplicationController
 
   def index
     today = Date.today
-    # wdays = [mon,tue,wed,thu,fri,sat,sun]
-    # day = wdays[today.wday]
-    # query = "starts <= ? AND " + day + " = TRUE"
-    @promotions=Promotion.where("starts <= ? AND mon = ?", today, true)
+    # TODO factor details out of the controller
+    wdays = ['sun','mon','tue','wed','thu','fri','sat']
+    day = wdays[today.wday]
+    query = "starts <= ? AND " + day + " = ?"
+    @promotions=Promotion.where(query, today, true)
 
   end
 end
