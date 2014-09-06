@@ -1,0 +1,19 @@
+<div class="col-sx-12 col-sm-6 col-md-3">
+  <div class="thumbnail">
+    <%= image_tag client.photo.url(:medium)%>
+    <div class="caption">
+      <h3><%= client.name %></h3>
+      <p>
+        Tel: <%=client.tel %><br>
+        Email: <%= client.email%><br>
+        WebSite: <%= client.website%><br>
+
+      </p>
+      <p><%= link_to 'Show', client_path(client) %>
+        <%= link_to 'Edit', edit_client_path(client) %>
+        <%= link_to 'Destroy', client_path(client),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    </div>
+  </div>
+
+</div>

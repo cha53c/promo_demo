@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'search/index'
 
+  get 'search/fuzzy'
+
   root 'home#index'
 
   resources :clients do

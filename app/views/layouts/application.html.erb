@@ -27,9 +27,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><%= link_to "Today", search_index_path %></li>
+        <li><%= link_to "Today", search_index_path, {class: 'navbar-text'} %></li>
         <li><a href="#">New</a></li>
       </ul>
+      <%= form_tag search_fuzzy_path, method: :get  do %>
+          <% text_field_tag 'keyword', nil, {class: "form-control", placeholder: "searchy"} %>
+      <%end%>
       <form class="navbar-form navbar-left" role="search">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="search">

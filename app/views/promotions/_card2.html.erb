@@ -6,27 +6,44 @@
         <h4><%= promotion.description %></h4>
         <h5><%= promotion.promo_type %></h5>
         <p><%= promotion.details %> </p>
-<p><% if promotion.mon %>
-      <%= 'M'  %>
+    <p><% if promotion.mon %>
+          <span class="day-on">M</span>
+      <%else%>
+          <span class="day-off">M</span>
   <%end%>
   <% if promotion.tue %>
-      <%= 'T'  %>
+              <span class="day-on">Tu</span>
+          <%else%>
+              <span class="day-off">Tu</span>
   <%end%>
   <% if promotion.wed %>
-      <%= 'W'  %>
+              <span class="day-on">W</span>
+          <%else%>
+              <span class="day-off">W</span>
   <%end%>
   <% if promotion.thu %>
-      <%= 'Th'  %>
+              <span class="day-on">Th</span>
+          <%else%>
+              <span class="day-off">Th</span>
   <%end%>
   <% if promotion.fri %>
-      <%= 'F'  %>
+     <span class="day-on">F</span>
+  <%else%>
+     <span class="day-off">F</span>
   <%end%>
   <% if promotion.sat %>
-      <%= 'S'  %>
+      <span class="day-on">Sa</span>
+  <%else%>
+      <span class="day-off">Sa</span>
   <%end%>
-  <% if promotion.sat %>
-      <%= 'S'  %>
-  <%end%></p>
+
+  <% if promotion.sun %>
+            <span class="day-on">Su</span>
+        <%else%>
+            <span class="day-off">Su</span>
+        <%end%>
+    </p>
+
         <p>
           <%= link_to 'Show', [promotion.client, promotion] %>
           <%= link_to 'Edit', edit_client_promotion_path(client.id, promotion.id) %>

@@ -1,8 +1,10 @@
+<div class="page-header">
 <h1>Promotions#show</h1>
-<p><strong>Client:</strong>
-<%= @client.name %> </p>
+</div>
+<div class="container_fluid">
+  <div class="row">
+        <%= render 'promotions/card2', :promotion => @promotion, :client => @client %>
 
-<p>
-  <strong>Type:</strong>
-  <%= @promotion.promo_type %>
-</p>
+        <%= render 'clients/card', :client => find_client(@promotion.client_id) %>
+  </div>
+</div>

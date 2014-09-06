@@ -37,7 +37,7 @@ class PromotionsController < ApplicationController
     @promotion = Promotion.find{params[:id]}
     @promotion.update(promotion_params)
     @client = Client.find(params[:client_id])
-    redirect_to client_path(@client)
+    render 'edit'
   end
 
 private
