@@ -2,6 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
+      <div class="form-group">
 <%= form_for([@client, @promotion], method: :patch, :html => {:multipart => true}) do |f| %>
 
     <h3>Describe the Promotion</h3>
@@ -54,9 +55,10 @@
        <%= f.submit %>
     </p>
 <% end %>
-</div>
-<div class="col-md-6">
-  <%= render 'card2', :promotion => @promotion, :client => @client%>
-</div>
+      </div>
+    </div>
+   <div class="col-md-6">
+    <%= render 'card2', :promotion => @promotion, :client => @client%>
+   </div>
 </div>
 </div>

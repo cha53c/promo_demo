@@ -1,5 +1,5 @@
 <div class="form-group">
-<%= form_for :client, url: clients_path, :html => {:multipart => true } do |f| %>
+<%= form_for :client, url: path, method: mymethod, :html => {:multipart => true } do |f| %>
 <%= render 'shared/form_error', :model => @client%>
     <p>
       <%= f.label :name %>
