@@ -35,9 +35,12 @@ class PromotionsController < ApplicationController
   def update
     # TODO why is this updating the wrong record
     @promotion = Promotion.find{params[:id]}
-    @promotion.update(promotion_params)
     @client = Client.find(params[:client_id])
-    render 'edit'
+    if @promotion.update(promotion_params)
+      render 'edit'
+    else
+      render 'error'
+    end
   end
 
 private

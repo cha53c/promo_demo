@@ -15,7 +15,7 @@ class SearchController < ApplicationController
     # TODO this will break if keywork is nil
     param_keyword = "%#{params[:keyword].downcase}%"
     # TODO does not seem to return an array
-    @promotions=Promotion.where("lower(description) LIKE ?", param_keyword)
+    @promotions=Promotion.where("lower(description) LIKE ? OR lower(promo_type LIKE ?)", param_keyword, param_keyword)
     render 'home/index'
   end
 end
