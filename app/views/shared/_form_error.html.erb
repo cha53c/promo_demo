@@ -1,10 +1,10 @@
 <!--TODO can this be generalised for all forms?-->
-<% if client.errors.any? %>
+<% if model.errors.any? %>
     <div id="error_explanation">
-      <h3><%= pluralize(client.errors.count, "error") %> prohibited
-        this client from being saved:</h3>
+      <h3><%= pluralize(model.errors.count, "error") %> prohibited
+        this from being saved:</h3>
       <ul>
-        <% client.errors.full_messages.each do |msg| %>
+        <% model.errors.full_messages.each do |msg| %>
             <li class="alert alert-danger"><%= msg %></li>
         <% end %>
       </ul>
