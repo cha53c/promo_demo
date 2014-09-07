@@ -30,8 +30,8 @@
         <li><%= link_to "Today", search_index_path, {class: 'navbar-text'} %></li>
         <li><a href="#">New</a></li>
       </ul>
-      <%= form_tag search_fuzzy_path, method: :get  do %>
-          <% text_field_tag 'keyword', nil, {class: "form-control", placeholder: "searchy"} %>
+      <%= form_tag search_fuzzy_path, method: :get, :class => "navbar-form navbar-left", :role => "search" do %>
+          <% text_field_tag 'keyword', nil, {class: "form-control", placeholder: "enter a search"} %>
       <%end%>
       <form class="navbar-form navbar-left" role="search">
         <div class="input-group">
