@@ -1,3 +1,4 @@
+<div class="form-group">
 <%= form_for :client, url: clients_path, :html => {:multipart => true } do |f| %>
     <% if @client.errors.any? %>
         <div id="error_explanation">
@@ -5,7 +6,7 @@
             this client from being saved:</h2>
           <ul>
             <% @client.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
+                <li class="alert alert-danger"><%= msg %></li>
             <% end %>
           </ul>
         </div>
@@ -23,3 +24,4 @@
       <%= f.submit %>
     </p>
 <% end %>
+</div>

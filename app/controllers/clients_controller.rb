@@ -42,6 +42,6 @@ class ClientsController < ApplicationController
 private
   def client_params
    #  TODO permit photo
-   params.require(:client).permit(:name, :tel, :email, :website)
+   params.require(:client).permit(:name, :tel, :email, :website, :photo)
   end
 end
