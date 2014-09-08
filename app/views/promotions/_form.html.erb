@@ -38,9 +38,9 @@
 
     <p>
       <%= f.label :from %>
-      <%= f.time_select :from %>
+      <%= f.time_select :from, :minute_step => 15 %>
       <%= f.label :to %>
-      <%= f.time_select :to %>
+      <%= f.time_select :to, :minute_step => 15 %>
     </p>
     <h3>Activate Promotion</h3>
     <p>

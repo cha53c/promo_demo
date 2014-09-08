@@ -33,7 +33,6 @@ class PromotionsController < ApplicationController
   end
 
   def update
-    # TODO why is this updating the wrong record
     @promotion = Promotion.find(params[:id])
     @client = Client.find(params[:client_id])
     if @promotion.update(promotion_params)
