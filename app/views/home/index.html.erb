@@ -1,7 +1,8 @@
+<div class="container-fluid results">
 <div class="page-header">
-<h1>Home#index</h1>
+ <h3>Promotions Found <span class="badge"><h4><%= @promotions.length %></h4></span></h3>
 </div>
-<div class="container_fluid">
+
   <div class="row">
   <% @promotions.each do |promotion| %>
       <%= render 'promotions/card2', :promotion => promotion, :client => find_client(promotion.client_id) %>

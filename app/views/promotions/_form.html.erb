@@ -1,16 +1,19 @@
+<div class="container">
 <%= form_for :promotion, url: new_client_promotion_path, :html => {:multipart => true} do |f| %>
     <%= render 'shared/form_error', :model => @promotion%>
-    <h3>Describe the Promotion</h3>
-    <p>
-      <%= f.label :description %>
-      <%= f.text_field :description %>
-      <%= f.label :promo_type %>
-      <%= f.text_field :promo_type %><br>
-      <%= f.label :details %>
-      <%= f.text_field :details %>
-        
+    <div class="panel panel-default">
+      <div class="panel-heading">Describe the Promotion</div>
+      <div class="panel-body">
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+        <%= f.label :promo_type %>
+        <%= f.text_field :promo_type %>
+        <%= f.label :details %>
+        <%= f.text_area :details %>
+      </div>
+    </div>
 
-    </p>
+
     <p>
       <h3>Upload Image for the promotion</h3>
       <%= f.file_field :image %>
@@ -19,7 +22,7 @@
     <h3>Enter the Dates the Promotion will run for</h3>
     <p>
           <%= f.label :starts %>
-          <%= f.date_select :starts %>
+          <%= f.date_select :starts %><br>
 
       <%= f.label :ends %>
       <%= f.date_select :ends %>
@@ -52,3 +55,4 @@
        <%= f.submit %>
     </p>
 <% end %>
+</div>
