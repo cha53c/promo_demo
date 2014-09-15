@@ -43,8 +43,9 @@ gem 'paperclip', '~> 4.2.0'
 
 # from how i learned to test my rails app article
 group :development,:test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.0.0'
   gem 'factory_girl_rails'
+  gem 'rspec-activemodel-mocks'
 end
 group :test do
   gem 'faker'

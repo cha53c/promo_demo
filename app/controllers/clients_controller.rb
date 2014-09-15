@@ -1,6 +1,5 @@
 class ClientsController < ApplicationController
   def new
-    @client = Client.new
   end
 
   def create
@@ -14,6 +13,7 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
+    # TODO set flash if not found
   end
 
   def index
@@ -22,6 +22,7 @@ class ClientsController < ApplicationController
 
   def edit
     @client = Client.find(params[:id])
+  #   TODO set flash if not found
   end
 
   def update
@@ -36,11 +37,13 @@ class ClientsController < ApplicationController
   def destroy
     @client = Client.find(params[:id])
     @client.destroy
-
     redirect_to clients_path
   end
+
+
 private
   def client_params
    params.require(:client).permit(:name, :tel, :email, :website, :photo)
   end
+
 end
