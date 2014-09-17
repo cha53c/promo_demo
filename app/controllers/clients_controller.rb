@@ -3,12 +3,19 @@ class ClientsController < ApplicationController
   end
 
   def create
+    puts "create..."
     @client = Client.new(client_params)
+    puts "after new client"
     if @client.save
+      puts "client saved"
       redirect_to @client
     else
+      puts "renders new"
+      flash[:notice]="could not add new client"
       render 'new'
+
     end
+    puts "...create end"
   end
 
   def show

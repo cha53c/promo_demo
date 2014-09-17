@@ -1,9 +1,12 @@
 require 'spec_helper'
 require 'rails_helper'
+require 'rack/test'
+
 
 RSpec.describe ClientsController do
   # let(:client) do
   #   mock_model Client, :all => client
+  let(:params) {{:client => {:name => "testclient", :tel =>"123", :email => "me@home.com", :website => "www.bookme.com", :photo => Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/test_image.jpg')}}}
 
   describe "GET new" do
     it "returns http success" do
@@ -31,6 +34,7 @@ RSpec.describe ClientsController do
 
     it "calls all on client"
 
+
   end
 
   describe "GET show" do
@@ -50,8 +54,9 @@ RSpec.describe ClientsController do
       it "redirects to client index"
     end
     context "when client fails to update" do
+      it "assigns @client"
       it "sets a flash[:notice] message"
-      it "renders edit"
+      it "redirects to edit"
     end
   end
 
@@ -75,24 +80,31 @@ RSpec.describe ClientsController do
     # end
     it "saves the client"
     # do
-    #   client = mock_model(Client)
-    #   allow(client).to receive(:save)
+    #   client = instance_double("Client")
+    #   allow(client).to receive(:save).and_return(true)
     #   expect(client).to receive(:save)
-    #   post :create, :client => {:params => {}}
-    #
+    #   post :create, params
     # end
-
-
 
     context "when client saves successfully" do
       it "sets a flash[:notice] message"
       it "redirects to the client show page"
     end
     context "when the client fails to save" do
-      it "assigns @client"
-      it "sets a flash[:notice] message"
-      it "redirects to new template"
+      it "sets a flash[:notice] message" do
+        post :create, params
+        flash[:notice].should eq("could not add new client")
+      end
+      it "redirects to new template" do
+        post :create, params
+        expect(response).to render_template('clients/new')
+      end
     end
 
+  end
+
+  describe "DELETE destroy" do
+    it "returns http success"
+    it "redirects to clients index"
   end
 end
