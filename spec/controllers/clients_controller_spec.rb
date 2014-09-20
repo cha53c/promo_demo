@@ -7,14 +7,13 @@ RSpec.describe ClientsController do
   let(:params) { {:client => {:name => "testclient", :tel => "123", :email => "me@home.com", :website => "www.bookme.com", :photo => Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/test_image.jpg')}} }
 
   describe "GET new" do
+    subject {get :new}
     it "returns http success" do
-      get :new
-      expect(response.status).to eq(200)
+      expect(subject).to have_http_status(200)
     end
 
     it "renders new" do
-      get :new
-      expect(response).to render_template('clients/new')
+      expect(subject).to render_template('clients/new')
     end
   end
 
