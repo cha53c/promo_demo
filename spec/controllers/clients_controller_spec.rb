@@ -6,7 +6,7 @@ require 'rack/test'
 RSpec.describe ClientsController do
   # let(:client) do
   #   mock_model Client, :all => client
-  let(:params) {{:client => {:name => "testclient", :tel =>"123", :email => "me@home.com", :website => "www.bookme.com", :photo => Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/test_image.jpg')}}}
+  let(:params) { {:client => {:name => "testclient", :tel => "123", :email => "me@home.com", :website => "www.bookme.com", :photo => Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/test_image.jpg')}} }
 
   describe "GET new" do
     it "returns http success" do
@@ -61,30 +61,19 @@ RSpec.describe ClientsController do
   end
 
   describe "POST create" do
+    let!(:client) { mock_model(Client, :save => nil)}
 
-    # let (:client) { mock_model(Client).as_null_object }
-    # before do
-    #   client.stub(:new).and_return(client)
-    # end
 
-    it "creates a new client"
-    # do
-    #   client = mock_model(Client)
-    #   # client.stub(:create).and_return(client)
-    #   allow(client).to receive(:new).with(:params).and_return(client)
-    #   # client.should_receive(:create).with(:tel => '12345')
-    #   expect(client).to receive(:new).with(:params)
-    #   post :create, :client => {:params => {}}
-    #        # :photo => File.new(Rails.root + 'spec/fixtures/images/test_image.jpg')
-    #
-    # end
-    it "saves the client"
-    # do
-    #   client = instance_double("Client")
-    #   allow(client).to receive(:save).and_return(true)
-    #   expect(client).to receive(:save)
-    #   post :create, params
-    # end
+    it "creates a new client", :stubs => true do
+      expect(Client).to receive(:new).and_return(client)
+      post :create, params
+    end
+    it "saves the client", :stubs => true do
+      # TODO fails without the expect client, there must be a better way
+      expect(Client).to receive(:new).and_return(client)
+      expect(client).to receive(:save).with(no_args)
+      post :create, params
+    end
 
     context "when client saves successfully" do
       it "sets a flash[:notice] message"

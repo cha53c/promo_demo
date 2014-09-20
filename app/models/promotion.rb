@@ -1,5 +1,6 @@
 class Promotion < ActiveRecord::Base
   belongs_to :client
+  # TODO set accessable atrribrutes
   # TODO show validation error in view
   # TODO validate that a least one day of the week has been populated
   validates :description, :image, presence: true, on: :create

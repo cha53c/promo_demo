@@ -3,6 +3,7 @@ class ClientsController < ApplicationController
   end
 
   def create
+    # TODO remove debug output
     puts "create..."
     @client = Client.new(client_params)
     puts "after new client"
@@ -13,7 +14,6 @@ class ClientsController < ApplicationController
       puts "renders new"
       flash[:notice]="could not add new client"
       render 'new'
-
     end
     puts "...create end"
   end
