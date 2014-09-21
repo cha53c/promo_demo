@@ -71,45 +71,41 @@ RSpec.describe ClientsController do
   describe "POST create" do
     let!(:client) { mock_model(Client, :save => nil) }
     subject { post :create, params }
-
+    before {
+      allow(Client).to receive(:new).and_return(client)
+    }
 
     it "creates a new client" do
       expect(Client).to receive(:new).and_return(client)
       post :create, params
     end
-    it "saves the client", :saves => true do
-      # TODO fails without the expect client, there must be a better way
-      expect(Client).to receive(:new).and_return(client)
+    it "saves the client" do
       client.stub(:save) { true }
       expect(client).to receive(:save).with(no_args)
       post :create, params
     end
 
     context "when client saves successfully" do
-      it "sets a flash[:notice] message", :saves => true do
-        # TODO fails without the expect client, there must be a better way
-        expect(Client).to receive(:new).and_return(client)
+      it "sets a flash[:notice] message" do
         client.stub(:save) { true }
         post :create, params
         flash[:notice].should eq("successfully added client")
       end
-      it "redirects to clients/:id", :saves => true do
-        # TODO fails without the expect client, there must be a better way
-        expect(Client).to receive(:new).and_return(client)
+      it "redirects to clients/:id" do
         client.stub(:save) { true }
         expect(subject).to redirect_to :action => :show,
                                        :id => assigns(:client).id
       end
-      it "returns http success", :saves => true do
+      it "returns http success" do
         expect(subject).to have_http_status(200)
       end
     end
-    context "when the client fails to save", :saves => true do
+    context "when the client fails to save" do
       it "sets a flash[:notice] message" do
         post :create, params
         flash[:notice].should eq("could not add new client")
       end
-      it "renders new template", :saves => true do
+      it "renders new template" do
         expect(subject).to render_template('clients/new')
       end
     end
