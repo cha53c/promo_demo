@@ -1,7 +1,5 @@
 require 'spec_helper'
 require 'rails_helper'
-require 'rack/test'
-
 
 RSpec.describe ClientsController do
   let(:params) { {:client => {:name => "testclient", :tel => "123", :email => "me@home.com", :website => "www.bookme.com", :photo => Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/test_image.jpg')}} }
@@ -27,7 +25,11 @@ RSpec.describe ClientsController do
       expect(subject).to render_template("clients/index")
     end
 
-    it "calls all on client"
+    it "calls all on client" do
+      # TODO check correct parameter is passed
+      expect(Client).to receive(:all).once()
+      get :index
+    end
   end
 
   describe "GET show/:id" do
@@ -50,9 +52,22 @@ RSpec.describe ClientsController do
     end
   end
 
-  describe "GET edit" do
-    it "returns http success"
-    it "renders edit"
+  describe "GET edit/:id" do
+    let!(:client) { mock_model(Client) }
+    subject {get :edit, :id => client.id}
+    before {
+      allow(Client).to receive(:find)
+    }
+    it "calls find on Client" do
+      expect(Client).to receive(:find).once()
+      get :edit, :id => client.id
+    end
+    it "returns http success" do
+      expect(subject).to have_http_status(200)
+    end
+    it "renders edit" do
+      expect(subject).to render_template('clients/edit')
+    end
   end
 
   describe "PATCH update" do
@@ -112,7 +127,27 @@ RSpec.describe ClientsController do
   end
 
   describe "DELETE destroy" do
-    it "returns http success"
-    it "redirects to clients index"
+    let!(:client) { mock_model(Client) }
+    subject{delete :destroy, :id => client.id}
+    before {
+      allow(Client).to receive(:find).and_return(client)
+    }
+
+    it "calls find on Client" do
+      # TODO check the correct id is passed
+      expect(Client).to receive(:find).once()
+      delete :destroy, :id => client.id
+    end
+    it "calls destroy on client" do
+      expect(client).to receive(:destroy).with(no_args)
+      delete :destroy, :id => client.id
+    end
+    it "returns http redirect" do
+      expect(subject).to have_http_status(302)
+    end
+
+    it "redirects to clients index" do
+      expect(subject).to redirect_to :action => :index
+    end
   end
 end

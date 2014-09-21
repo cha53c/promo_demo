@@ -24,7 +24,7 @@ class ClientsController < ApplicationController
 
   def edit
     @client = Client.find(params[:id])
-  #   TODO set flash if not found
+    # TODO set flash if not found
   end
 
   def update
@@ -43,9 +43,9 @@ class ClientsController < ApplicationController
   end
 
 
-private
+  private
   def client_params
-   params.require(:client).permit(:name, :tel, :email, :website, :photo)
+    params.require(:client).permit(:name, :tel, :email, :website, :photo)
   end
 
 end
