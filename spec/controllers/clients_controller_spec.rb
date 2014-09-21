@@ -7,7 +7,7 @@ RSpec.describe ClientsController do
   let(:params) { {:client => {:name => "testclient", :tel => "123", :email => "me@home.com", :website => "www.bookme.com", :photo => Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/test_image.jpg')}} }
 
   describe "GET new" do
-    subject {get :new}
+    subject { get :new }
     it "returns http success" do
       expect(subject).to have_http_status(200)
     end
@@ -28,13 +28,26 @@ RSpec.describe ClientsController do
     end
 
     it "calls all on client"
-
-
   end
 
-  describe "GET show" do
-    it "returns http success"
-    it "renders show"
+  describe "GET show/:id" do
+    let!(:client) { mock_model(Client) }
+    subject { get :show, :id => client.id }
+    before {
+      allow(Client).to receive(:find).and_return(client)
+    }
+    it "calls find only once" do
+      # TODO test correct parameters
+      expect(Client).to receive(:find).once()
+      get :show, :id => client.id
+    end
+    it "returns http success" do
+      expect(subject).to have_http_status(200)
+    end
+
+    it "renders show" do
+      expect(subject).to render_template("clients/show")
+    end
   end
 
   describe "GET edit" do
