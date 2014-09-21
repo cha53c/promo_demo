@@ -104,19 +104,19 @@ RSpec.describe ClientsController do
       post :create, params
     end
     it "saves the client" do
-      client.stub(:save) { true }
+      allow(client).to receive(:save) {true}
       expect(client).to receive(:save).with(no_args)
       post :create, params
     end
 
     context "when client saves successfully" do
       it "sets a flash[:notice] message" do
-        client.stub(:save) { true }
+        allow(client).to receive(:save) {true}
         post :create, params
         flash[:notice].should eq("successfully added client")
       end
       it "redirects to clients/:id" do
-        client.stub(:save) { true }
+        allow(client).to receive(:save) {true}
         expect(subject).to redirect_to :action => :show,
                                        :id => assigns(:client).id
       end
