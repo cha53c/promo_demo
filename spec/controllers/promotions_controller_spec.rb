@@ -8,8 +8,9 @@ RSpec.describe PromotionsController do
     let!(:client) {mock_model(Client)}
     # subject {get :new, :client_id => client.id}
     it "renders new" do
-      expect(subject).to render_template('promotions/new')
       get :new, :client_id => client.id
+      expect(subject).to render_template('promotions/new')
+
     end
   end
 
