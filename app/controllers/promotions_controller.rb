@@ -1,7 +1,5 @@
 class PromotionsController < ApplicationController
   def new
-    @promotion = Promotion.new
-    @client = Client.find(params[:client_id])
   end
 
   def create
