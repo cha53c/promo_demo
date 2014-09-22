@@ -72,6 +72,7 @@ RSpec.describe ClientsController do
 
   describe "PATCH update" do
     let!(:client) {mock_model(Client)}
+    subject {patch :update, {id: client.id, client: params}}
     before {
       allow(Client).to receive(:find).and_return(client)
       allow(client).to receive(:update).with(any_args)
@@ -80,15 +81,39 @@ RSpec.describe ClientsController do
       expect(Client).to receive(:find).once()
       patch :update, {id: client.id, client: params}
     end
-    it "calls save on client"
+    it "assigns @client" do
+      patch :update, {id: client.id, client: params}
+      assigns[:client].should eq(client)
+
+    end
+    it "calls save on client" do
+      allow(subject).to receive(:save)
+    end
     context "when client updates successfully" do
-      it "sets a flash[:notice] message"
-      it "redirects to client index"
+      before {
+        allow(client).to receive(:update) {true}
+      }
+      it "sets a flash[:notice] message" do
+        # allow(client).to receive(:update) {true}
+        patch :update, {id: client.id, client: params}
+        expect(flash[:notice]).to eq("update complete")
+      end
+      it "redirects to client index" do
+        expect(subject).to redirect_to :action => :show,
+                                       :id => assigns(:client).id
+      end
     end
     context "when client fails to update" do
-      it "assigns @client"
-      it "sets a flash[:notice] message"
-      it "redirects to edit"
+      before {
+        allow(client).to receive(:update) {false}
+      }
+      it "sets a flash[:notice] message" do
+        patch :update, {id: client.id, client: params}
+        expect(flash[:notice]).to eq("update failed")
+      end
+      it "redirects to edit" do
+        expect(subject).to render_template('clients/edit')
+      end
     end
   end
 
