@@ -5,7 +5,7 @@ class PromotionsController < ApplicationController
   def create
     @client = Client.find(params[:client_id])
     @promotion = @client.promotions.create(promotion_params)
-    @promotion = Promotion.new(promotion_params)
+    # @promotion = Promotion.new(promotion_params)
     redirect_to client_path(@client)
   end
 

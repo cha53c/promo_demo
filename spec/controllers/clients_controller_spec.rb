@@ -94,7 +94,6 @@ RSpec.describe ClientsController do
         allow(client).to receive(:update) {true}
       }
       it "sets a flash[:notice] message" do
-        # allow(client).to receive(:update) {true}
         patch :update, {id: client.id, client: params}
         expect(flash[:notice]).to eq("update complete")
       end
