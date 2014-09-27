@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   resources :clients do
     resources :promotions
   end
+
   patch 'clients/:client_id/promotions/:id/edit' => 'promotions#update'
-  post 'clients/:client_id/promotions/new' => 'promotions#create'
+  post '/clients/:client_id/promotions/new' => 'promotions#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

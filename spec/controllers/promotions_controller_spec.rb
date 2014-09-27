@@ -3,6 +3,8 @@ require 'rails_helper'
 
 RSpec.describe PromotionsController do
   let(:client) {mock_model(Client)}
+  let(:promotion) {mock_model(Promotion)}
+  let(:params) { {:promotion => {:promo_type => "promo1", :client_id => client.id}}}
 
   describe 'GET new' do
 
@@ -15,20 +17,25 @@ RSpec.describe PromotionsController do
 
 describe 'POST create' do
   before {
-    promotion = instance_double('Promotion')
     allow(Client).to receive(:find).and_return(client)
     allow(client).to receive(:promotions).and_return(promotion)
+    allow(promotion).to receive(:create).and_return(promotion)
   }
-  subject{post :create, :client_id => client.id}
+  subject{post :create, :client_id => client, :promotion => {:promo_type => "promo1", :client_id => client.id}}
 
-  it 'finds the client'
-  # do
-  #   expect(Client).to receive(:find).once()
-  #   # post :create, :client_id => client.id
-  #   post :create, FactoryGirl.attributes_for(:user)
-  # end
-  it 'creates a new promotion for the client'
-  it 'redirects to client show'
+
+  it 'finds the client' do
+    expect(Client).to receive(:find).once()
+    post :create, :client_id => client, :promotion => {:promo_type => "promo1", :client_id => client.id}
+  end
+  it 'assigns a new promotion for the client' do
+    post :create, :client_id => client, :promotion => {:promo_type => "promo1", :client_id => client.id}
+    expect(assigns[:promotion]).to eq(promotion)
+  end
+  it 'redirects to client show' do
+    expect(subject).to redirect_to("/clients/#{assigns(:client).id}")
+  end
+
 
 end
 
