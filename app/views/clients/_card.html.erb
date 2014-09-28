@@ -4,10 +4,7 @@
     <div class="caption">
       <h3><%= link_to client.name, client_path(client)%></h3>
       <p>
-        Tel: <%=client.tel %><br>
-        Email: <%= client.email%><br>
-        WebSite: <%= client.website%><br>
-
+        <%= render 'clients/contact_details', :client => client %>
       </p>
       <p><%= link_to 'Show', client_path(client) %>
         <%= link_to 'Edit', edit_client_path(client) %>

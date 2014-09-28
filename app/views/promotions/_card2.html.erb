@@ -1,6 +1,7 @@
   <div class="col-sx-12 col-sm-6 col-md-3">
     <div class="thumbnail">
-      <%= link_to image_tag(promotion.image.url(:medium)), [promotion.client, promotion] %>
+      <h4><%= link_to client.name, [promotion.client, promotion] %></h4>
+        <%= link_to image_tag(promotion.image.url(:medium)), [promotion.client, promotion] %>
       <div class="caption">
         <h4><%= link_to promotion.description, [promotion.client, promotion] %></h4>
         <h5><%= promotion.promo_type %></h5>
