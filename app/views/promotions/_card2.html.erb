@@ -1,48 +1,47 @@
   <div class="col-sx-12 col-sm-6 col-md-3">
     <div class="thumbnail">
-      <!--<img data-src="holder.js/300x300" alt="...">-->
-      <%= image_tag promotion.image.url(:medium)%>
+      <%= link_to image_tag(promotion.image.url(:medium)), [promotion.client, promotion] %>
       <div class="caption">
-        <h4><%= promotion.description %></h4>
+        <h4><%= link_to promotion.description, [promotion.client, promotion] %></h4>
         <h5><%= promotion.promo_type %></h5>
         <p><%= promotion.details %> </p>
-    <p><% if promotion.mon %>
-          <span class="day-on">M</span>
-      <%else%>
-          <span class="day-off">M</span>
-  <%end%>
-  <% if promotion.tue %>
+        <p><% if promotion.mon %>
+              <span class="day-on">M</span>
+          <%else%>
+              <span class="day-off">M</span>
+          <%end%>
+          <% if promotion.tue %>
               <span class="day-on">Tu</span>
           <%else%>
               <span class="day-off">Tu</span>
-  <%end%>
-  <% if promotion.wed %>
+          <%end%>
+          <% if promotion.wed %>
               <span class="day-on">W</span>
           <%else%>
               <span class="day-off">W</span>
-  <%end%>
-  <% if promotion.thu %>
+          <%end%>
+          <% if promotion.thu %>
               <span class="day-on">Th</span>
           <%else%>
               <span class="day-off">Th</span>
-  <%end%>
-  <% if promotion.fri %>
-     <span class="day-on">F</span>
-  <%else%>
-     <span class="day-off">F</span>
-  <%end%>
-  <% if promotion.sat %>
-      <span class="day-on">Sa</span>
-  <%else%>
-      <span class="day-off">Sa</span>
-  <%end%>
+          <%end%>
+          <% if promotion.fri %>
+              <span class="day-on">F</span>
+          <%else%>
+              <span class="day-off">F</span>
+          <%end%>
+          <% if promotion.sat %>
+              <span class="day-on">Sa</span>
+          <%else%>
+              <span class="day-off">Sa</span>
+          <%end%>
 
-  <% if promotion.sun %>
-            <span class="day-on">Su</span>
-        <%else%>
-            <span class="day-off">Su</span>
-        <%end%>
-    </p>
+          <% if promotion.sun %>
+              <span class="day-on">Su</span>
+          <%else%>
+              <span class="day-off">Su</span>
+          <%end%>
+        </p>
 
         <p>
           <%= link_to 'Show', [promotion.client, promotion] %>
