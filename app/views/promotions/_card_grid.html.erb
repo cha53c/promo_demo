@@ -1,0 +1,7 @@
+<div class="row">
+  <% promotions.each do |promotion| %>
+      <div class="col-sx-12 col-sm-6 col-md-3">
+        <%= render 'promotions/card2', :promotion => promotion, :client => find_client(promotion.client_id) %>
+      </div>
+  <% end %>
+ </div>
