@@ -33,9 +33,10 @@ class PromotionsController < ApplicationController
     @promotion = Promotion.find(params[:id])
     @client = Client.find(params[:client_id])
     if @promotion.update(promotion_params)
-      render 'edit'
+      render 'clients/show'
     else
-      render 'error'
+      flash[:notice] = "promotion update failed"
+      render 'edit'
     end
   end
 

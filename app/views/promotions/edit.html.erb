@@ -3,8 +3,7 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-<%= form_for([@client, @promotion], method: :patch, :html => {:multipart => true}) do |f| %>
-
+   <%= form_for([@client, @promotion], url: client_promotion_path, method: :patch, :html => {:multipart => true}) do |f| %>
     <h3>Describe the Promotion</h3>
     <p>
       <%= f.label :description %>

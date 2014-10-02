@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   resources :clients do
     resources :promotions
   end
-
-  patch 'clients/:client_id/promotions/:id/edit' => 'promotions#update'
+  # TODO should not need these should be able to use the standard resources
+  # patch 'clients/:client_id/promotions/:id/edit' => 'promotions#update'
   post '/clients/:client_id/promotions/new' => 'promotions#create'
 
   # The priority is based upon order of creation: first created -> highest priority.

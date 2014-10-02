@@ -1,4 +1,6 @@
 <div class="container">
+  <!--TODO move to a single form-->
+  <!--TODO use standard resource routes-->
 <%= form_for :promotion, url: new_client_promotion_path, :html => {:multipart => true} do |f| %>
     <%= render 'shared/form_error', :model => @promotion%>
     <div class="panel panel-default">
