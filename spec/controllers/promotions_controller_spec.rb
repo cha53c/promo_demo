@@ -4,13 +4,12 @@ require 'rails_helper'
 RSpec.describe PromotionsController do
   let(:client) { mock_model(Client) }
   let(:promotion) { mock_model(Promotion) }
-  let(:params) { {:promotion => {:promo_type => "promo1", :client_id => client.id}} }
+  let(:params) {{client_id: client, id: promotion.id, promotion: {:promotion => {:promo_type => "promo1", :client_id => client.id}}}}
 
   describe 'GET new' do
-
+    subject(:get_new) { get :new, :client_id => client.id }
     it "renders new" do
-      get :new, :client_id => client.id
-      expect(subject).to render_template('promotions/new')
+      expect(get_new).to render_template('promotions/new')
     end
   end
 
@@ -20,21 +19,19 @@ RSpec.describe PromotionsController do
       allow(client).to receive(:promotions).and_return(promotion)
       allow(promotion).to receive(:create).and_return(promotion)
     }
-    subject(:post_create) { post :create, :client_id => client, :promotion => {:promo_type => "promo1", :client_id => client.id} }
-
+    subject(:post_create) { post :create, params}
 
     it 'finds the client' do
       expect(Client).to receive(:find).once()
-      post :create, :client_id => client, :promotion => {:promo_type => "promo1", :client_id => client.id}
+      post_create
     end
     it 'assigns a new promotion for the client' do
-      post :create, :client_id => client, :promotion => {:promo_type => "promo1", :client_id => client.id}
+      post_create
       expect(assigns[:promotion]).to eq(promotion)
     end
     it 'redirects to client show' do
       expect(post_create).to redirect_to("/clients/#{assigns(:client).id}")
     end
-
   end
 
   describe 'PATCH update' do
@@ -45,7 +42,7 @@ RSpec.describe PromotionsController do
       expect(Promotion).to receive(:find).and_return(promotion)
       expect(Client).to receive(:find).and_return(client)
     }
-    subject(:patch_update) { patch :update, client_id: client, id: promotion.id, promotion: params }
+    subject(:patch_update) { patch :update, params }
     # it 'finds the promotion'
     # it 'finds the client'
     it 'calls update on the promotion' do
@@ -79,7 +76,7 @@ RSpec.describe PromotionsController do
       allow(promotion).to receive(:find).and_return(promotion)
       allow(promotion).to receive(:destroy).and_return(promotion)
     }
-    subject(:delete_destroy) { delete :destroy, client_id: client, id: promotion.id, promotion: params }
+    subject(:delete_destroy) { delete :destroy, params }
     # it 'finds the promotion'
     it 'destroys the promotion' do
       expect(promotion).to receive(:destroy)
@@ -91,16 +88,16 @@ RSpec.describe PromotionsController do
   end
 
   describe "GET edit" do
-    subject(:get_edit) {get :edit, client_id: client, id: promotion.id, promotion: params}
-   it "finds promotion" do
-     allow(Client).to receive(:find)
-     expect(Promotion).to receive(:find).and_return(promotion)
-     get_edit
-   end
-  it "finds client" do
-    allow(Promotion).to receive(:find)
-    expect(Client).to receive(:find).and_return(client)
-    get_edit
-  end
+    subject(:get_edit) { get :edit, params}
+    it "finds promotion" do
+      allow(Client).to receive(:find)
+      expect(Promotion).to receive(:find).and_return(promotion)
+      get_edit
+    end
+    it "finds client" do
+      allow(Promotion).to receive(:find)
+      expect(Client).to receive(:find).and_return(client)
+      get_edit
+    end
   end
 end
