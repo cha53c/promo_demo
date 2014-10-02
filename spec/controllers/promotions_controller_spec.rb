@@ -48,7 +48,10 @@ RSpec.describe PromotionsController do
     subject(:patch_update) { patch :update, client_id: client, id: promotion.id, promotion: params }
     # it 'finds the promotion'
     # it 'finds the client'
-    it 'calls update on the promotion'
+    it 'calls update on the promotion' do
+      expect(promotion).to receive(:update)
+      patch_update
+    end
     context 'when promotion updates successfully' do
       it 'renders clients show', :patch => true do
         expect(promotion).to receive(:update).and_return(true)
@@ -70,9 +73,34 @@ RSpec.describe PromotionsController do
   end
 
   describe "GET destroy" do
-    it 'finds the promotion'
-    it 'destroys the promotion'
-    it 'redirects to the clients page'
+    before {
+      allow(Client).to receive(:find).and_return(client)
+      allow(client).to receive(:promotions).and_return(promotion)
+      allow(promotion).to receive(:find).and_return(promotion)
+      allow(promotion).to receive(:destroy).and_return(promotion)
+    }
+    subject(:delete_destroy) { delete :destroy, client_id: client, id: promotion.id, promotion: params }
+    # it 'finds the promotion'
+    it 'destroys the promotion' do
+      expect(promotion).to receive(:destroy)
+      delete_destroy
+    end
+    it 'redirects to the clients page' do
+      expect(delete_destroy).to redirect_to("/clients/#{assigns(:client).id}")
+    end
   end
 
+  describe "GET edit" do
+    subject(:get_edit) {get :edit, client_id: client, id: promotion.id, promotion: params}
+   it "finds promotion" do
+     allow(Client).to receive(:find)
+     expect(Promotion).to receive(:find).and_return(promotion)
+     get_edit
+   end
+  it "finds client" do
+    allow(Promotion).to receive(:find)
+    expect(Client).to receive(:find).and_return(client)
+    get_edit
+  end
+  end
 end
