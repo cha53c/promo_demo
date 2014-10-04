@@ -49,13 +49,13 @@ RSpec.describe PromotionsController do
       patch_update
     end
     context 'when promotion updates successfully' do
-      it 'renders clients show', :patch => true do
+      it 'renders clients show' do
         expect(promotion).to receive(:update).and_return(true)
         expect(patch_update).to render_template("clients/show")
       end
     end
 
-    context 'when promotion update fails', :patch => true do
+    context 'when promotion update fails' do
       it 'sets flash[:notice] message' do
         expect(promotion).to receive(:update)
         patch_update
