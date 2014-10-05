@@ -34,8 +34,7 @@ describe Promotion do
   it 'should except start date in the future' do
     sd, ed = Date.today, Date.today
     sd += 1
-    ed +=2
+    ed += 2
     promotion = Promotion.new({promo_type: '2-4-1', start_date: sd.strftime('%d-%m-%Y'), end_date: sd.strftime('%d-%m-%Y')})
-
   end
 end

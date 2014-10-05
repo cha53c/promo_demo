@@ -3,6 +3,9 @@ class Promotion < ActiveRecord::Base
   # TODO set accessable atrribrutes
   # TODO show validation error in view
   # TODO validate that a least one day of the week has been populated
+  # TODO validate field lengths
+  # TODO remove start_date and end_date from db
+  # TODO remove valid_days
   validates :description, :image, presence: true, on: :create
   validate :start_date_cannot_be_before_today
   has_attached_file :image , :styles => {:medium => "300x200>", :small => "150x150>"}
@@ -18,6 +21,6 @@ class Promotion < ActiveRecord::Base
    end
   end
   def end_date_cannot_be_before_start_date
-  # TODO
+      #TODO
   end
 end

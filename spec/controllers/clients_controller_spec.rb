@@ -102,7 +102,7 @@ RSpec.describe ClientsController do
       end
       it "redirects to client index" do
         expect(patch_update).to redirect_to :action => :show,
-                                       :id => assigns(:client).id
+                                            :id => assigns(:client).id
       end
     end
     context "when client fails to update" do
@@ -145,7 +145,7 @@ RSpec.describe ClientsController do
       it "redirects to clients/:id" do
         allow(client).to receive(:save) { true }
         expect(post_create).to redirect_to :action => :show,
-                                       :id => assigns(:client).id
+                                           :id => assigns(:client).id
       end
       it "returns http success" do
         expect(post_create).to have_http_status(200)
