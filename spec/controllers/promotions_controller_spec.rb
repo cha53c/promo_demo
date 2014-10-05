@@ -33,8 +33,25 @@ RSpec.describe PromotionsController do
       post_create
       expect(assigns[:promotion]).to eq(promotion)
     end
-    it 'redirects to client show' do
-      expect(post_create).to redirect_to("/clients/#{assigns(:client).id}")
+    context 'when create fails' do
+      it 'sets flash message' do
+        allow(promotion).to receive(:id).and_return(nil)
+        post_create
+        expect(flash[:notice]).to eq("Failed to add new promotion")
+      end
+      it 'render new' do
+        allow(promotion).to receive(:id).and_return(nil)
+        expect(post_create).to render_template('new')
+      end
+    end
+    context 'when create is successful' do
+      it 'sets flash message' do
+        post_create
+        expect(flash[:notice]).to eq("Successfully added new promotion")
+      end
+      it 'redirects to edit' do
+        expect(post_create).to redirect_to("/clients/#{assigns(:client).id}/promotions/#{assigns(:promotion).id}/edit")
+      end
     end
   end
 

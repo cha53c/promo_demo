@@ -1,17 +1,19 @@
 <div class="form-group">
-<%= form_for :client, url: path, method: mymethod, :html => {:multipart => true } do |f| %>
-<%= render 'shared/form_error', :model => @client%>
-    <p>
-      <%= f.label :name %>
-      <%= f.text_field :name %><br>
-      <%= f.file_field :photo %><br>
-      <%= f.label :email %><%= f.email_field :email%>
-      <%= f.label :tel %><%= f.telephone_field :tel %>
-      <%= f.label :website%><%= f.url_field :website %>
-    </p>
+  <%= form_for :client, url: path, method: mymethod, :html => {:multipart => true} do |f| %>
+      <% if @client != nil %>
+          <%= render 'shared/form_error', :model => @client %>
+      <% end %>
+      <p>
+        <%= f.label :name %>
+        <%= f.text_field :name %><br>
+        <%= f.file_field :photo %><br>
+        <%= f.label :email %><%= f.email_field :email %>
+        <%= f.label :tel %><%= f.telephone_field :tel %>
+        <%= f.label :website %><%= f.url_field :website %>
+      </p>
 
-    <p>
-      <%= f.submit %>
-    </p>
-<% end %>
+      <p>
+        <%= f.submit %>
+      </p>
+  <% end %>
 </div>

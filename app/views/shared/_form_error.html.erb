@@ -1,13 +1,18 @@
-<% if @client != nil %>
-    <% if model.errors.any? %>
-        <div id="error_explanation">
-          <h3><%= pluralize(model.errors.count, "error") %> prohibited
-            this from being saved:</h3>
-          <ul>
-            <% model.errors.full_messages.each do |msg| %>
-                <li class="alert alert-danger"><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
+<% if model.errors.any? %>
+    <div id="error_explanation">
+      <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, class: 'alert alert-danger' %>
+      <% end %>
+      <h3><%= pluralize(model.errors.count, "error") %> prohibited
+        this from being saved:</h3>
+      <ul>
+        <% model.errors.full_messages.each do |msg| %>
+            <li class="alert alert-danger"><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% else %>
+    <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: 'alert alert-success' %>
     <% end %>
 <% end %>

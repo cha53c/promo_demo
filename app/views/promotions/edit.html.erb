@@ -3,61 +3,14 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-   <%= form_for([@client, @promotion], url: client_promotion_path, method: :patch, :html => {:multipart => true}) do |f| %>
-    <h3>Describe the Promotion</h3>
-    <p>
-      <%= f.label :description %>
-      <%= f.text_field :description %>
-      <%= f.label :promo_type %>
-      <%= f.text_field :promo_type %><br>
-      <%= f.label :details %>
-      <%= f.text_field :details %>
-    </p>
-    <p>
-    <h3>Upload Image for the promotion</h3>
-    <%= f.file_field :image %>
-    </p>
-
-    <h3>Enter the Dates the Promotion is valid for</h3>
-    <p>
-          <%= f.label :starts %>
-          <%= f.date_select :starts %>
-
-      <%= f.label :ends %>
-      <%= f.date_select :ends %>
-    </p>
-    <p>
-
-    <h3> Occurs Every </h3>
-    <%= f.label :mon %> <%= f.check_box :mon %>
-    <%= f.label :tue %> <%= f.check_box :tue %>
-    <%= f.label :wed %> <%= f.check_box :wed %>
-    <%= f.label :thu %> <%= f.check_box :thu %>
-    <%=f.label :fri %> <%=f.check_box :fri %>
-    <%=f.label :sat %> <%=f.check_box :sat %>
-    <%= f.label :sun %> <%= f.check_box :sun %>
-    <br>
-
-    <p>
-      <%= f.label :from %>
-      <%= f.time_select :from %>
-      <%= f.label :to %>
-      <%= f.time_select :to %>
-    </p>
-    <h3>Activate Promotion</h3>
-    <p>
-      <%= f.label :active %>
-      <%= f.check_box :active %>
-
-    </p>
-    <p>
-       <%= f.submit %>
-    </p>
-<% end %>
+        <%= render 'form', http_verb: :patch, url: client_promotion_path %>
       </div>
     </div>
-   <div class="col-md-6">
-    <%= render 'card2', :promotion => @promotion, :client => @client%>
-   </div>
-</div>
+    <div class="col-md-6">
+      <%= render 'shared/form_error', :model => @promotion %>
+      <% if @promotion.errors.empty? %>
+          <%= render 'card2', :promotion => @promotion, :client => @client %>
+      <% end %>
+    </div>
+  </div>
 </div>

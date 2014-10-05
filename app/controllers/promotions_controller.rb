@@ -1,11 +1,20 @@
 class PromotionsController < ApplicationController
   def new
+    flash.clear
+    @promotion = Promotion.new
   end
 
   def create
     @client = Client.find(params[:client_id])
     @promotion = @client.promotions.create(promotion_params)
-    redirect_to client_path(@client)
+    if @promotion.id == nil
+      logger.info("promotion was not created")
+      flash[:notice] = "Failed to add new promotion"
+      render 'new'
+    else
+      flash[:notice] = "Successfully added new promotion"
+      redirect_to action: "edit", :id => @promotion.id
+    end
   end
 
   def destroy
@@ -25,6 +34,7 @@ class PromotionsController < ApplicationController
   end
 
   def edit
+    flash.clear
     @promotion = Promotion.find(params[:id])
     @client = Client.find(params[:client_id])
   end
@@ -41,11 +51,11 @@ class PromotionsController < ApplicationController
     end
   end
 
-private
+  private
   def promotion_params
 
     params.require(:promotion).permit(:promo_type, :image, :details,
-                                      :description, :active, :from, :to,:starts , :ends,
+                                      :description, :active, :from, :to, :starts, :ends,
                                       :mon, :tue, :wed, :thu, :fri, :sat, :sun)
 
   end
