@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'haml-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
@@ -51,6 +52,9 @@ group :development,:test do
   gem 'rspec-activemodel-mocks'
 end
 group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+  gem 'webrat'
   gem 'faker'
   gem 'capybara'
   gem 'guard-rspec'

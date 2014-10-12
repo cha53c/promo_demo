@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'sessions/login'
+
+  get 'sessions/logout'
+
+  get 'session/login'
+
+  get 'session/logout'
+
   get 'search/index'
 
   get 'search/fuzzy'
