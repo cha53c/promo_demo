@@ -1,2 +1,11 @@
 %h1 Sessions#login
 %p Find me in app/views/sessions/login.html.haml
+%p
+  = flash.each do |key, value|
+    .alert.alert-success
+      %strong
+        = value
+%p
+  = form_tag('login') do
+    = password_field(:login, :pass, size: 20)
+    = submit_tag('Log in')
