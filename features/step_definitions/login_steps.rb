@@ -1,21 +1,12 @@
-Given(/^I am on the login page$/) do
-  # pending # express the regexp above with the code you wish you had
-  visit 'sessions/login'
+Given(/^password (\w+)$/) do |password|
+  visit 'sessions/show'
+  fill_in 'login_pass', :with => password
 end
 
-When(/^I enter my password$/) do
-  # pending # express the regexp above with the code you wish you had
-  fill_in 'login_pass', :with => "abc123"
+When(/^I click on sign in$/) do
+  click_on 'Log in'
 end
 
-When(/^I click log in$/) do
-  # pending # express the regexp above with the code you wish you had
-  click_button 'Log in'
-end
-
-Then(/^I see the welcome message$/) do
-  # pending # express the regexp above with the code you wish you had
-  click_button 'Log in'
-  # TODO using default Capybara instead of Webrat!!
-  expect(page).to have_content("Welcome")
+Then(/^I see (.*?) message$/) do  |message|
+  expect(page).to have_content(message)
 end
