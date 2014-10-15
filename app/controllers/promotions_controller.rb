@@ -7,8 +7,8 @@ class PromotionsController < ApplicationController
   def create
     @client = Client.find(params[:client_id])
     @promotion = @client.promotions.create(promotion_params)
-    if @promotion.id == nil
-      logger.info("promotion was not created")
+    unless @promotion.id
+    logger.info("promotion was not created")
       flash[:notice] = "Failed to add new promotion"
       render 'new'
     else
@@ -53,7 +53,6 @@ class PromotionsController < ApplicationController
 
   private
   def promotion_params
-
     params.require(:promotion).permit(:promo_type, :image, :details,
                                       :description, :active, :from, :to, :starts, :ends,
                                       :mon, :tue, :wed, :thu, :fri, :sat, :sun)

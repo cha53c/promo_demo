@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
 
-  get 'sessions/login'
-  get 'sessions/show'
-  post 'sessions/login'
+  # get 'users/new'
+  #
+  # get 'users/create'
+  #
+  # get 'users/destroy'
 
-  get 'sessions/logout'
+  resources :users
+
+  get 'sessions/new', :as => 'login'
+  post 'sessions/create'
+
+  get 'sessions/destroy', :as => 'logout'
 
   get 'search/index'
 

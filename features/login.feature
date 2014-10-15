@@ -4,18 +4,22 @@ Feature: User Authentication
   So that they can access CUD operations
 
   Scenario Outline: Login
-    Given password <password>
+    Given email <email> and password <password>
     When I click on sign in
     Then I see <message> message
 
-    Scenarios: correct password
-      | password | message |
-      | abc123   | Welcome |
+    Scenarios: correct email and password
+     | email | password | message |
+     | test@test.com | abc123   | Logo |
 
     Scenarios: Incorrect password
-      | password | message |
-      | 123456   | "Invalid Username or Password" |
+      | email| password | message |
+      | test@test.com| 123456   | "Invalid email or password" |
 
     Scenarios: No password
-      | password | message |
-      | nil      | "Invalid Username or Password" |
+      | email         | password | message |
+      | test@test.com | nil      | "Invalid email or password" |
+
+#     Scenarios: No email
+#       | email         | password | message |
+#       | nil | abc123      | "Invalid Username or Password" |
