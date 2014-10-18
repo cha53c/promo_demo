@@ -1,52 +1,57 @@
-    <div class="thumbnail">
-      <h4><%= link_to client.name, [promotion.client, promotion] %></h4>
-        <%= link_to image_tag(promotion.image.url(:medium)), [promotion.client, promotion] %>
-      <div class="caption">
-        <h4><%= link_to promotion.description, [promotion.client, promotion] %></h4>
-        <h5><%= promotion.promo_type %></h5>
-        <p><%= promotion.details %> </p>
-        <p><% if promotion.mon %>
-              <span class="day-on">M</span>
-          <%else%>
-              <span class="day-off">M</span>
-          <%end%>
-          <% if promotion.tue %>
-              <span class="day-on">Tu</span>
-          <%else%>
-              <span class="day-off">Tu</span>
-          <%end%>
-          <% if promotion.wed %>
-              <span class="day-on">W</span>
-          <%else%>
-              <span class="day-off">W</span>
-          <%end%>
-          <% if promotion.thu %>
-              <span class="day-on">Th</span>
-          <%else%>
-              <span class="day-off">Th</span>
-          <%end%>
-          <% if promotion.fri %>
-              <span class="day-on">F</span>
-          <%else%>
-              <span class="day-off">F</span>
-          <%end%>
-          <% if promotion.sat %>
-              <span class="day-on">Sa</span>
-          <%else%>
-              <span class="day-off">Sa</span>
-          <%end%>
+<div class="thumbnail">
+  <h4><%= link_to client.name, [promotion.client, promotion] %></h4>
+  <%= link_to image_tag(promotion.image.url(:medium)), [promotion.client, promotion] %>
+  <div class="caption">
+    <h4><%= link_to promotion.description, [promotion.client, promotion] %></h4>
+    <h5><%= promotion.promo_type %></h5>
 
-          <% if promotion.sun %>
-              <span class="day-on">Su</span>
-          <%else%>
-              <span class="day-off">Su</span>
-          <%end%>
-        </p>
+    <p><%= promotion.details %> </p>
 
-        <p>
-          <%= link_to 'Show', [promotion.client, promotion] %>
+    <p>
+      <% if promotion.mon %>
+          <span class="day-on">M</span>
+      <% else %>
+          <span class="day-off">M</span>
+      <% end %>
+      <% if promotion.tue %>
+          <span class="day-on">Tu</span>
+      <% else %>
+          <span class="day-off">Tu</span>
+      <% end %>
+      <% if promotion.wed %>
+          <span class="day-on">W</span>
+      <% else %>
+          <span class="day-off">W</span>
+      <% end %>
+      <% if promotion.thu %>
+          <span class="day-on">Th</span>
+      <% else %>
+          <span class="day-off">Th</span>
+      <% end %>
+      <% if promotion.fri %>
+          <span class="day-on">F</span>
+      <% else %>
+          <span class="day-off">F</span>
+      <% end %>
+      <% if promotion.sat %>
+          <span class="day-on">Sa</span>
+      <% else %>
+          <span class="day-off">Sa</span>
+      <% end %>
+
+      <% if promotion.sun %>
+          <span class="day-on">Su</span>
+      <% else %>
+          <span class="day-off">Su</span>
+      <% end %>
+    </p>
+
+    <p>
+      <% if current_user %>
           <%= link_to 'Edit', edit_client_promotion_path(client.id, promotion.id) %>
           <%= link_to 'Delete', [promotion.client, promotion],
-                      method: :delete, data: {confirm: 'Are you sure?'} %></p>
-      </div>
-    </div>
+                      method: :delete, data: {confirm: 'Are you sure?'} %>
+      <% end %>
+    </p>
+  </div>
+</div>
