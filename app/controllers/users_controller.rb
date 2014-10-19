@@ -1,15 +1,19 @@
 class UsersController < ApplicationController
+  after_filter :verify_authorized
 
   def index
     @users = User.all
+    authorize @user
   end
 
   def new
     @user = User.new
+    authorize @user
   end
 
   def create
     @user = User.new(user_params)
+    authorize @user
     if @user.save
       redirect_to root_url, :notice => "Signed up!"
     else
@@ -18,6 +22,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    # TODO  implement this in index
   end
 
   def user_params

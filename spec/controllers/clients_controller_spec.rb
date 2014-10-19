@@ -4,8 +4,14 @@ require 'rails_helper'
 RSpec.describe ClientsController do
   let(:params) { {client: {name: "testclient", tel: "123", email: "me@home.com",
                            website: "www.bookme.com", photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/test_image.jpg')}} }
+  let(:user) { FactoryGirl.build_stubbed(:user) }
 
-  describe "GET new" do
+  before {
+    allow(User).to receive(:find).and_return(user)
+    session[:user_id] = user.id
+  }
+
+  describe "GET new", focus: true do
     subject(:get_new) { get :new }
     it "returns http success" do
       expect(get_new).to have_http_status(200)
@@ -54,11 +60,12 @@ RSpec.describe ClientsController do
     end
   end
 
-  describe "GET edit/:id" do
+  describe "GET edit/:id", focus: true do
     let!(:client) { mock_model(Client) }
     subject(:get_edit) { get :edit, :id => client.id }
+
     before {
-      allow(Client).to receive(:find)
+      allow(Client).to receive(:find).and_return(client)
     }
     it "calls find on Client" do
       expect(Client).to receive(:find).once()

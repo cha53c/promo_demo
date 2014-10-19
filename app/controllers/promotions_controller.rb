@@ -1,14 +1,17 @@
 class PromotionsController < ApplicationController
+  after_action :verify_authorized, except: [:index, :show]
   def new
     flash.clear
     @promotion = Promotion.new
+    authorize @promotion
   end
 
   def create
     @client = Client.find(params[:client_id])
     @promotion = @client.promotions.create(promotion_params)
+    authorize @promotion
     unless @promotion.id
-    logger.info("promotion was not created")
+      logger.info("promotion was not created")
       flash[:notice] = "Failed to add new promotion"
       render 'new'
     else
@@ -20,6 +23,7 @@ class PromotionsController < ApplicationController
   def destroy
     @client = Client.find(params[:client_id])
     @promotion = @client.promotions.find(params[:id])
+    authorize @promotion
     @promotion.destroy
     redirect_to client_path(@client)
   end
@@ -37,10 +41,12 @@ class PromotionsController < ApplicationController
     flash.clear
     @promotion = Promotion.find(params[:id])
     @client = Client.find(params[:client_id])
+    authorize @promotion
   end
 
   def update
     @promotion = Promotion.find(params[:id])
+    authorize @promotion
     @client = Client.find(params[:client_id])
     if @promotion.update(promotion_params)
       flash[:notice] = "Successfully updated promotion"
@@ -56,7 +62,6 @@ class PromotionsController < ApplicationController
     params.require(:promotion).permit(:promo_type, :image, :details,
                                       :description, :active, :from, :to, :starts, :ends,
                                       :mon, :tue, :wed, :thu, :fri, :sat, :sun)
-
   end
 
 end

@@ -7,7 +7,16 @@ RSpec.describe PromotionsController do
   let(:params) { {client_id: client, id: promotion.id,
                   promotion: {promotion: {promo_type: "promo1"}}} }
 
+  let(:user) { FactoryGirl.build_stubbed(:user) }
+
+  # before {
+  #   allow(User).to receive(:find).and_return(user)
+  #   session[:user_id] = user.id
+  # }
+
   before {
+    allow(User).to receive(:find).and_return(user)
+    session[:user_id] = user.id
     allow(Client).to receive(:find).and_return(client)
     allow(client).to receive(:promotions).and_return(promotion)
     allow(promotion).to receive(:create).and_return(promotion)
@@ -109,6 +118,7 @@ RSpec.describe PromotionsController do
       get_edit
     end
     it "finds client" do
+      allow(Promotion).to receive(:find).and_return(promotion)
       expect(Client).to receive(:find).and_return(client)
       get_edit
     end
