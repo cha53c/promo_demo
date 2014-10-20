@@ -7,11 +7,12 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    user
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    # scope.where(:id => record.id).exists?
+    user
   end
 
   def create?

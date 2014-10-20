@@ -1,28 +1,100 @@
 require 'spec_helper'
+require 'rails_helper'
 
-describe ClientPolicy do
+RSpec.describe ClientPolicy do
 
-  let(:user) { User.new }
+  let(:user_not_logged_in) { nil }
+  let(:user_logged_in) { FactoryGirl.build_stubbed(:user) }
+  # let(:client) { FactoryGirl.build_stubbed(:client) }
+  let(:client) { mock_model(Client) }
 
-  subject { ClientPolicy }
+  subject(:policy) { described_class }
 
-  permissions ".scope" do
-    pending "add some examples to (or delete) #{__FILE__}"
+  context 'for a visitor' do
+    # permissions ".scope" do
+    #   pending "add some examples to (or delete) #{__FILE__}"
+    # end
+    permissions :new? do
+      it 'should not permit action' do
+        expect(policy).not_to permit(user_not_logged_in, client)
+      end
+    end
+
+    permissions :create? do
+      it 'should not permit action' do
+        expect(policy).not_to permit(user_not_logged_in, client)
+      end
+    end
+
+    permissions :show? do
+      pending "add some examples to (or delete) #{__FILE__}"
+      # it 'should permit action' do
+      #   expect(policy).to permit(user_not_logged_in, client)
+      # end
+    end
+
+    permissions :show? do
+      pending "add some examples to (or delete) #{__FILE__}"
+      # it 'should permit action' do
+      #   expect(policy).to permit(user_not_logged_in, client)
+      # end
+    end
+
+    permissions :update? do
+      it 'should not permit action' do
+        expect(policy).not_to permit(user_not_logged_in, client)
+      end
+    end
+
+    permissions :destroy? do
+      it 'should not permit action' do
+        expect(policy).not_to permit(user_not_logged_in, client)
+      end
+    end
+
   end
 
-  permissions :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
+  context 'for a logged in user' do
+    # permissions ".scope" do
+    #   pending "add some examples to (or delete) #{__FILE__}"
+    # end
+
+    permissions :index? do
+      it 'should permit action' do
+        expect(policy).to permit(user_logged_in, client)
+      end
+    end
+
+    permissions :new? do
+      it 'should permit action' do
+        expect(policy).to permit(user_logged_in, client)
+      end
+    end
+
+    permissions :create? do
+      it 'should permit action' do
+        expect(policy).to permit(user_logged_in, client)
+      end
+    end
+
+    permissions :show? do
+      it 'should permit action' do
+        expect(policy).to permit(user_logged_in, client)
+      end
+    end
+
+    permissions :update? do
+      it 'should permit action' do
+        expect(policy).to permit(user_logged_in, client)
+      end
+    end
+
+    permissions :destroy? do
+      it 'should permit action' do
+        expect(policy).to permit(user_logged_in, client)
+      end
+    end
   end
 
-  permissions :show? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
 
-  permissions :update? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :destroy? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
 end
