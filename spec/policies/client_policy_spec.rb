@@ -5,7 +5,6 @@ RSpec.describe ClientPolicy do
 
   let(:user_not_logged_in) { nil }
   let(:user_logged_in) { FactoryGirl.build_stubbed(:user) }
-  # let(:client) { FactoryGirl.build_stubbed(:client) }
   let(:client) { mock_model(Client) }
 
   subject(:policy) { described_class }
