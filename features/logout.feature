@@ -6,7 +6,7 @@ Feature: Log out user
   Scenario: Log out
     Given I am logged in
     When I click on 'log out'
-    Then I should be redirected to the 'home page'
+    Then I should be redirected to the log out page
     And  not see the 'log out' link
 
 #    Scenarios: logged in user
