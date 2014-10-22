@@ -1,9 +1,7 @@
 <div class="thumbnail">
   <%= link_to image_tag(promotion.image.url(:medium)), [promotion.client, promotion] %>
-
   <div class="caption">
     <h4><%= link_to promotion.description, [promotion.client, promotion] %></h4>
-    <h4><%= link_to client.name, [promotion.client, promotion] %></h4>
     <h5><%= promotion.promo_type %></h5>
     <p>
       <%= promotion.details %> </p>
@@ -45,7 +43,11 @@
           <span class="day-off">Su</span>
       <% end %>
     </p>
-
+    <h4><%= link_to client.name, [promotion.client, promotion] %></h4>
+    <p>
+      Call: <%= client.tel %><br>
+      Email: <% client.email %>
+    </p>
     <p>
       <% if current_user %>
           <%= link_to 'Edit', edit_client_promotion_path(client.id, promotion.id) %>

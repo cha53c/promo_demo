@@ -10,7 +10,12 @@
   box-shadow: 5px 5px 5px #888888;
 }
 
-
 .thumbnail a img {
-  width: 100%
+  width: 100%;
+  max-width: 300px;
+  max-height: 200px;
+}
+
+.thumbnail a:hover img {
+  opacity: 0.75;
 }
