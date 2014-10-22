@@ -1,12 +1,12 @@
 <div class="thumbnail">
-  <h4><%= link_to client.name, [promotion.client, promotion] %></h4>
   <%= link_to image_tag(promotion.image.url(:medium)), [promotion.client, promotion] %>
+
   <div class="caption">
     <h4><%= link_to promotion.description, [promotion.client, promotion] %></h4>
+    <h4><%= link_to client.name, [promotion.client, promotion] %></h4>
     <h5><%= promotion.promo_type %></h5>
-
-    <p><%= promotion.details %> </p>
-
+    <p>
+      <%= promotion.details %> </p>
     <p>
       <% if promotion.mon %>
           <span class="day-on">M</span>
