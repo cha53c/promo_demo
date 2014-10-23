@@ -260,6 +260,7 @@ th {
     border: 1px solid #ddd !important;
   }
 }
+
 @font-face {
   font-family: 'Glyphicons Halflings';
 
@@ -948,6 +949,7 @@ img {
   max-width: 100%;
   height: auto;
   padding: 4px;
+    /*padding: 8px;*/
   line-height: 1.42857143;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -4104,12 +4106,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 .navbar-default .navbar-text {
-  /*color: #777;*/
-    color: #ffffff;
+  /*color: #777;*//* cdc */
+    color: #000000;
 }
 .navbar-default .navbar-nav > li > a {
   /*color: #777;*/
-    color: #ffffff;
+    color: #000000;
+    font-size: 24px; /* cdc */
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
