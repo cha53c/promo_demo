@@ -20,7 +20,23 @@ class Promotion < ActiveRecord::Base
      end
    end
   end
+
   def end_date_cannot_be_before_start_date
       #TODO
+  end
+
+  def self.find_by_date(date)
+    # TODO adapt you use stings passed in and date range
+    date = Date.today
+    day = wday_string(date)
+    query = "starts <= ? AND " + day + " = ?"
+    Promotion.where(query, date, true)
+  end
+
+  # maps date wday to the day field used in the db
+  private
+  def self.wday_string (date)
+    wdays = ['sun','mon','tue','wed','thu','fri','sat']
+    wdays[date.wday]
   end
 end

@@ -1,18 +1,13 @@
 class SearchController < ApplicationController
   helper :clients
 
-  # TODO factor details out of the controller
   # finds all the promotions for today
   def index
-    today = Date.today
-    wdays = ['sun','mon','tue','wed','thu','fri','sat']
-    day = wdays[today.wday]
-    query = "starts <= ? AND " + day + " = ?"
-    @promotions=Promotion.where(query, today, true)
+    @promotions=Promotion.find_by_date('yhada yhada')
   end
 
-
   def fuzzy
+    # TODO factor details out of the controller
     # TODO  avoid sql injection
     param_keyword = "%#{params[:keyword].downcase}%"
     # TODO does not seem to return an array
