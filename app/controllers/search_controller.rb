@@ -7,11 +7,9 @@ class SearchController < ApplicationController
   end
 
   def fuzzy
-    # TODO factor details out of the controller
     # TODO  avoid sql injection
-    param_keyword = "%#{params[:keyword].downcase}%"
-    # TODO does not seem to return an array
-    @promotions=Promotion.where("lower(description) LIKE ? OR lower(promo_type) LIKE ?", param_keyword, param_keyword)
+    @promotions=Promotion.find_promotion_text("%#{params[:keyword].downcase}%")
+
     render 'home/index'
   end
 end

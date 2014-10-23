@@ -24,13 +24,21 @@ class Promotion < ActiveRecord::Base
   def end_date_cannot_be_before_start_date
       #TODO
   end
-
-  def self.find_by_date(date)
+  # builds search query based on the specified date or date type
+  # i.e. today, tomorrow
+  def self.find_by_date(date_param)
     # TODO adapt you use stings passed in and date range
     date = Date.today
     day = wday_string(date)
     query = "starts <= ? AND " + day + " = ?"
     Promotion.where(query, date, true)
+  end
+
+  def self.find_promotion_text(params_text)
+    # TODO  avoid sql injection
+    # param_keyword = "%#{params[:keyword].downcase}%"
+    # TODO does not seem to return an array
+    Promotion.where("lower(description) LIKE ? OR lower(promo_type) LIKE ?", params_text, params_text)
   end
 
   # maps date wday to the day field used in the db
