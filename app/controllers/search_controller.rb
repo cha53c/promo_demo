@@ -3,7 +3,8 @@ class SearchController < ApplicationController
 
   # finds all the promotions for today
   def index
-    @promotions=Promotion.find_by_date('yhada yhada')
+    puts params
+    @promotions=Promotion.find_by_date(params[:date])
   end
 
   def fuzzy

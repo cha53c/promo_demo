@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+
+
+
 gem 'haml-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -46,7 +49,11 @@ gem 'pundit'
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+# gem 'debugger', '~> 1.6.8', group: [:development, :test]
+# gem 'debugger2', group: [:development, :test]
+# gem 'ruby-debug-ide', '~> 0.4.22', group: [:development, :test]
+# gem 'debugger-ruby_core_source', group: [:development, :test]
+# gem 'debase', group: [:development, :test]
 
 # from how i learned to test my rails app article
 group :development,:test do

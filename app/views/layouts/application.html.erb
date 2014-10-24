@@ -37,8 +37,8 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">By Date <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <!--<li role="presentation" class="dropdown-header">label</li>-->
-              <li role="presentation"><%= link_to "Today", search_index_path, date: 'today' %></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tomorrow</a></li>
+              <li role="presentation"><%= link_to "Today", search_index_path(date: 'today') %></li>
+              <li role="presentation"><%= link_to "Tomorrow", search_index_path(date: 'tomorrow') %></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">This Weekend</a></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">This Week</a></li>
               <li role="presentation" class="divider"></li>
