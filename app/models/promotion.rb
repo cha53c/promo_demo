@@ -28,20 +28,32 @@ class Promotion < ActiveRecord::Base
   # builds search query based on the specified date or date type
   # i.e. today, tomorrow
   def self.find_by_date(date_param)
-    # TODO adapt you use stings passed in and date range
+    # TODO adapt to use stings passed in and date range
     puts date_param
-    # date = nil
     if (date_param=='today')
-      date = Date.today
-    else
-      if (date_param=='tomorrow')
-        date = Date.tomorrow
-      end
+      s_date = Date.today
+      e_date = s_date
+    elsif (date_param=='tomorrow')
+      s_date = Date.tomorrow
+      e_date = s_date
+    elsif (date_param=="this_week")
+      # promotions for this week will start from today (there is not point in showing offers you cannot use)
+      # and run up to and including saturday
+      # at least one of the remaining days between today and saturday inclusive will be set to true
+      # TODO
+      return []
+    elsif (date_param=='this_weekend')
+      #   sa su, should this include Friday
+      #   TODO
+      return []
     end
-    day = wday_string(date)
-    query = "starts <= ? AND " + day + " = ?"
-    Promotion.where(query, date, true)
+
+    day = wday_string(s_date)
+    # TODO how to build a query for an variable number of days??
+    query = "starts <= ? AND ends >= ? AND " + day + " = ?"
+    Promotion.where(query, s_date, e_date, true)
   end
+
 
   def self.find_promotion_text(params_text)
     # TODO  avoid sql injection

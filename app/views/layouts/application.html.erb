@@ -39,8 +39,8 @@
               <!--<li role="presentation" class="dropdown-header">label</li>-->
               <li role="presentation"><%= link_to "Today", search_index_path(date: 'today') %></li>
               <li role="presentation"><%= link_to "Tomorrow", search_index_path(date: 'tomorrow') %></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">This Weekend</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">This Week</a></li>
+              <li role="presentation"><%= link_to "This Week (Su - Sa)", search_index_path(date: 'this_week') %></li>
+              <li role="presentation"><%= link_to "This Weekend (Fr - Su)", search_index_path(date: 'this_weekend') %></li>
               <li role="presentation" class="divider"></li>
               <!--<li role="presentation" class="dropdown-header">label</li>-->
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Custom Date</a></li>

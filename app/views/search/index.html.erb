@@ -1,7 +1,6 @@
-<div class="page-header">
-  <h1>Promotions Today <small>Search#index</small></h1>
-</div>
-</div>
 <div class="container_fluid">
+  <% if @promotions.empty? %>
+      <h1>No results found</h1>
+  <% end %>
   <%= render 'promotions/card_grid', :promotions => @promotions %>
 </div>
