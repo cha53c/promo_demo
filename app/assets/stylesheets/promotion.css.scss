@@ -16,6 +16,22 @@
   max-height: 200px;
 }
 
-.thumbnail a:hover img {
-  opacity: 0.75;
+.thumbnail a {
+  color: #34AC98;
+}
+
+.thumbnail a:hover {
+  color: #EC6635;
+}
+
+//.thumbnail a:hover img {
+//  opacity: 0.75;
+//  width: 105%;
+//  height: 105%;
+//}
+
+.thumbnail:hover {
+  width: 105%;
+  height: 105%;
+  left: -10px;
 }
