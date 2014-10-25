@@ -161,7 +161,7 @@ RSpec.describe ClientsController do
     context "when the client fails to save" do
       it "sets a flash[:notice] message" do
         post_create
-        flash[:notice].should eq("could not add new client")
+        flash[:alert].should eq("Could not add new client")
       end
       it "renders new template" do
         expect(post_create).to render_template('clients/new')

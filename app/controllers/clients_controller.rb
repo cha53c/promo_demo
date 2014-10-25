@@ -13,7 +13,7 @@ class ClientsController < ApplicationController
       flash[:notice]="successfully added client"
       redirect_to @client
     else
-      flash[:notice]="could not add new client"
+      flash.now.alert="Could not add new client"
       render 'new'
     end
   end
