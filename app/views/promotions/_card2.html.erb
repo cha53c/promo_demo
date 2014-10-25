@@ -1,10 +1,24 @@
 <div class="thumbnail">
   <%= link_to image_tag(promotion.image.url(:medium)), [promotion.client, promotion] %>
+  <div class="promo_tag">
+    <h4><%= promotion.promo_type %></h4>
+  </div>
   <div class="caption">
     <h4><%= link_to promotion.description, [promotion.client, promotion] %></h4>
-    <h5><%= promotion.promo_type %></h5>
-    <p>
-      <%= promotion.details %> </p>
+
+    <div class="description">
+      <p>
+        <% if (promotion.details.empty?) %>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+        <% else %>
+            <%= promotion.details %>
+        <% end %>
+      </p>
+    </div>
     <p>
       <% if promotion.mon %>
           <span class="day-on">M</span>
@@ -44,10 +58,21 @@
       <% end %>
     </p>
     <h4><%= link_to client.name, [promotion.client, promotion] %></h4>
-    <p>
-      Call: <%= client.tel %><br>
-      Email: <% client.email %>
-    </p>
+
+    <div class="row">
+      <div class="col-md-6">
+
+        <!--<p>-->
+        Call: <%= client.tel %>
+        <br>
+        Email:
+        <% client.email %>
+        <!--</p>-->
+      </div>
+      <div class="col-md-6 location">
+        <%= image_tag("location_pin.png") %>
+      </div>
+    </div>
     <p>
       <% if current_user %>
           <%= link_to 'Edit', edit_client_promotion_path(client.id, promotion.id) %>

@@ -6,7 +6,10 @@ class Promotion < ActiveRecord::Base
   # TODO validate field lengths
   # TODO remove start_date and end_date from db
   # TODO remove valid_days
+  # description is the similar to Ts&Cs.
+  # TODO description how long should the visible part be and how long over all??
   validates :description, :image, presence: true, on: :create
+  # validates :promo_type, length: 2..20, presence: true
   validate :start_date_cannot_be_before_today
   has_attached_file :image, :styles => {:medium => "300x200>", :small => "150x150>"}
   validates_attachment :image, content_type: {content_type: ["image/jpg", "image/jpeg", "image/png"]}

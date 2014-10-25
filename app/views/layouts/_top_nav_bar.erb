@@ -1,0 +1,71 @@
+<nav class="navbar navbar-default" role="navigation">
+<div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to "Logo", root_path, class: "navbar-brand" %>
+  </div>
+  <ul class="nav navbar-nav">
+    <li> <%= form_tag search_fuzzy_path, method: :get, :class => "navbar-form", :role => "search" do %>
+          <% text_field_tag 'keyword', nil, {class: "form-control", placeholder: "search"} %>
+      <% end %>
+    </li>
+  </ul>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-left">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">By Date <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <!--<li role="presentation" class="dropdown-header">label</li>-->
+            <li role="presentation"><%= link_to "Today", search_index_path(date: 'today') %></li>
+            <li role="presentation"><%= link_to "Tomorrow", search_index_path(date: 'tomorrow') %></li>
+            <li role="presentation"><%= link_to "This Week (Su - Sa)", search_index_path(date: 'this_week') %></li>
+            <li role="presentation"><%= link_to "This Weekend (Fr - Su)", search_index_path(date: 'this_weekend') %></li>
+            <li role="presentation" class="divider"></li>
+            <!--<li role="presentation" class="dropdown-header">label</li>-->
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Custom Date</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> By Cuisine <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Chinese</a></li>
+            <li><a href="#">Indian</a></li>
+            <li><a href="#">British</a></li>
+            <li><a href="#">Fusion</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> By Theme <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Happy Hour</a></li>
+            <li><a href="#">2 for 1</a></li>
+            <li><a href="#">discount</a></li>
+            <li class="divider"></li>
+            <li><a href="#">occasions</a></li>
+          </ul>
+        </li>
+        <li>
+          <% if current_user %>
+              <%= link_to "Log Out", '/sessions/destroy' %></li>
+          <% end %>
+          </ul>
+    </ul>
+
+  </div>
+  <!-- /.navbar-collapse -->
+</div>
+<!-- /.container-fluid -->
+</nav>
