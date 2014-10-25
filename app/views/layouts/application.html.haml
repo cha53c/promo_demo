@@ -1,0 +1,25 @@
+!!! 5
+%html
+  %head
+    %link(href="bootstrap.css" rel="stylesheet")
+    %link(href="styles.css" rel="stylesheet")
+    %meta(name="viewport" content="width=device-width, initial-scale=1")
+    %title PromoDemo
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    - if flash.notice
+      .alert.alert-success
+        %strong
+          = flash.notice
+    - if flash.alert
+      .alert.alert-dander
+        %strong
+          = flash.notice
+
+    = render '/layouts/top_nav_bar'
+    = yield
+
+
