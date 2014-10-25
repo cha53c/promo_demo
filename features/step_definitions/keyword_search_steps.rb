@@ -16,3 +16,19 @@ end
 Then(/^I should see all the promotions with that word$/) do
   expect(page).to have_content("Madness")
 end
+
+
+
+Given(/^a keyword$/) do
+  visit("/")
+  fill_in 'keyword', with: 'Burger'
+  # pending # express the regexp above with the code you wish you had
+end
+
+When(/^I search$/) do
+  click_on('submit_search')
+end
+
+Then(/^I should see the message 'No results Found'$/) do
+  expect(page).to have_content("No results found")
+end

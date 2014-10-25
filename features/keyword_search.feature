@@ -9,6 +9,11 @@ Feature: Keyword search
     When I enter a word for an existing promotion
     Then I should see all the promotions with that word
 
+  Scenario: No results keyword search
+    Given a keyword
+    When I search
+    Then I should see the message 'No results Found'
+
 #    Scenario Outline:
 #        Given
 #        When
