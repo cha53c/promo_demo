@@ -1,8 +1,5 @@
 <% if model.errors.any? %>
     <div id="error_explanation">
-      <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg, class: 'alert alert-danger' %>
-      <% end %>
       <h3><%= pluralize(model.errors.count, "error") %> prohibited
         this from being saved:</h3>
       <ul>
@@ -11,8 +8,4 @@
         <% end %>
       </ul>
     </div>
-<% else %>
-    <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, class: 'alert alert-success' %>
-    <% end %>
 <% end %>
