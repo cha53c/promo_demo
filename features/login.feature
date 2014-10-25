@@ -10,15 +10,15 @@ Feature: User Authentication
 
     Scenarios: correct email and password
      | email | password | message |
-     | test@test.com | abc123   | Logo |
+     | test@test.com | abc123   | Welcome! You are logged in |
 
     Scenarios: Incorrect password
       | email| password | message |
-      | test@test.com| 123456   | "Invalid email or password" |
+      | test@test.com| 123456   | Invalid email or password |
 
     Scenarios: No password
       | email         | password | message |
-      | test@test.com | nil      | "Invalid email or password" |
+      | test@test.com | nil      | Invalid email or password |
 
 #     Scenarios: No email
 #       | email         | password | message |

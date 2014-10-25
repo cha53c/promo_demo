@@ -15,9 +15,9 @@
         %strong
           = flash.notice
     - if flash.alert
-      .alert.alert-dander
+      .alert.alert-danger
         %strong
-          = flash.notice
+          = flash.alert
 
     = render '/layouts/top_nav_bar'
     = yield
