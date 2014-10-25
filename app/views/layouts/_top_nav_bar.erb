@@ -12,7 +12,8 @@
   </div>
   <ul class="nav navbar-nav">
     <li> <%= form_tag search_fuzzy_path, method: :get, :class => "navbar-form", :role => "search" do %>
-          <% text_field_tag 'keyword', nil, {class: "form-control", placeholder: "search"} %>
+          <%= text_field_tag 'keyword', nil, {class: "form-control", placeholder: "search"} %>
+          <%= submit_tag 'search', {class: 'hidden_button', id: "submit_search"} %>
       <% end %>
     </li>
   </ul>

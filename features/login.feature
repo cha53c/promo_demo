@@ -1,3 +1,4 @@
+@done @admin
 Feature: User Authentication
   As a site manager
   I want admins to log in

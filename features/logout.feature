@@ -1,3 +1,4 @@
+@done @admin
 Feature: Log out user
   As a site manager
   I want admins to log out

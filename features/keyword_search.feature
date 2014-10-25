@@ -1,3 +1,4 @@
+@done @visitor @search
 Feature: Keyword search
   As a Visitor
   I want to search for promotions using a keyword

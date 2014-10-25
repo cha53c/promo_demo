@@ -23,6 +23,7 @@
     * #00AD8C fabbygreen
     */
 }
-/*.results {*/
-    /*background-color: #16CBE6;*/
-/*}*/
+
+.hidden_button {
+    display: none;
+}
