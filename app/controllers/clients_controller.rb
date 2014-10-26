@@ -10,8 +10,7 @@ class ClientsController < ApplicationController
     @client = Client.new(client_params)
     authorize @client
     if @client.save
-      flash[:notice]="successfully added client"
-      redirect_to @client
+      redirect_to @client, notice: "Successfully added client"
     else
       flash.now.alert="Could not add new client"
       render 'new'
@@ -20,7 +19,6 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
-    # TODO set flash if not found
   end
 
   def index
@@ -30,17 +28,15 @@ class ClientsController < ApplicationController
   def edit
     @client = Client.find(params[:id])
     authorize @client
-    # TODO set flash if not found
   end
 
   def update
     @client = Client.find(params[:id])
     authorize @client
     if @client.update(client_params)
-      flash[:notice]='update complete'
-      redirect_to @client
+      redirect_to @client, notice: 'Successfully updated'
     else
-      flash[:notice]='update failed'
+      flash.now.alert = 'Failed to update'
       render 'edit'
     end
   end
@@ -48,10 +44,13 @@ class ClientsController < ApplicationController
   def destroy
     @client = Client.find(params[:id])
     authorize @client
-    @client.destroy
-    redirect_to clients_path
+    if @client.destroy
+      message = "Item deleted"
+    else
+      message = "Could not delete item"
+    end
+    redirect_to clients_path, notice: message
   end
-
 
   private
   def client_params

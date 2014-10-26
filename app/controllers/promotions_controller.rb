@@ -1,7 +1,7 @@
 class PromotionsController < ApplicationController
   after_action :verify_authorized, except: [:index, :show]
+
   def new
-    flash.clear
     @promotion = Promotion.new
     authorize @promotion
   end
@@ -12,11 +12,10 @@ class PromotionsController < ApplicationController
     authorize @promotion
     unless @promotion.id
       logger.info("promotion was not created")
-      flash[:notice] = "Failed to add new promotion"
+      flash.now.alert = "Failed to add new promotion"
       render 'new'
     else
-      flash[:notice] = "Successfully added new promotion"
-      redirect_to action: "edit", :id => @promotion.id
+      redirect_to({ action: "edit", id: @promotion.id }, notice: "Successfully added new promotion")
     end
   end
 
@@ -49,10 +48,10 @@ class PromotionsController < ApplicationController
     authorize @promotion
     @client = Client.find(params[:client_id])
     if @promotion.update(promotion_params)
-      flash[:notice] = "Successfully updated promotion"
+      flash.now.notice = "Successfully updated promotion"
       render 'edit'
     else
-      flash[:notice] = "promotion update failed"
+      flash.now.alert = "promotion update failed"
       render 'edit'
     end
   end

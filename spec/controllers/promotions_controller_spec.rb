@@ -9,11 +9,6 @@ RSpec.describe PromotionsController do
 
   let(:user) { FactoryGirl.build_stubbed(:user) }
 
-  # before {
-  #   allow(User).to receive(:find).and_return(user)
-  #   session[:user_id] = user.id
-  # }
-
   before {
     allow(User).to receive(:find).and_return(user)
     session[:user_id] = user.id
@@ -46,7 +41,7 @@ RSpec.describe PromotionsController do
       it 'sets flash message' do
         allow(promotion).to receive(:id).and_return(nil)
         post_create
-        expect(flash[:notice]).to eq("Failed to add new promotion")
+        expect(flash[:alert]).to eq("Failed to add new promotion")
       end
       it 'render new' do
         allow(promotion).to receive(:id).and_return(nil)
@@ -90,7 +85,7 @@ RSpec.describe PromotionsController do
       it 'sets flash notice' do
         expect(promotion).to receive(:update).and_return(false)
         patch_update
-        expect(flash[:notice]).to eq("promotion update failed")
+        expect(flash[:alert]).to eq("promotion update failed")
       end
       it 'renders promotions edit' do
         expect(promotion).to receive(:update).and_return(false)

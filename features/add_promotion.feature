@@ -1,4 +1,4 @@
-@doing @todo @admin
+@todo @admin
 Feature: Add Promotions
   As a Admin
   I want to be able to add new promotions

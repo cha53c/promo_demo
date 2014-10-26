@@ -103,9 +103,9 @@ RSpec.describe ClientsController do
       before {
         allow(client).to receive(:update) { true }
       }
-      it "sets a flash[:notice] message" do
+      it "sets a flash message" do
         patch_update
-        expect(flash[:notice]).to eq("update complete")
+        expect(flash[:notice]).to eq("Successfully updated")
       end
       it "redirects to client index" do
         expect(patch_update).to redirect_to :action => :show,
@@ -116,9 +116,9 @@ RSpec.describe ClientsController do
       before {
         allow(client).to receive(:update) { false }
       }
-      it "sets a flash[:notice] message" do
+      it "sets a flash message" do
         patch_update
-        expect(flash[:notice]).to eq("update failed")
+        expect(flash[:alert]).to eq("Failed to update")
       end
       it "redirects to edit" do
         expect(patch_update).to render_template('clients/edit')
@@ -144,10 +144,10 @@ RSpec.describe ClientsController do
     end
 
     context "when client saves successfully" do
-      it "sets a flash[:notice] message" do
+      it "sets a flash message" do
         allow(client).to receive(:save) { true }
         post_create
-        flash[:notice].should eq("successfully added client")
+        flash[:notice].should eq("Successfully added client")
       end
       it "redirects to clients/:id" do
         allow(client).to receive(:save) { true }
@@ -159,7 +159,7 @@ RSpec.describe ClientsController do
       end
     end
     context "when the client fails to save" do
-      it "sets a flash[:notice] message" do
+      it "sets a flash message" do
         post_create
         flash[:alert].should eq("Could not add new client")
       end
@@ -191,7 +191,7 @@ RSpec.describe ClientsController do
     end
 
     it "redirects to clients index" do
-      expect(delete_destroy).to redirect_to :action => :index
+      expect(delete_destroy).to redirect_to action: :index
     end
   end
 end
