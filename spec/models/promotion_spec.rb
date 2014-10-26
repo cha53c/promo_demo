@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'rails_helper'
 
 describe Promotion do
-  subject(:valid_promotion) { Promotion.new(description: 'blah',
+  subject(:valid_promotion) { Promotion.new(description: 'blah', promo_type: '2 for 1',
                                             :image => File.new(Rails.root + 'spec/fixtures/images/test_image.jpg'),
                                             fri: '1') }
 
@@ -17,6 +17,13 @@ describe Promotion do
     it 'without description' do
       valid_promotion.description=nil
       expect(valid_promotion).to_not be_valid
+      expect(valid_promotion.errors.count).to eq(1)
+      expect(valid_promotion.errors[:description][0]).to eq('can\'t be blank')
+    end
+
+    it 'without an image ' do
+      valid_promotion.image=nil
+      expect(valid_promotion).to_not be_valid
     end
 
     it 'without at least one active weekday' do
@@ -24,6 +31,27 @@ describe Promotion do
       expect(valid_promotion).to_not be_valid
       expect(valid_promotion.errors.count).to eq(1)
       expect(valid_promotion.errors[:base][0]).to eq("There needs to be a least one active weekday")
+    end
+
+    it 'without promo_type' do
+      valid_promotion.promo_type=nil
+      expect(valid_promotion).to_not be_valid
+      expect(valid_promotion.errors.count).to eq(2)
+      expect(valid_promotion.errors[:promo_type][0]).to eq('can\'t be blank')
+    end
+
+    it 'if promo_type is less than 3 character' do
+      valid_promotion.promo_type='ab'
+      expect(valid_promotion).to_not be_valid
+      expect(valid_promotion.errors.count).to eq(1)
+      expect(valid_promotion.errors[:promo_type][0]).to eq('is too short (minimum is 3 characters)')
+    end
+
+    it 'if promo_type is more than 20 characters' do
+      valid_promotion.promo_type= 'a' * 21
+      expect(valid_promotion).to_not be_valid
+      expect(valid_promotion.errors.count).to eq(1)
+      expect(valid_promotion.errors[:promo_type][0]).to eq('is too long (maximum is 20 characters)')
     end
 
   end
