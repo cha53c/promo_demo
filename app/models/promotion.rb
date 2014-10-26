@@ -9,12 +9,14 @@ class Promotion < ActiveRecord::Base
   # description is the similar to Ts&Cs.
   # TODO description how long should the visible part be and how long over all??
   validates :description, :image, presence: true, on: :create
-  # validates :promo_type, length: 2..20, presence: true
   validate :start_date_cannot_be_before_today
   has_attached_file :image, :styles => {:medium => "300x200>", :small => "150x150>"}
   validates_attachment :image, content_type: {content_type: ["image/jpg", "image/jpeg", "image/png"]}
-  # TODO  change validation to work with starts and ends
 
+  validates_with AtLeastOneActivePromotionDay
+  # validates :promo_type, length: 2..20, presence: true
+
+  # TODO  change validation to work with starts and ends
   def start_date_cannot_be_before_today
     if start_date.present?
       sd = Date.strptime(start_date, '%d-%m-%Y')
