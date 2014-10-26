@@ -29,5 +29,9 @@ module PromoDemo
                        :request_specs => true
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
+
+    # add custom validators path
+    config.autoload_paths += %W["#{config.root}/app/validators/"]
+
   end
 end

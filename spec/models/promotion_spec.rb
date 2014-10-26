@@ -2,28 +2,32 @@ require 'spec_helper'
 require 'rails_helper'
 
 describe Promotion do
-  # it 'is invalid without promo type' do
-  #   # subject.promo_type.should_not be_nil
-  #   should_not be_valid
+  subject(:valid_promotion) { Promotion.new(description: 'blah',
+                                            :image => File.new(Rails.root + 'spec/fixtures/images/test_image.jpg'),
+                                            fri: '1') }
+
+  it { is_expected.to be_valid }
+
+  # it 'should only validate if start date present' do
+  #   expect(valid_promotion).to be_valid
   # end
-  #
-  # it 'is invalid without start date' do
-  #   # subject.start_date.should_not be_nil
-  #   should_not be_valid
-  # end
-  # it 'is invalid without end date' do
-  #   # subject.end_date.should_not be_nil
-  #   should_not be_valid
-  # end
-  it 'should only validate if start date present' do
-    promotion = Promotion.new(description: 'blah', :image => File.new(Rails.root + 'spec/fixtures/images/test_image.jpg'))
-    promotion.should be_valid
+
+  context 'it is not valid' do
+
+    it 'without description' do
+      valid_promotion.description=nil
+      expect(valid_promotion).to_not be_valid
+    end
+
+    it 'without at least one active weekday' do
+      valid_promotion.fri='0'
+      expect(valid_promotion).to_not be_valid
+      expect(valid_promotion.errors.count).to eq(1)
+      expect(valid_promotion.errors[:base][0]).to eq("There needs to be a least one active weekday")
+    end
+
   end
 
-  it 'should fail if description is not present' do
-    promotion = Promotion.new(:image => File.new(Rails.root + 'spec/fixtures/images/test_image.jpg'))
-    promotion.should_not be_valid
-  end
 
   it 'should not have a start date in the past' do
     promotion = Promotion.new(promo_type: '2-4-1', start_date: '1-2-2001')

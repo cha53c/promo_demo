@@ -1,8 +1,10 @@
 class Promotion < ActiveRecord::Base
+  include ActiveModel::Validations
+
   belongs_to :client
-  # TODO set accessable atrribrutes
+  # TODO set accessible attributes
   # TODO show validation error in view
-  # TODO validate that a least one day of the week has been populated
+
   # TODO validate field lengths
   # TODO remove start_date and end_date from db
   # TODO remove valid_days
@@ -13,6 +15,7 @@ class Promotion < ActiveRecord::Base
   has_attached_file :image, :styles => {:medium => "300x200>", :small => "150x150>"}
   validates_attachment :image, content_type: {content_type: ["image/jpg", "image/jpeg", "image/png"]}
 
+  # TODO validate that a least one day of the week has been populated
   validates_with AtLeastOneActivePromotionDay
   # validates :promo_type, length: 2..20, presence: true
 
