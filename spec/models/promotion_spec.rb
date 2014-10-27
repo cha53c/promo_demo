@@ -65,7 +65,7 @@ describe Promotion do
       valid_promotion.starts=nil
       expect(valid_promotion).to_not be_valid
       expect(valid_promotion.errors.count).to eq(1)
-      # expect(valid_promotion.errors[:starts][0]).to eq('date cannot be in the past')
+      expect(valid_promotion.errors[:starts][0]).to eq('can\'t be blank')
     end
   end
 
