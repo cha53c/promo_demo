@@ -4,7 +4,7 @@ require 'rails_helper'
 describe Promotion do
   subject(:valid_promotion) { Promotion.new(description: 'blah', promo_type: '2 for 1',
                                             :image => File.new(Rails.root + 'spec/fixtures/images/test_image.jpg'),
-                                            fri: '1') }
+                                            fri: '1', starts: Date.today.strftime('%d-%m-%Y')) }
 
   it { is_expected.to be_valid }
 
@@ -54,19 +54,19 @@ describe Promotion do
       expect(valid_promotion.errors[:promo_type][0]).to eq('is too long (maximum is 20 characters)')
     end
 
+    it 'if the starts date is in the past' do
+      valid_promotion.starts=Date.yesterday.strftime('%d-%m-%Y')
+      expect(valid_promotion).to_not be_valid
+      expect(valid_promotion.errors.count).to eq(1)
+      expect(valid_promotion.errors[:starts][0]).to eq('date cannot be in the past')
+    end
+
+    it 'without a starts date' do
+      valid_promotion.starts=nil
+      expect(valid_promotion).to_not be_valid
+      expect(valid_promotion.errors.count).to eq(1)
+      # expect(valid_promotion.errors[:starts][0]).to eq('date cannot be in the past')
+    end
   end
 
-
-  it 'should not have a start date in the past' do
-    promotion = Promotion.new(promo_type: '2-4-1', start_date: '1-2-2001')
-    # TODO need to change the way this is tested as it passes when other validations fail
-    promotion.should_not be_valid
-  end
-
-  it 'should except start date in the future' do
-    sd, ed = Date.today, Date.today
-    sd += 1
-    ed += 2
-    promotion = Promotion.new({promo_type: '2-4-1', start_date: sd.strftime('%d-%m-%Y'), end_date: sd.strftime('%d-%m-%Y')})
-  end
 end

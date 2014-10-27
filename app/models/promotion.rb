@@ -11,28 +11,15 @@ class Promotion < ActiveRecord::Base
   # description is the similar to Ts&Cs.
   # TODO description how long should the visible part be and how long over all??
   validates :description, :image, presence: true, on: :create
-  validates :promo_type, presence: true
-  validate :start_date_cannot_be_before_today
+  validates :promo_type, :starts, presence: true
+  # validate :start_date_cannot_be_before_today
   has_attached_file :image, :styles => {:medium => "300x200>", :small => "150x150>"}
   validates_attachment :image, content_type: {content_type: ["image/jpg", "image/jpeg", "image/png"]}
 
-  # TODO validate that a least one day of the week has been populated
   validates_with AtLeastOneActivePromotionDay
+  validates_with StartDateCannotBeBeforeToday
+
   validates :promo_type, length: 3..20
-
-  # TODO  change validation to work with starts and ends
-  def start_date_cannot_be_before_today
-    if start_date.present?
-      sd = Date.strptime(start_date, '%d-%m-%Y')
-      if sd < Date.today
-        errors.add(:start_date, 'start date cannot be in the past')
-      end
-    end
-  end
-
-  def end_date_cannot_be_before_start_date
-    #TODO
-  end
 
   # builds search query based on the specified date or date type
   # i.e. today, tomorrow
