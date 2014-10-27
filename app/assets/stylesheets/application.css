@@ -27,3 +27,11 @@
 .hidden_button {
     display: none;
 }
+
+.field_with_errors{
+    color: red;
+}
+
+.field_with_errors input{
+    background-color: lightpink;
+}
