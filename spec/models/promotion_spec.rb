@@ -8,6 +8,11 @@ describe Promotion do
                                             ends: Date.today.strftime('%d-%m-%Y')) }
 
   it { is_expected.to be_valid }
+  it { should validate_presence_of :description}
+  it { should validate_presence_of :promo_type}
+  it { should validate_presence_of :image}
+  it { should validate_presence_of :starts}
+  it { should validate_presence_of :ends}
 
   context 'it is not valid' do
 
