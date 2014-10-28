@@ -11,7 +11,7 @@ class Promotion < ActiveRecord::Base
   # TODO description how long should the visible part be and how long over all??
   validates :description, :image, presence: true, on: :create
   validates :promo_type, :starts, :ends, presence: true
-  has_attached_file :image, :styles => {:medium => "300x200>", :small => "150x150>"}
+  has_attached_file :image, styles: { medium: "300x200>", small: "150x150>"}
   validates_attachment :image, content_type: {content_type: ["image/jpg", "image/jpeg", "image/png"]}
 
   validates_with AtLeastOneActivePromotionDay

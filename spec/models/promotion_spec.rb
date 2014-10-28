@@ -3,14 +3,11 @@ require 'rails_helper'
 
 describe Promotion do
   subject(:valid_promotion) { Promotion.new(description: 'blah', promo_type: '2 for 1',
-                                            :image => File.new(Rails.root + 'spec/fixtures/images/test_image.jpg'),
-                                            fri: '1', starts: Date.today.strftime('%d-%m-%Y'), ends: Date.today.strftime('%d-%m-%Y')) }
+                                            image: File.new(Rails.root + 'spec/fixtures/images/test_image.jpg'),
+                                            fri: '1', starts: Date.today.strftime('%d-%m-%Y'),
+                                            ends: Date.today.strftime('%d-%m-%Y')) }
 
   it { is_expected.to be_valid }
-
-  # it 'should only validate if start date present' do
-  #   expect(valid_promotion).to be_valid
-  # end
 
   context 'it is not valid' do
 
