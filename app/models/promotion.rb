@@ -3,7 +3,6 @@ class Promotion < ActiveRecord::Base
 
   belongs_to :client
   # TODO set accessible attributes
-  # TODO show validation error in view
 
   # TODO validate field lengths
   # TODO remove start_date and end_date from db
@@ -11,13 +10,13 @@ class Promotion < ActiveRecord::Base
   # description is the similar to Ts&Cs.
   # TODO description how long should the visible part be and how long over all??
   validates :description, :image, presence: true, on: :create
-  validates :promo_type, :starts, presence: true
-  # validate :start_date_cannot_be_before_today
+  validates :promo_type, :starts, :ends, presence: true
   has_attached_file :image, :styles => {:medium => "300x200>", :small => "150x150>"}
   validates_attachment :image, content_type: {content_type: ["image/jpg", "image/jpeg", "image/png"]}
 
   validates_with AtLeastOneActivePromotionDay
   validates_with StartDateCannotBeBeforeToday
+  validates_with EndDateCannotBeBeforeStartDate
 
   validates :promo_type, length: 3..20
 

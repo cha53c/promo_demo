@@ -6,7 +6,7 @@ Given(/^I am on the home page$/) do
   Promotion.create!(client_id: client.id,
                     image: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/test_image.jpg', 'image/jpg'),
                     description: "Burger Madness",  promo_type: "2 for 1", wed: '1',
-                    starts: Date.today.strftime('%d-%m-%Y'))
+                    starts: Date.today.strftime('%d-%m-%Y'), ends: Date.today.strftime('%d-%m-%Y'))
 end
 
 When(/^I enter a word for an existing promotion$/) do
@@ -23,7 +23,6 @@ end
 Given(/^a keyword$/) do
   visit("/")
   fill_in 'keyword', with: 'Burger'
-  # pending # express the regexp above with the code you wish you had
 end
 
 When(/^I search$/) do

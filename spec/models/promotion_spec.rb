@@ -4,7 +4,7 @@ require 'rails_helper'
 describe Promotion do
   subject(:valid_promotion) { Promotion.new(description: 'blah', promo_type: '2 for 1',
                                             :image => File.new(Rails.root + 'spec/fixtures/images/test_image.jpg'),
-                                            fri: '1', starts: Date.today.strftime('%d-%m-%Y')) }
+                                            fri: '1', starts: Date.today.strftime('%d-%m-%Y'), ends: Date.today.strftime('%d-%m-%Y')) }
 
   it { is_expected.to be_valid }
 
@@ -66,6 +66,20 @@ describe Promotion do
       expect(valid_promotion).to_not be_valid
       expect(valid_promotion.errors.count).to eq(1)
       expect(valid_promotion.errors[:starts][0]).to eq('can\'t be blank')
+    end
+
+    it 'without an ends date' do
+      valid_promotion.ends=nil
+      expect(valid_promotion).to_not be_valid
+      expect(valid_promotion.errors.count).to eq(1)
+      expect(valid_promotion.errors[:ends][0]).to eq('can\'t be blank')
+    end
+
+    it 'if the ends date is before the starts date' do
+      valid_promotion.ends=Date.yesterday.strftime('%d-%m-%Y')
+      expect(valid_promotion).to_not be_valid
+      expect(valid_promotion.errors.count).to eq(1)
+      expect(valid_promotion.errors[:ends][0]).to eq('date cannot be before the start')
     end
   end
 
