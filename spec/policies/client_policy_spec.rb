@@ -1,6 +1,8 @@
 require 'spec_helper'
 require 'rails_helper'
 
+# TODO renamed the method in pundit/rspec.rb from permit to permit_it - there must be a better way
+
 RSpec.describe ClientPolicy do
 
   let(:user_not_logged_in) { nil }
@@ -14,40 +16,40 @@ RSpec.describe ClientPolicy do
     #   pending "add some examples to (or delete) #{__FILE__}"
     # end
     permissions :new? do
-      it 'should not permit action' do
-        expect(policy).not_to permit(user_not_logged_in, client)
+      it 'should not permit_it action' do
+        expect(policy).not_to permit_it(user_not_logged_in, client)
       end
     end
 
     permissions :create? do
       it 'should not permit action' do
-        expect(policy).not_to permit(user_not_logged_in, client)
+        expect(policy).not_to permit_it(user_not_logged_in, client)
       end
     end
 
     permissions :show? do
       pending "add some examples to (or delete) #{__FILE__}"
       # it 'should permit action' do
-      #   expect(policy).to permit(user_not_logged_in, client)
+      #   expect(policy).to permit_it(user_not_logged_in, client)
       # end
     end
 
     permissions :show? do
       pending "add some examples to (or delete) #{__FILE__}"
       # it 'should permit action' do
-      #   expect(policy).to permit(user_not_logged_in, client)
+      #   expect(policy).to permit_it(user_not_logged_in, client)
       # end
     end
 
     permissions :update? do
       it 'should not permit action' do
-        expect(policy).not_to permit(user_not_logged_in, client)
+        expect(policy).not_to permit_it(user_not_logged_in, client)
       end
     end
 
     permissions :destroy? do
       it 'should not permit action' do
-        expect(policy).not_to permit(user_not_logged_in, client)
+        expect(policy).not_to permit_it(user_not_logged_in, client)
       end
     end
 
@@ -60,37 +62,37 @@ RSpec.describe ClientPolicy do
 
     permissions :index? do
       it 'should permit action' do
-        expect(policy).to permit(user_logged_in, client)
+        expect(policy).to permit_it(user_logged_in, client)
       end
     end
 
     permissions :new? do
       it 'should permit action' do
-        expect(policy).to permit(user_logged_in, client)
+        expect(policy).to permit_it(user_logged_in, client)
       end
     end
 
     permissions :create? do
       it 'should permit action' do
-        expect(policy).to permit(user_logged_in, client)
+        expect(policy).to permit_it(user_logged_in, client)
       end
     end
 
     permissions :show? do
       it 'should permit action' do
-        expect(policy).to permit(user_logged_in, client)
+        expect(policy).to permit_it(user_logged_in, client)
       end
     end
 
     permissions :update? do
       it 'should permit action' do
-        expect(policy).to permit(user_logged_in, client)
+        expect(policy).to permit_it(user_logged_in, client)
       end
     end
 
     permissions :destroy? do
       it 'should permit action' do
-        expect(policy).to permit(user_logged_in, client)
+        expect(policy).to permit_it(user_logged_in, client)
       end
     end
   end

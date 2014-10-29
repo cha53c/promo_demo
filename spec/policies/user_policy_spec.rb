@@ -9,7 +9,7 @@ RSpec.describe UserPolicy do
     permissions :new? do
       let(:user_login) { nil }
       it 'should not permit action' do
-        expect(policy).not_to permit(user_login, user_class)
+        expect(policy).not_to permit_it(user_login, user_class)
       end
     end
   end
@@ -17,7 +17,7 @@ RSpec.describe UserPolicy do
     permissions :new? do
       let(:user_loggin) { FactoryGirl.build_stubbed(:user) }
       it 'should permit action' do
-        expect(policy).to permit(user_loggin, user_class)
+        expect(policy).to permit_it(user_loggin, user_class)
       end
     end
   end

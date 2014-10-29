@@ -13,6 +13,7 @@ describe Promotion do
   it { should validate_presence_of :image}
   it { should validate_presence_of :starts}
   it { should validate_presence_of :ends}
+  it { should ensure_length_of(:promo_type).is_at_least(3).is_at_most(20)}
 
   context 'it is not valid' do
 

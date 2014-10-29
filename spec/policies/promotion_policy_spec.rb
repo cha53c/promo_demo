@@ -17,13 +17,13 @@ RSpec.describe PromotionPolicy do
 
     permissions :new? do
       it 'should not permit action' do
-        expect(policy).not_to permit(user_not_logged_in, promotion)
+        expect(policy).not_to permit_it(user_not_logged_in, promotion)
       end
     end
 
     permissions :create? do
       it 'should not permit action' do
-        expect(policy).not_to permit(user_not_logged_in, promotion)
+        expect(policy).not_to permit_it(user_not_logged_in, promotion)
       end
     end
 
@@ -37,13 +37,13 @@ RSpec.describe PromotionPolicy do
 
     permissions :update? do
       it 'should not permit action' do
-        expect(policy).not_to permit(user_not_logged_in, promotion)
+        expect(policy).not_to permit_it(user_not_logged_in, promotion)
       end
     end
 
     permissions :destroy? do
       it 'should not permit action' do
-        expect(policy).not_to permit(user_not_logged_in, promotion)
+        expect(policy).not_to permit_it(user_not_logged_in, promotion)
       end
     end
   end
@@ -55,37 +55,37 @@ RSpec.describe PromotionPolicy do
 
     permissions :new? do
       it 'should permit action' do
-        expect(policy).to permit(user_logged_in, promotion)
+        expect(policy).to permit_it(user_logged_in, promotion)
       end
     end
 
     permissions :create? do
       it 'should permit action' do
-        expect(policy).to permit(user_logged_in, promotion)
+        expect(policy).to permit_it(user_logged_in, promotion)
       end
     end
 
     permissions :index? do
       it 'should permit action' do
-        expect(policy).to permit(user_logged_in, promotion)
+        expect(policy).to permit_it(user_logged_in, promotion)
       end
     end
 
     permissions :show? do
       it 'should permit action' do
-        expect(policy).to permit(user_logged_in, promotion)
+        expect(policy).to permit_it(user_logged_in, promotion)
       end
     end
 
     permissions :update? do
       it 'should permit action' do
-        expect(policy).to permit(user_logged_in, promotion)
+        expect(policy).to permit_it(user_logged_in, promotion)
       end
     end
 
     permissions :destroy? do
       it 'should permit action' do
-        expect(policy).to permit(user_logged_in, promotion)
+        expect(policy).to permit_it(user_logged_in, promotion)
       end
     end
   end
