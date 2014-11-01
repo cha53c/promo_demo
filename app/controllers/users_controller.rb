@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    authorize @user
+    authorize @users
   end
 
   def new
@@ -15,14 +15,14 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     authorize @user
     if @user.save
-      redirect_to root_url, :notice => "Signed up!"
+      redirect_to root_url, notice: "Signed up!"
     else
       render "new"
     end
   end
 
   def destroy
-    # TODO  implement this in index
+    # TODO
   end
 
   def user_params

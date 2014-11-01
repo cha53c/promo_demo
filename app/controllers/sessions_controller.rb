@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  # after_filter :verify_authorized, only: :destroy
+
   def new
   end
 

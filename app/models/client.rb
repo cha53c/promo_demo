@@ -7,5 +7,5 @@ class Client < ActiveRecord::Base
   validates_length_of :name, maximum: 20
   validates_length_of :email, maximum: 50
   validates_length_of :website, maximum: 50
-  validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
+  validates_format_of :email, with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 end

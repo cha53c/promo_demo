@@ -3,8 +3,6 @@ class Promotion < ActiveRecord::Base
 
   belongs_to :client
   # TODO set accessible attributes
-
-  # TODO remove start_date and end_date from db
   # description is the similar to Ts&Cs.
   # TODO details, how long should the visible part be and how long over all??
   validates :description, :image, presence: true, on: :create
