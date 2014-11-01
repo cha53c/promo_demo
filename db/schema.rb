@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013161003) do
+ActiveRecord::Schema.define(version: 20141101175232) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -46,8 +46,6 @@ ActiveRecord::Schema.define(version: 20141013161003) do
 
   create_table "promotions", force: true do |t|
     t.string   "promo_type"
-    t.string   "start_date"
-    t.string   "end_date"
     t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -61,7 +59,6 @@ ActiveRecord::Schema.define(version: 20141013161003) do
     t.time     "to"
     t.date     "starts"
     t.date     "ends"
-    t.string   "valid_days"
     t.boolean  "mon"
     t.boolean  "tue"
     t.boolean  "wed"

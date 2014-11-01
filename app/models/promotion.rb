@@ -4,21 +4,21 @@ class Promotion < ActiveRecord::Base
   belongs_to :client
   # TODO set accessible attributes
 
-  # TODO validate field lengths
   # TODO remove start_date and end_date from db
-  # TODO remove valid_days
   # description is the similar to Ts&Cs.
-  # TODO description how long should the visible part be and how long over all??
+  # TODO details, how long should the visible part be and how long over all??
   validates :description, :image, presence: true, on: :create
-  validates :promo_type, :starts, :ends, presence: true
+  validates :promo_type, :details, :starts, :ends, presence: true
   has_attached_file :image, styles: { medium: "300x200>", small: "150x150>"}
   validates_attachment :image, content_type: {content_type: ["image/jpg", "image/jpeg", "image/png"]}
-
+  validates_attachment_size :image, less_than: 1.megabyte
   validates_with AtLeastOneActivePromotionDay
   validates_with StartDateCannotBeBeforeToday
   validates_with EndDateCannotBeBeforeStartDate
 
   validates :promo_type, length: 3..20
+  validates_length_of :description, maximum: 50
+  validates_length_of :details, maximum: 120
 
   # builds search query based on the specified date or date type
   # i.e. today, tomorrow
