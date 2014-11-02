@@ -54,11 +54,15 @@ class Promotion < ActiveRecord::Base
     Promotion.where("lower(description) LIKE ? OR lower(promo_type) LIKE ?", params_text, params_text)
   end
 
+  def self.find_by_cuisine(params_cuisine)
+    []
+  end
   # maps date wday to the day field used in the db
   private
   def self.wday_string (date)
     wdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
     wdays[date.wday]
   end
+
 
 end

@@ -1,0 +1,5 @@
+- cuisines.each do |c|
+  %li
+    %a
+      = link_to c.cuisine, search_index_path(cuisine: c.cuisine)
+

@@ -3,7 +3,11 @@ class SearchController < ApplicationController
 
   # finds all the promotions base on date
   def index
-    @promotions=Promotion.find_by_date(params[:date])
+    if params.has_key?(:date)
+      @promotions=Promotion.find_by_date(params[:date])
+    elsif params.has_key?(:cuisine)
+      @promotions=Promotion.find_by_cuisine(params[:cuisine])
+    end
   end
 
   # finds results based on text search
