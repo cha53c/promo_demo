@@ -4,12 +4,14 @@ class Promotion < ActiveRecord::Base
   belongs_to :client
   belongs_to :cuisine
 
+  # attr_accessor( :cuisine_id)
+
   # TODO set accessible attributes
   # description is the similar to Ts&Cs.
   # TODO details, how long should the visible part be and how long over all??
   validates :description, :image, presence: true, on: :create
   validates :promo_type, :details, :starts, :ends, presence: true
-  has_attached_file :image, styles: { medium: "300x200>", small: "150x150>"}
+  has_attached_file :image, styles: {medium: "300x200>", small: "150x150>"}
   validates_attachment :image, content_type: {content_type: ["image/jpg", "image/jpeg", "image/png"]}
   validates_attachment_size :image, less_than: 1.megabyte
   validates_with AtLeastOneActivePromotionDay
@@ -57,7 +59,8 @@ class Promotion < ActiveRecord::Base
   end
 
   def self.find_by_cuisine(params_cuisine)
-    Promotion.joins(:cuisine).where(cuisine: params_cuisine )
+    c = Cuisine.find_by_cuisine(params_cuisine)
+    Promotion.joins(:cuisine).where(cuisine: c.id)
   end
 
 

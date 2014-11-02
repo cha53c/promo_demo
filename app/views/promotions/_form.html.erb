@@ -7,6 +7,8 @@
     <%= f.text_field :promo_type %>
     <%= f.label :details %>
     <%= f.text_area :details %>
+    <%= f.label :cuisine %><br>
+    <%= select('promotion', 'cuisine_id', Cuisine.all.collect {|c| [c.cuisine, c.id]} ) %>
 
     <p>
     <h3>Upload Image for the promotion</h3>
