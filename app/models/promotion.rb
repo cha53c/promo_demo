@@ -2,6 +2,8 @@ class Promotion < ActiveRecord::Base
   include ActiveModel::Validations
 
   belongs_to :client
+  belongs_to :cuisine
+
   # TODO set accessible attributes
   # description is the similar to Ts&Cs.
   # TODO details, how long should the visible part be and how long over all??
@@ -55,8 +57,10 @@ class Promotion < ActiveRecord::Base
   end
 
   def self.find_by_cuisine(params_cuisine)
-    []
+    Promotion.joins(:cuisine).where(cuisine: params_cuisine )
   end
+
+
   # maps date wday to the day field used in the db
   private
   def self.wday_string (date)
