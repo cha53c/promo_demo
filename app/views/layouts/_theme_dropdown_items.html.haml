@@ -1,0 +1,4 @@
+- themes.each do |t|
+  %li
+    %a
+      = link_to t.name, search_index_path(theme: t.name)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102125418) do
+ActiveRecord::Schema.define(version: 20141105205301) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -29,10 +29,6 @@ ActiveRecord::Schema.define(version: 20141102125418) do
 
   create_table "cuisines", force: true do |t|
     t.string "cuisine"
-  end
-
-  create_table "promo_types", force: true do |t|
-    t.string "promo_type"
   end
 
   create_table "promotions", force: true do |t|
@@ -62,6 +58,14 @@ ActiveRecord::Schema.define(version: 20141102125418) do
   end
 
   add_index "promotions", ["client_id"], name: "index_promotions_on_client_id"
+
+  create_table "themes", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "themes_tables", force: true do |t|
+    t.string "name"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email"

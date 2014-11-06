@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   protected
   def load_menu_items
     @cuisines = Cuisine.all
+    @theme = Theme.all
   end
 
   # private
