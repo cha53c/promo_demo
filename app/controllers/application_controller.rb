@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
-  # loads the menue items for the nav bar
+  # loads the menu items for the nav bar
   protected
   def load_menu_items
     @cuisines = Cuisine.all

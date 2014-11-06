@@ -7,6 +7,8 @@ class SearchController < ApplicationController
       @promotions=Promotion.find_by_date(params[:date])
     elsif params.has_key?(:cuisine)
       @promotions=Promotion.find_by_cuisine(params[:cuisine])
+    elsif params.has_key?(:theme)
+      @promotions=Promotion.find_by_theme(params[:theme])
     end
   end
 

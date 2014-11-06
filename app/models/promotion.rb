@@ -3,6 +3,7 @@ class Promotion < ActiveRecord::Base
 
   belongs_to :client
   belongs_to :cuisine
+  belongs_to :theme
 
   # attr_accessor( :cuisine_id)
 
@@ -61,6 +62,11 @@ class Promotion < ActiveRecord::Base
   def self.find_by_cuisine(params_cuisine)
     c = Cuisine.find_by_cuisine(params_cuisine)
     Promotion.joins(:cuisine).where(cuisine: c.id)
+  end
+
+  def self.find_by_theme(params_cuisine)
+    t = Theme.find_by_name(params_cuisine)
+    Promotion.joins(:theme).where(theme: t.id)
   end
 
 
