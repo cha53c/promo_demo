@@ -18,6 +18,7 @@ RSpec.describe Client do
   it { should ensure_length_of(:email).is_at_most(50) }
   it { should ensure_length_of(:website).is_at_most(50) }
   it { should have_one(:address) }
+  it { should accept_nested_attributes_for(:address) }
 
   it 'email should not be valid' do
     client.email=' '

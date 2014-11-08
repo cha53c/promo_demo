@@ -1,0 +1,16 @@
+.col-sx-12.col-sm-6.col-md-3
+  .thumbnail
+    = link_to image_tag(client.photo.url(:medium)), client_path(client) 
+    .caption
+      %h3
+        = link_to client.name, client_path(client)
+      %p
+        = render 'clients/contact_details', client: client
+      %p
+        - if current_user
+          = link_to 'Edit', edit_client_path(client)
+          = link_to 'Destroy', client_path(client),
+                        method: :delete, data: {confirm: 'Are you sure?'}
+
+    
+  

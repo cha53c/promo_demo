@@ -1,0 +1,6 @@
+- if current_user
+  = link_to "Add Client", {action: "new"}, {class: "btn btn-default"}
+.container-fluid
+  .row
+    - @clients.each do |client|
+      = render 'card', client: client
