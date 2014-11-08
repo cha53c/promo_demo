@@ -6,6 +6,11 @@
 #   cities = City.create( cuisine: [{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create( cuisine: name: 'Emanuel', city: cities.first)
 # User.create( cuisine: email: 'test@test1.com', password: 'password', password_confirmation: 'password')
+
+
+Client.create!(name: 'client1',
+              photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/test_image.jpg', 'image/jpg'),
+              email: 'client1@test.com', tel: '0890775544', website: 'http://www.client1.com')
 Cuisine.create( cuisine: 'Indian')
 Cuisine.create( cuisine: 'Japanese')
 Cuisine.create( cuisine: 'British')

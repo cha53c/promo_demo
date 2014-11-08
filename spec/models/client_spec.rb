@@ -13,6 +13,7 @@ RSpec.describe Client do
   it { should validate_presence_of :email }
   it { should validate_presence_of :website }
   it { should validate_presence_of :photo }
+  it { should validate_uniqueness_of :name }
   it { should ensure_length_of(:name).is_at_most(20) }
   it { should ensure_length_of(:email).is_at_most(50) }
   it { should ensure_length_of(:website).is_at_most(50) }
