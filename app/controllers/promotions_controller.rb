@@ -58,7 +58,7 @@ class PromotionsController < ApplicationController
 
   private
   def promotion_params
-    params.require(:promotion).permit(:promo_type, :cuisine_id, :image, :details,
+    params.require(:promotion).permit(:promo_type, :cuisine_id, :theme_id, :image, :details,
                                       :description, :active, :from, :to, :starts, :ends,
                                       :mon, :tue, :wed, :thu, :fri, :sat, :sun)
   end
