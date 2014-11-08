@@ -3,7 +3,8 @@ require 'rails_helper'
 
 RSpec.describe ClientsController do
   let(:params) { {client: {name: "testclient", tel: "123", email: "me@home.com",
-                           website: "www.bookme.com", photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/test_image.jpg')}} }
+                           website: "www.bookme.com",
+                           photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/promotions/test_image.jpg')}} }
   let(:user) { FactoryGirl.build_stubbed(:user) }
 
   before {

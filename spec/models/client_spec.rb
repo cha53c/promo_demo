@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe Client do
   subject(:client) { Client.new(name: "testclient", tel: "123", email: "me@home.com",
                                 website: "www.bookme.com",
-                                photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/test_image.jpg',
+                                photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/promotions/test_image.jpg',
                                                                     'image/jpg')) }
 
   it { is_expected.to be_valid }

@@ -18,7 +18,7 @@ end
 Given(/^I am on the new promotion page$/) do
   client = Client.create!(name: "testclient", tel: "123", email: "me@home.com",
                           website: "www.bookme.com",
-                          photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/test_image.jpg', 'image/jpg'))
+                          photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/promotions/test_image.jpg', 'image/jpg'))
   url = "clients/" + client.id.to_s + "/promotions/new"
   visit(url)
 end

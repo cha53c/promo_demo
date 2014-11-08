@@ -4,7 +4,7 @@ require 'rails_helper'
 describe Promotion do
   subject(:valid_promotion) { Promotion.new(description: 'blah', promo_type: '2 for 1',
                                             details: "Lorem ipsum dolor sit amet,",
-                                            image: File.new(Rails.root + 'spec/fixtures/images/test_image.jpg'),
+                                            image: File.new(Rails.root + 'spec/fixtures/images/promotions/test_image.jpg'),
                                             fri: '1', starts: Date.today.strftime('%d-%m-%Y'),
                                             ends: Date.today.strftime('%d-%m-%Y')) }
 
