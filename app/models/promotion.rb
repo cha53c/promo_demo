@@ -16,7 +16,7 @@ class Promotion < ActiveRecord::Base
   validates_attachment :image, content_type: {content_type: ["image/jpg", "image/jpeg", "image/png"]}
   validates_attachment_size :image, less_than: 1.megabyte
   validates_with AtLeastOneActivePromotionDay
-  validates_with StartDateCannotBeBeforeToday
+  validates_with StartDateCannotBeBeforeToday, on: :create
   validates_with EndDateCannotBeBeforeStartDate
 
   validates :promo_type, length: 3..20

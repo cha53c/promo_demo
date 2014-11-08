@@ -64,12 +64,10 @@
     <div class="row">
       <div class="col-md-6">
 
-        <!--<p>-->
-        Call: <%= client.tel %>
+        Call: <%= number_to_phone(client.tel) %>
         <br>
         Email:
         <% client.email %>
-        <!--</p>-->
       </div>
       <div class="col-md-6 location">
         <%= image_tag("location_pin.png") %>
