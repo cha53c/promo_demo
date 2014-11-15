@@ -24,12 +24,14 @@ afternoon_tea = Theme.create(name: 'Afternoon Tea')
 meal_deals = Theme.create(name: 'Meal Deals')
 golf = Theme.create(name: 'Golf')
 
+address = Address.create!(line1: '101A Mandela House', line2: 'The Plaza', town: 'La Linea De La Conception')
+
 
 # Client.create!(name: 'client1',
 #                photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/test_image.jpg', 'image/jpg'),
 #                email: 'client1@test.com', tel: '0890775544', website: 'http://www.client1.com')
 
-patagonia = Client.create!(name: 'Patagonia',
+patagonia = Client.create!(name: 'Patagonia', address_id: address.id,
                            photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/clients/patagonia.jpg', 'image/jpg'),
                            email: 'patagonia@test.com', tel: '0890775544', website: 'http://www.patagonia.com')
 
@@ -38,7 +40,7 @@ Promotion.create!(promo_type: "10% off", description: "Winter Offer", details: "
                   image: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/promotions/steak.jpg', 'image/jpg'),
                   starts: Date.today.strftime('%d-%m-%Y'), ends: (Date.today + 90).strftime('%d-%m-%Y'), tue: '1')
 
-jbs = Client.create!(name: 'JBs Cafe',
+jbs = Client.create!(name: 'JBs Cafe', address_id: address.id,
                            photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/clients/jbs.jpg', 'image/jpg'),
                            email: 'jbs@test.com', tel: '0890775544', website: 'http://www.jbs.com')
 

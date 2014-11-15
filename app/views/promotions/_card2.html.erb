@@ -5,11 +5,10 @@
   </div>
   <div class="caption">
     <h4><%= link_to promotion.description, [promotion.client, promotion] %></h4>
-    id <%= promotion.cuisine_id %><br>
+    <!--id <%= promotion.cuisine_id %><br>-->
 
-
-    <div class="description">
-      <p>
+    <!--<div class="description">-->
+      <p class="description">
         <% if (promotion.details && promotion.details.empty?) %>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
@@ -20,7 +19,7 @@
             <%= promotion.details %>
         <% end %>
       </p>
-    </div>
+    <!--</div>-->
     <p>
       <% if promotion.mon %>
           <span class="day-on">M</span>
@@ -82,3 +81,4 @@
     </p>
   </div>
 </div>
+
