@@ -29,9 +29,9 @@ $(document).ready(function() {
         callnum.before(button);
         callnum.remove();
     });
-    $('a').on('click', function() {
-        console.log('loading...');
-    });
+//    $('a').on('click', function() {
+//        console.log('loading...');
+//    });
 
-    $(".date").datepicker();
+    $(".date").datepicker({dateFormat: 'yy-mm-dd'});
 });

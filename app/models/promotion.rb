@@ -23,6 +23,7 @@ class Promotion < ActiveRecord::Base
   validates_length_of :description, maximum: 50
   validates_length_of :details, maximum: 120
 
+
   # builds search query based on the specified date or date type
   # i.e. today, tomorrow
   def self.find_by_date(date_param)
@@ -69,13 +70,10 @@ class Promotion < ActiveRecord::Base
     Promotion.joins(:theme).where(theme: t.id)
   end
 
-
   # maps date wday to the day field used in the db
   private
   def self.wday_string (date)
     wdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
     wdays[date.wday]
   end
-
-
 end
