@@ -17,9 +17,9 @@
 //= require_tree .
 
 $(document).ready(function() {
-    var button = $('<button>Call Now</button>');
+    var button = $('<button class="call_button">Call Now</button>');
     $('.thumbnail').on('click', 'button', function() {
-      $(this).before('<div class=\'callnum\'>call 0044 123 456 23</div>');
+      $(this).before('<div class=\'callnum call_button\'>call 0044 123 456 23</div>');
       $(this).remove();
     });
 

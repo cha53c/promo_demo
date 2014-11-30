@@ -1,5 +1,5 @@
 <!--TODO use standard resource routes-->
-<%= form_for :promotion, url: url, method: http_verb, :html => {:multipart => true} do |f| %>
+<%= form_for :promotion, url: url, method: http_verb, html: {multipart: true} do |f| %>
     <h3>Describe the Promotion</h3>
     <%= f.label :description %>
     <%= f.text_field :description %>
@@ -8,7 +8,7 @@
     <%= f.label :details %><br>
     <%= f.text_area :details %><br>
     <%= f.label :cuisine %>
-    <%= select('promotion', 'cuisine_id', Cuisine.all.collect { |c| [c.cuisine, c.id] }, {include_blank: true}) %><br>
+    <%= select('promotion', 'cuisine_id', Cuisine.all.collect { |c| [c.cuisine, c.id] }, {include_blank: true}) %>
     <%= f.label :theme %>
     <%= select('promotion', 'theme_id', Theme.all.collect { |t| [t.name, t.id] }, {include_blank: true}) %><br>
 
