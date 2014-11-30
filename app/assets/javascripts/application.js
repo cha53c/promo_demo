@@ -12,7 +12,26 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require_tree .
 
+$(document).ready(function() {
+    var button = $('<button>Call Now</button>');
+    $('.thumbnail').on('click', 'button', function() {
+      $(this).before('<div class=\'callnum\'>call 0044 123 456 23</div>');
+      $(this).remove();
+    });
 
+//    TODO deltets previously viewed call me button>???
+    $('.thumbnail').on('mouseleave', function() {
+        var callnum = $(this).children('.caption').children('.callnum');
+        callnum.before(button);
+        callnum.remove();
+    });
+    $('a').on('click', function() {
+        console.log('loading...');
+    });
+
+    $(".date").datepicker();
+});

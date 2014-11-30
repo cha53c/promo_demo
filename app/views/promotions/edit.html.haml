@@ -1,0 +1,11 @@
+%h1Promotions#edit
+= link_to('Done', client_path(@client), {class: "btn btn-default"})
+.container
+  .row
+    .col-md-6
+      .form-group
+        = render 'form', http_verb: :patch, url: client_promotion_path
+    .col-md-6
+      = render 'shared/form_error', model: @promotion
+      - if @promotion.errors.empty?
+        = render 'card2', promotion: @promotion, client: @client

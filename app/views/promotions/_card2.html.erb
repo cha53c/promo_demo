@@ -60,22 +60,19 @@
     </p>
     <h4><%= link_to client.name, [promotion.client, promotion] %></h4>
 
-      <span class="contactus">
-        Tel: <%= number_to_phone(client.tel) %>
-        <br>
-        Email:
-        <% client.email %>
-      </span>
-      <span class="location">
+    <button>Call Now</button>
+
+      <div class="location">
         <%= image_tag("map_icon.jpg") %>
-      </span>
-    <p>
+      </div>
+
       <% if current_user %>
+        <p>
           <%= link_to 'Edit', edit_client_promotion_path(client.id, promotion.id) %>
           <%= link_to 'Delete', [promotion.client, promotion],
-                      method: :delete, data: {confirm: 'Are you sure?'} %>
+                                method: :delete, data: {confirm: 'Are you sure?'} %>
+        </p>
       <% end %>
-    </p>
   </div>
 </div>
 

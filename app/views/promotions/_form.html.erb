@@ -20,9 +20,9 @@
     <h3>Enter the Dates the Promotion will run for</h3>
     <p>
       <%= f.label :starts %>
-      <%= f.date_select :starts %><br>
+      <%= f.text_field :starts, class: 'date' %>
       <%= f.label :ends %>
-      <%= f.date_select :ends %>
+      <%= f.text_field :ends, class: 'date'%>
     </p>
 
     <p>
@@ -37,9 +37,9 @@
         <br>
     <p>
       <%= f.label :from %>
-      <%= f.time_select :from, :minute_step => 15 %>
+      <%= f.time_select :from, minute_step: 15 %>
       <%= f.label :to %>
-      <%= f.time_select :to, :minute_step => 15 %>
+      <%= f.time_select :to, minute_step: 15 %>
     </p>
     <h3>Activate Promotion</h3>
     <p>
