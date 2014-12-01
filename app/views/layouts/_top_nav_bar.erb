@@ -32,7 +32,7 @@
             <li role="presentation" class="divider"></li>
             <li> <%= form_tag search_index_path(date: 'custom_date'), method: :get, class: "navbar-form", role: "search" do %>
                   <%= text_field_tag 'custom_date', nil, {class: "date", placeholder: "custom date"} %>
-                  <%= submit_tag 'search', {class: 'hidden_button', id: "submit_search"} %>
+                  <%= submit_tag 'search', {class: 'hidden_button', id: "submit_data_search"} %>
               <% end %>
             </li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Custom Date</a></li>
