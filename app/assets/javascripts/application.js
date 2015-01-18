@@ -38,7 +38,7 @@ $(document).ready(function () {
 
     $('.description').data('full-description', 'test data');
 
-    $(".date").datepicker({dateFormat: 'yy-mm-dd'});
+    $(".date").datepicker({dateFormat: 'yy-mm-dd', minDate: new Date()});
 
     $('p.more').each(function() {
         console.log('.more');
