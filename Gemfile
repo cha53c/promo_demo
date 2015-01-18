@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
+
+# Assets
+gem 'rails-assets-readmore'
 
 
 gem 'haml-rails'

@@ -23,32 +23,5 @@
         %strong
           = flash.alert
     = yield
-    :javascript
-      // jquery version
-      //var elements = $(.description)
-      //for(i=0; i < elements.length; i++) {
-      //  var element = elements[i]
-      //  text = $element.html().trim()
-      //  $element.data("fullText", text)
-      //  $element.html(text.substr(0,10) + " " + "<a href='#'onclick='showMe2(" + i + ")'>...</a>")
-      // }
-      //
-      //function showMe2(index) {
-      //  elements[index].html(element[index].data("fullText));
-      //}
 
-
-      //javascript version
-      var elements = document.getElementsByClassName("description")
-      var descriptions = []
-      for(i=0; i < elements.length; i++) {
-        var element = elements[i]
-        var text = elements[i].innerHTML;
-        text = text.trim();
-        descriptions.push(text);
-        elements[i].innerHTML = text.substr(0,10) + " " + "<a href='#'onclick='showMe(" + i + ")'>...</a>";
-      }
-      function showMe(index) {
-        elements[index].innerHTML = descriptions[index];
-      }
 

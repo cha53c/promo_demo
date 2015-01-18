@@ -14,24 +14,74 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require turbolinks
+//= require readmore
 //= require_tree .
 
-$(document).ready(function() {
+var readLink = '<span></span>';
+
+$(document).ready(function () {
+//    truncateDescription();
     var button = $('<button class="call_button">Call Now</button>');
-    $('.thumbnail').on('click', 'button', function() {
-      $(this).before('<div class=\'callnum call_button\'>call 0044 123 456 23</div>');
-      $(this).remove();
+    $('.thumbnail').on('click', '.call_button', function () {
+        //TODO populate withe actual phone number
+        $(this).before($('.call_button').data('tel'));
+//        console.log($(this));
+        $(this).remove();
     });
 
-//    TODO deltets previously viewed call me button>???
-    $('.thumbnail').on('mouseleave', function() {
+//    TODO delets previously viewed call me button>???
+    $('.thumbnail').on('mouseleave', function () {
         var callnum = $(this).children('.caption').children('.callnum');
         callnum.before(button);
         callnum.remove();
     });
-//    $('a').on('click', function() {
-//        console.log('loading...');
-//    });
+
+    $('.description').data('full-description', 'test data');
 
     $(".date").datepicker({dateFormat: 'yy-mm-dd'});
+
+    $('p.more').each(function() {
+        console.log('.more');
+        console.log($(this).innerHeight());
+        if($(this).innerHeight() > 39){
+            console.log("calling readmore");
+            $(this).readmore({
+                moreLink: '<a href="#" class="read-more-link">Read more ></a>',
+                lessLink: '<a href="#" class="read-less-link">&lt; Read less</a>',
+                maxHeight: 200,
+                collapsedHeight: 45,
+                speed: 200,
+                beforeToggle: function(trigger, element, expanded) {
+                    console.log("before toggle");
+                    if(expanded) { // The "less" link was clicked
+                        console.log('expanded true');
+                        $(element).parent().find('.availability').animate({hidden: false}, 500);
+                        $(element).parent().find('.client').animate({hidden: false}, 500);
+                        $(element).parent().find('.call_button').animate({hidden: false}, 500);
+                        $(element).parent().find('.find_us').animate({hidden: false}, 500);
+//                        $(element).parent().find('.availability').css('background-color', '#FFFFFF');
+                    }
+                    if (! expanded){ // the more link was clicked
+                        console.log('expanded false');
+                        console.log(element);
+                        console.log($(element).parent());
+                        console.log($(element).parent().find('.availability'));
+//                        $(element).parent().find('.availability').css('background-color', '#0000FF');
+                        $(element).parent().find('.availability').animate({hidden: true}, 500);
+                        $(element).parent().find('.client').animate({hidden: true}, 500);
+                        $(element).parent().find('.call_button').animate({hidden: true}, 500);
+                        $(element).parent().find('.find_us').animate({hidden: true}, 500);
+                    }
+                },
+                afterToggle: function(trigger, element, expanded) {
+                    console.log("after toggle");
+                    if(! expanded) { // The "Close" link was clicked
+                        $('.description').animate( { scrollTop: element.offset().top }, {duration: 100 } );
+
+                    }
+                }
+            });
+        }
+    });
 });
+

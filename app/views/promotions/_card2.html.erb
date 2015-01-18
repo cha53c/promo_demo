@@ -7,20 +7,10 @@
     <h4><%= link_to promotion.description, [promotion.client, promotion] %></h4>
     <!--id <%= promotion.cuisine_id %><br>-->
 
-    <!--<div class="description">-->
-    <p class="description">
-      <% if (promotion.details && promotion.details.empty?) %>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-          ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-          nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-          anim id est laborum.
-      <% else %>
-          <%= promotion.details %>
-      <% end %>
+    <p class="description more">
+        <%=  promotion.details + 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' %>
     </p>
-    <!--</div>-->
-    <p>
+    <p class="availability">
       <% if promotion.mon %>
           <span class="day-on">M</span>
       <% else %>
@@ -51,20 +41,18 @@
       <% else %>
           <span class="day-off">Sa</span>
       <% end %>
-
       <% if promotion.sun %>
           <span class="day-on">Su</span>
       <% else %>
           <span class="day-off">Su</span>
       <% end %>
     </p>
-    <h4><%= link_to client.name, [promotion.client, promotion] %></h4>
+    <h4 class="client"><%= link_to client.name, [promotion.client, promotion] %></h4>
 
-    <button class="call_button">Call Now</button>
 
-      <div class="location">
-        <%= image_tag("map_icon.jpg") %>
-      </div>
+    <!--<button class="call_button">Call Now</button>-->
+    <%= button_tag 'Call Now', class: 'call_button', data: {tel: 111111111} %>
+    <button class="find_us">Find Us</button>
 
       <% if current_user %>
         <p>
