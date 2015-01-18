@@ -8,49 +8,10 @@
     <!--id <%= promotion.cuisine_id %><br>-->
 
     <p class="description more">
-        <%=  promotion.details + 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' %>
+        <%=  promotion.details + 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit' %>
     </p>
-    <p class="availability">
-      <% if promotion.mon %>
-          <span class="day-on">M</span>
-      <% else %>
-          <span class="day-off">M</span>
-      <% end %>
-      <% if promotion.tue %>
-          <span class="day-on">Tu</span>
-      <% else %>
-          <span class="day-off">Tu</span>
-      <% end %>
-      <% if promotion.wed %>
-          <span class="day-on">W</span>
-      <% else %>
-          <span class="day-off">W</span>
-      <% end %>
-      <% if promotion.thu %>
-          <span class="day-on">Th</span>
-      <% else %>
-          <span class="day-off">Th</span>
-      <% end %>
-      <% if promotion.fri %>
-          <span class="day-on">F</span>
-      <% else %>
-          <span class="day-off">F</span>
-      <% end %>
-      <% if promotion.sat %>
-          <span class="day-on">Sa</span>
-      <% else %>
-          <span class="day-off">Sa</span>
-      <% end %>
-      <% if promotion.sun %>
-          <span class="day-on">Su</span>
-      <% else %>
-          <span class="day-off">Su</span>
-      <% end %>
-    </p>
+    <%= render 'promotions/availability', promotion: promotion %>
     <h4 class="client"><%= link_to client.name, [promotion.client, promotion] %></h4>
-
-
-    <!--<button class="call_button">Call Now</button>-->
     <%= button_tag 'Call Now', class: 'call_button', data: {tel: 111111111} %>
     <button class="find_us">Find Us</button>
 

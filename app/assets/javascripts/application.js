@@ -17,10 +17,8 @@
 //= require readmore
 //= require_tree .
 
-var readLink = '<span></span>';
 
 $(document).ready(function () {
-//    truncateDescription();
     var button = $('<button class="call_button">Call Now</button>');
     $('.thumbnail').on('click', '.call_button', function () {
         //TODO populate withe actual phone number
@@ -59,14 +57,9 @@ $(document).ready(function () {
                         $(element).parent().find('.client').animate({hidden: false}, 500);
                         $(element).parent().find('.call_button').animate({hidden: false}, 500);
                         $(element).parent().find('.find_us').animate({hidden: false}, 500);
-//                        $(element).parent().find('.availability').css('background-color', '#FFFFFF');
                     }
                     if (! expanded){ // the more link was clicked
                         console.log('expanded false');
-                        console.log(element);
-                        console.log($(element).parent());
-                        console.log($(element).parent().find('.availability'));
-//                        $(element).parent().find('.availability').css('background-color', '#0000FF');
                         $(element).parent().find('.availability').animate({hidden: true}, 500);
                         $(element).parent().find('.client').animate({hidden: true}, 500);
                         $(element).parent().find('.call_button').animate({hidden: true}, 500);
