@@ -13,12 +13,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require turbolinks
 //= require readmore
 //= require_tree .
 
 
+$(window).load(function() {
+    $(".loader").fadeOut("slow");
+});
+
+//$(window).load(function(){
 $(document).ready(function () {
+
+
     var button = $('<button class="call_button">Call Now</button>');
     $('.thumbnail').on('click', '.call_button', function () {
         //TODO populate withe actual phone number
