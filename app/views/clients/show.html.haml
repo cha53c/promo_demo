@@ -7,11 +7,11 @@
         = image_tag @client.photo.url(:medium)
       .col-lg-6.col-md-6
         %p
-          = render 'clients/contact_details', client: @client 
--#<h4><span class="badge<h5>Has = @client.promotions.length  promotions</h5></span></h4>
+          = render 'clients/contact_details', client: @client
+      -#.col-lg-6.col-md-6 #map-canvas
 .container_fluid
   = render 'promotions/card_grid', promotions: @client.promotions
-- if current_user 
+- if current_user
   = link_to 'Add Promotion', new_client_promotion_path(@client.id), {class: "btn btn-default"}
-= link_to 'Back', clients_path 
-= link_to 'Edit', edit_client_path(@client) 
+= link_to 'Back', clients_path
+= link_to 'Edit', edit_client_path(@client)
