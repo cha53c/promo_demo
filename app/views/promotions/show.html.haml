@@ -1,0 +1,19 @@
+.container_fluid
+  .jumbotron
+  %h1
+    = @client.name
+  .container
+    .row
+      .col-lg-6.col-md-4
+        = image_tag @client.photo.url(:medium)
+        %p
+          = render 'clients/contact_details', client: @client
+      .col-lg-6.col-md-4
+        = render 'promotions/card2', promotion: @promotion, client: @client
+  %h4
+    %span
+    .badge
+      .h5>
+        Has = @client.promotions.length
+        promotions
+  = render 'card_grid', promotions: @client.promotions
