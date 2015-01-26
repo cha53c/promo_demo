@@ -19,6 +19,8 @@
 
 
 var ready = function () {
+    google.maps.event.addDomListener(window, 'load', initMap);
+
     $(".loader").fadeOut("slow");
     var button = $('<button class="call_button">Call Now</button>');
     $('.thumbnail').on('click', '.call_button', function () {
