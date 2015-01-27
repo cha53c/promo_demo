@@ -19,8 +19,8 @@
 
 
 var ready = function () {
-    google.maps.event.addDomListener(window, 'load', initMap);
 
+    google.maps.event.addDomListener(window, 'load', initMap);
     $(".loader").fadeOut("slow");
     var button = $('<button class="call_button">Call Now</button>');
     $('.thumbnail').on('click', '.call_button', function () {
@@ -56,12 +56,12 @@ var ready = function () {
                     console.log("before toggle");
                     if(expanded) { // The "less" link was clicked
                         console.log('expanded true');
-                        $(element).parent().find('.availability').animate({hidden: false}, 500);
-                        $(element).parent().find('.client').animate({hidden: false}, 500);
-                        $(element).parent().find('.call_button').animate({hidden: false}, 500);
-                        $(element).parent().find('.find_us').animate({hidden: false}, 500);
+                        $(element).parent().find('.availability').animate({hidden: false}, 100);
+                        $(element).parent().find('.client').animate({hidden: false}, 100);
+                        $(element).parent().find('.call_button').animate({hidden: false}, 100);
+                        $(element).parent().find('.find_us').animate({hidden: false}, 100);
                     }
-                    if (! expanded){ // the more link was clicked
+                    if (! expanded){ // the 'more' link was clicked
                         console.log('expanded false');
                         $(element).parent().find('.availability').animate({hidden: true}, 500);
                         $(element).parent().find('.client').animate({hidden: true}, 500);

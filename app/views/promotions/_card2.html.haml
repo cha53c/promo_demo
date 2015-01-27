@@ -1,0 +1,23 @@
+.thumbnail
+  = link_to image_tag(promotion.image.url(:medium)), [promotion.client, promotion]
+  .promo_tag
+    %h4
+      = promotion.promo_type
+  .caption
+    %h4
+      = link_to promotion.description, [promotion.client, promotion]
+    %p
+      .description.more
+        =  promotion.details + 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit'
+    = render 'promotions/availability', promotion: promotion
+    %h4
+      .client
+        = link_to client.name, [promotion.client, promotion]
+    = button_tag 'Call Now', class: 'call_button', data: {tel: 111111111}
+    = button_tag 'Find Us', class: 'find_us'
+    - if current_user
+      %p
+        = link_to 'Edit', edit_client_promotion_path(client.id, promotion.id)
+        = link_to 'Delete', [promotion.client, promotion],
+                                method: :delete, data: {confirm: 'Are you sure?'}
+
