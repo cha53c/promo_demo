@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//.day_label {
+//  height: 30px;
+//  width: 30px;
+//  border-radius: 10%;
+//  background-color: lightgrey;
+//}
+
 .day-off {
   color: lightgrey;
 }
@@ -90,6 +97,8 @@
   height: 40px;
   background-color: limegreen;
   color: #ffffff;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .find_us {

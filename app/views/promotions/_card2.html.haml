@@ -13,7 +13,9 @@
     %h4
       .client
         = link_to client.name, [promotion.client, promotion]
-    = button_tag 'Call Now', class: 'call_button', data: {tel: 111111111}
+    .call_button
+      Call On:
+      = promotion.client.tel
     = button_tag 'Find Us', class: 'find_us'
     - if current_user
       %p

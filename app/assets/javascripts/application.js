@@ -22,20 +22,6 @@ var ready = function () {
 
     google.maps.event.addDomListener(window, 'load', initMap);
     $(".loader").fadeOut("slow");
-    var button = $('<button class="call_button">Call Now</button>');
-    $('.thumbnail').on('click', '.call_button', function () {
-        //TODO populate withe actual phone number
-        $(this).before($('.call_button').data('tel'));
-//        console.log($(this));
-        $(this).remove();
-    });
-
-//    TODO delets previously viewed call me button>???
-    $('.thumbnail').on('mouseleave', function () {
-        var callnum = $(this).children('.caption').children('.callnum');
-        callnum.before(button);
-        callnum.remove();
-    });
 
     $('.description').data('full-description', 'test data');
 
