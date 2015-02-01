@@ -14,9 +14,12 @@
       .client
         = link_to client.name, [promotion.client, promotion]
     .call_button
-      Call On:
+      Call:
       = promotion.client.tel
-    = button_tag 'Find Us', class: 'find_us'
+    %p
+      = image_tag('red_pin_mini.png', class: 'location_image', height: "28", width: "20")
+      %span
+        10 The Test Rd, Gibraltar
     - if current_user
       %p
         = link_to 'Edit', edit_client_promotion_path(client.id, promotion.id)
