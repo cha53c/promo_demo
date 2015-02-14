@@ -1,0 +1,22 @@
+.panel.panel-primary
+  .panel-heading
+    .panel-title
+      .row
+        = promotion.promo_type
+  .panel-body
+    .row
+      .thumbnail.col-md-12
+        = link_to image_tag(promotion.image.url(:medium)), [promotion.client, promotion]
+    .row
+      = link_to promotion.description, [promotion.client, promotion]
+    .row
+      =   promotion.details + 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit'
+      = render 'promotions/availability', promotion: promotion
+      %h3
+        Call:
+        = promotion.client.tel
+    .row
+      .col-md-2
+        = image_tag('red_pin_mini.png', class: 'location_image', height: "28", width: "20")
+      .col-md-10
+        10 The Test Rd, Gibraltar

@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
+# bootstrap forms
+gem 'bootstrap_form'
+
 # Assets
 gem 'rails-assets-readmore'
 

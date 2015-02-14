@@ -1,3 +1,5 @@
 .container
+  .row
+    %h1 Add new client
   = render 'form', mymethod: 'post', path: clients_path
   = link_to 'Back', clients_path

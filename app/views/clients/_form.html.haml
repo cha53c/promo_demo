@@ -1,35 +1,24 @@
-.form-group
-  = form_for :client, url: path, method: mymethod, html: {multipart: true} do |f|
-    - if @client != nil
-      = render 'shared/form_error', model: @client
-    %p
-      = f.label :name
-      = f.text_field :name
-      %br
-      = f.file_field :photo
-      %br
-      = f.label :email
-      = f.email_field :email
-      = f.label :tel
-      = f.telephone_field :tel
-      = f.label :website
-      = f.url_field :website
-    %p
-      = f.fields_for :address, @client.address do |a|
-        = a.label :line1
-        = a.text_field :line1
-        %br
-        = a.label :line2
-        = a.text_field :line2
-        %br
-        = a.label :town
-        = a.text_field :town
-        %br
-        = a.label :country
-        = a.text_field :country
-        %br
-        = a.label :zip_code
-        = a.text_field :zip_code
-        %br
-    %p
-      = f.submit
+= bootstrap_form_for :client, url: path, method: mymethod, html: {multipart: true, role: 'form'} do |f|
+  - if @client != nil
+    = render 'shared/form_error', model: @client
+    .container
+      .col-md-6
+        .form-group
+          = f.text_field :name, label: 'Client name'
+        = f.file_field :photo
+        .thumbnail.placeholder
+          = image_tag(@client.photo.url(:medium), size: '200x300', alt: 'client image')
+        .form-group
+          = f.email_field :email
+        .form-group
+          = f.telephone_field :tel
+        .form-group
+          = f.url_field :website
+        %h2 Address
+        = f.fields_for :address, @client.address do |a|
+          = a.text_field :line1, label: 'First line'
+          = a.text_field :line2, label: 'Second line'
+          = a.text_field :town
+          = a.text_field :country
+          = a.text_field :zip_code
+        = f.submit class: 'btn btn-success'

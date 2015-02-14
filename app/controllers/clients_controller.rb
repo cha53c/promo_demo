@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
   after_action :verify_authorized, except: [:index, :show]
 
   def new
-    @client = Client.new()
+    @client = Client.new
     authorize @client
   end
 

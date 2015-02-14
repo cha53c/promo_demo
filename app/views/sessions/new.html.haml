@@ -1,11 +1,16 @@
-%h1 Sessions#new
-%p Find me in app/views/sessions/new.html.haml
-= form_tag('create') do
-  %p
-    = label_tag :email
-    %br
-    = text_field_tag :email, params[:email]
-  %p
-    = password_field_tag :password
-    %br
-    = submit_tag('Log in')
+.container
+  %h1 Login
+  = form_tag('create') do
+    .row
+      .col-md-1
+        = label_tag :email
+      .col-md-3
+        = text_field_tag :email, params[:email]
+    .row
+      .col-md-1
+        = label_tag :password
+      .col-md-3
+        = password_field_tag :password
+    .row
+      .col-md-4
+        = submit_tag('Log in', class: 'btn btn-success')
