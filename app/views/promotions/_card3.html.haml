@@ -9,8 +9,11 @@
         = link_to image_tag(promotion.image.url(:medium)), [promotion.client, promotion]
     .row
       = link_to promotion.description, [promotion.client, promotion]
+      %i
+      .glyphicon.glyphicon-star
     .row
       =   promotion.details + 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit'
+    .row.text-center
       = render 'promotions/availability', promotion: promotion
       %h3
         Call:
