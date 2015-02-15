@@ -14,6 +14,16 @@
  *= require_self
  *= bootstrap
  */
+
+
+ .glyph-features .glyphicons {
+     font-size: 32px;
+ }
+
+.glyphicon-map-marker {
+ color: red;
+}
+
 .navbar{
     /*background-color: #16CBE6;*/
     background-color: #ffffff;
