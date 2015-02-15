@@ -9,10 +9,11 @@
         = promotion.promo_type
         %i
         .glyphicon.glyphicon-star
-    .row
+    .row.well
       =   promotion.details + 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit'
-    .row.text-center
-      = render 'promotions/availability', promotion: promotion
+    .row
+      .col-md-11.col-md-offset-1
+        = render 'promotions/availability', promotion: promotion
     .row.text-left.text-primary.lead
       .col-md-11.col-md-offset-1
         %i

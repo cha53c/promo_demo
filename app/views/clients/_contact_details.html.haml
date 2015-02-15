@@ -1,15 +1,19 @@
-Tel:
-= number_to_phone(client.tel)
-%br
+.glyphicon.glyphicon-earphone
+  = number_to_phone(client.tel)
+  %br
 %address
-  Email:
+  .glyphicon.glyphicon-envelope
   = mail_to client.email
   %br
-  WebSite:
+  .glyphicon.glyphicon-globe
   = link_to client.website
   %br
-  -#= client.address
-  Address:  101 The Plaza, Near nowhere,
+  .glyphicon.glyphicon-map-marker
+  101 The Plaza
   %br
-  Somewhere, 224455
+  Near nowhere
+  %br
+  Somewhere
+  %br
+  224455
   %br
