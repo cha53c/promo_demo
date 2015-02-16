@@ -6,9 +6,8 @@
     .row.lead
       .col-md-11.col-md-offset-1
         = link_to promotion.description, [promotion.client, promotion]
-        = promotion.promo_type
-        %i
-        .glyphicon.glyphicon-star
+        .label.label-warning
+          = promotion.promo_type
     .row.well
       =   promotion.details + 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit'
     .row
