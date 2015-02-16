@@ -8,8 +8,10 @@
         = link_to promotion.description, [promotion.client, promotion]
         .label.label-warning
           = promotion.promo_type
-    .row.well
-      =   promotion.details + 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit'
+    .row.col-md-11.col-md-offset-1
+      .panel.panel-primary
+      .panel-body
+        = promotion.details + 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit'
     .row
       .col-md-11.col-md-offset-1
         = render 'promotions/availability', promotion: promotion

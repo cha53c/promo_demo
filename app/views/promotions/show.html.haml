@@ -1,21 +1,34 @@
-.container_fluid
-  .jumbotron
-  %h1
-    = @client.name
-  .container
-    .row
-      .col-lg-4.col-md-4
-        = render 'promotions/card2', promotion: @promotion, client: @client
-      .col-lg-4.col-md-4
-        = image_tag @client.photo.url(:medium)
-        %p
+.container
+  .row
+    %h1
+      = @client.name
+  .row
+    .col-md-8
+      .row
+        %h2
+          = @promotion.description
+          .label.label-warning
+            = @promotion.promo_type
+        .col-md-5
+          .thumbnail
+            = image_tag(@promotion.image.url(:medium))
+          -#= render 'promotions/card2', promotion: @promotion, client: @client
+        .col-md-5
+          = render 'promotions/availability', promotion: @promotion
           = render 'clients/contact_details', client: @client
-      .col-lg-4.col-md-4#map-canvas
-  %h4
-    %span
-    .badge
-      %h5
-        Has
-        = @client.promotions.length
-        promotions
+      .row
+        .col-md-10.well
+          = @promotion.details + 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit'
+    .col-md-4
+    -#  = image_tag @client.photo.url(:medium)
+    -#  = render 'clients/contact_details', client: @client
+    .col-md-4.thumbnail#map-canvas
+  -#%h4
+  -#  %span
+  -#  .badge
+  -#    %h5
+  -#      Has
+  -#      = @client.promotions.length
+  -#      promotions
+.container-fluid
   = render 'card_grid', promotions: @client.promotions
