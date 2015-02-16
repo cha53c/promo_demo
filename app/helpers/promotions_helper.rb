@@ -2,9 +2,9 @@ module PromotionsHelper
 
   def day_on_off day
     if day
-      "day-on day_label"
+      "label label-success label-as-badge"
     else
-      "day-off day_label"
+      "label label-default label-as-badge"
     end
   end
 end

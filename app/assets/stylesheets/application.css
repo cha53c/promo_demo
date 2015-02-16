@@ -15,6 +15,9 @@
  *= bootstrap
  */
 
+.lable-as-badge {
+    border-radius: 25%;
+}
 
  .glyph-features .glyphicons {
      font-size: 32px;
