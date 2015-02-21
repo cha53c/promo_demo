@@ -14,7 +14,8 @@
             = image_tag(@promotion.image.url(:medium))
           -#= render 'promotions/card2', promotion: @promotion, client: @client
         .col-md-5
-          = render 'promotions/availability', promotion: @promotion
+          %h4
+            = render 'promotions/availability', promotion: @promotion
           = render 'clients/contact_details', client: @client
       .row
         .col-md-10.well
