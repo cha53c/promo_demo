@@ -55,6 +55,9 @@ gem 'pundit'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'capistrano-bundler', '~> 1.1.3'
+gem 'capistrano', '~> 3.4.0'
+
 # Use debugger
 # gem 'debugger', '~> 1.6.8', group: [:development, :test]
 # gem 'debugger2', group: [:development, :test]
