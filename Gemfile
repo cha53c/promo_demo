@@ -54,7 +54,7 @@ gem 'pundit'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'capistrano-rails'
 gem 'capistrano-bundler', '~> 1.1.3'
 gem 'capistrano', '~> 3.4.0'
 
