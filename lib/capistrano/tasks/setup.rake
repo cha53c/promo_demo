@@ -1,8 +1,10 @@
 namespace :setup do
-  desc 'My first cap task'
-  task :first_task do
+  desc 'create secret'
+  task :secret do
     on roles(:app) do
-     puts 'Your first task has run'
+      execute "export KEY=$(cd /var/www/my_app/current && rake secret) && echo export SECRET_KEY_BASE=$KEY >> ~/.bashrc"
+      execute "source ~/.bashrc"
+      execute "env"
     end
   end
 end

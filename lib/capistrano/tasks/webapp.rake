@@ -7,15 +7,26 @@ namespace :webapp do
     end
   end
 
-  task :start_nginx do
+  task :start do
     on roles(:app) do
       execute "/etc/rc.d/init.d/nginx start"
     end
   end
 
-  task :stop_nginx do
+  task :stop do
     on roles(:app) do
       execute "/etc/rc.d/init.d/nginx stop"
+    end
+  end
+
+  task :restart do
+    webapp:stop
+    webapp:start	
+  end
+
+  task :env do
+    on roles(:app) do
+      execute "env"
     end
   end
 
