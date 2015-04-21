@@ -20,8 +20,8 @@ namespace :webapp do
   end
 
   task :restart do
-    webapp:stop
-    webapp:start	
+    invoke 'webapp:stop'
+    invoke 'webapp:start'	
   end
 
   task :env do
