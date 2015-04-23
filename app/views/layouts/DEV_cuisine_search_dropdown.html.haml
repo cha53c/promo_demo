@@ -1,0 +1,7 @@
+%li.dropdown
+  %a{href: "#", class: 'dropdown-toggle', 'data-toggle'=>"dropdown"}
+    By Cuisine
+    %span.caret
+  %ul{class: 'dropdown-menu', role: "menu"}
+  = render '/layouts/cuisine_dropdown_items', cuisines: @cuisines
+
