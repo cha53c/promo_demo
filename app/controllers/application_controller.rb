@@ -13,7 +13,10 @@ class ApplicationController < ActionController::Base
   protected
   def load_menu_items
     @cuisines = Cuisine.all
+    logger.debug 'loaded ' + @cuisines.length.to_s + ' Cuisines'
     @theme = Theme.all
+    logger.debug 'loaded ' + @theme.length.to_s + ' Themes'
+
   end
 
   # private
