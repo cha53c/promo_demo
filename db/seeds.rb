@@ -5,7 +5,8 @@
 #
 #   cities = City.create( cuisine: [{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create( cuisine: name: 'Emanuel', city: cities.first)
-# User.create( cuisine: email: 'test@test1.com', password: 'password', password_confirmation: 'password')
+
+User.create( email: 'test@test1.com', password: 'password', password_confirmation: 'password')
 
 
 indian = Cuisine.create(cuisine: 'Indian')
@@ -24,7 +25,7 @@ afternoon_tea = Theme.create(name: 'Afternoon Tea')
 meal_deals = Theme.create(name: 'Meal Deals')
 golf = Theme.create(name: 'Golf')
 
-address = Address.create!(line1: '101A Mandela House', line2: 'The Plaza', town: 'La Linea De La Conception')
+address = Address.create!(line1: '101A Mandela House', country: 'The Plaza', town: 'La Linea De La Conception')
 
 
 # Client.create!(name: 'client1',
