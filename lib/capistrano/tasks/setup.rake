@@ -18,7 +18,11 @@ namespace :setup do
   desc 'set up db and seed data'
   task :db_reset do
     on roles(:app) do
-      execute "cd /var/www/my_app/current && bundle exec rake db:reset"
+       within release_path do
+          with rails_env: fetch(:rails_env) do
+            execute :rake, "db:reset"
+          end
+        end
     end
   end
 
