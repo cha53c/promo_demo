@@ -15,7 +15,7 @@
 //= require jquery-ui
 //= require turbolinks
 //= require readmore
-//= require bootstrap
+//= require twitter_bootstrap/bootstrap
 //= require_tree .
 
 

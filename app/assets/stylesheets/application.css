@@ -12,7 +12,8 @@
  *
  *= require_tree .
  *= require_self
- *= bootstrap
+ *= twitter_boostrap/bootstrap
+ *= twitter_boostrap/style
  */
 
 .lable-as-badge {
