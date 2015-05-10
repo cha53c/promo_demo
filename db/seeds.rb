@@ -27,11 +27,7 @@ golf = Theme.create(name: 'Golf')
 
 address = Address.create!(line1: '101A Mandela House', country: 'The Plaza', town: 'La Linea De La Conception')
 
-
-# Client.create!(name: 'client1',
-#                photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/test_image.jpg', 'image/jpg'),
-#                email: 'client1@test.com', tel: '0890775544', website: 'http://www.client1.com')
-
+#client 1
 patagonia = Client.create!(name: 'Patagonia',
                            photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/clients/patagonia.jpg', 'image/jpg'),
                            email: 'patagonia@test.com', tel: '0890775544', website: 'http://www.patagonia.com')
@@ -41,11 +37,22 @@ Promotion.create!(promo_type: "10% off", description: "Winter Offer", details: "
                   image: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/promotions/steak.jpg', 'image/jpg'),
                   starts: Date.today.strftime('%d-%m-%Y'), ends: (Date.today + 90).strftime('%d-%m-%Y'), tue: '1')
 
-# jbs = Client.create!(name: 'JBs Cafe',
-#                            photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/clients/jbs.jpg', 'image/jpg'),
-#                            email: 'jbs@test.com', tel: '0890775544', website: 'http://www.jbs.com')
-#
-# Promotion.create!(promo_type: "2 for 1", description: "Curry Night", details: "Any two curry dishes for the price of one",
-#                   client_id: jbs.id, cuisine_id: indian.id, theme_id: meal_deals,
-#                   image: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/promotions/steak.jpg', 'image/jpg'),
-#                   starts: Date.today.strftime('%d-%m-%Y'), ends: (Date.today + 90).strftime('%d-%m-%Y'), fri: '1', sat: '1')
+#client 2
+jbs = Client.create!(name: 'JBs Cafe',
+                           photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/clients/jbs.jpg', 'image/jpg'),
+                           email: 'jbs@test.com', tel: '0890775544', website: 'http://www.jbs.com')
+
+Promotion.create!(promo_type: "2 for 1", description: "Curry Night", details: "Any two curry dishes for the price of one",
+                  client_id: jbs.id, cuisine_id: indian.id, theme_id: meal_deals,
+                  image: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/promotions/steak.jpg', 'image/jpg'),
+                  starts: Date.today.strftime('%d-%m-%Y'), ends: (Date.today + 90).strftime('%d-%m-%Y'), fri: '1', sat: '1')
+
+#client 3
+billy_bobs = Client.create!(name: 'Billy Bobs',
+                     photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/clients/billybobs.jpg', 'image/jpg'),
+                     email: 'billy.bobs@test.com', tel: '0890775544', website: 'http://www.billybobs.com')
+
+Promotion.create!(promo_type: "20% off", description: "Mexican Monday", details: "20% off all mexican dishes and side orders",
+                  client_id: billy_bobs.id, cuisine_id: indian.id, theme_id: meal_deals,
+                  image: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/promotions/mexican.jpg', 'image/jpg'),
+                  starts: Date.today.strftime('%d-%m-%Y'), ends: (Date.today + 90).strftime('%d-%m-%Y'), mon: '1')
