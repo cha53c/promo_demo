@@ -8,22 +8,21 @@ namespace :setup do
     end
   end
 
-  desc 'set up db and seed data'
-  task :db do
-    on roles(:app) do
-      execute "cd /var/www/my_app/current && bundle exec rake db:setup"
-    end
-  end
-
-  desc 'set up db and seed data'
-  task :db_reset do
-    on roles(:app) do
+  namespace :db do
+    desc 'seed db from seeds.rb'
+    task :seed do
+      on roles(:app) do
        within release_path do
           with rails_env: fetch(:rails_env) do
-            execute :rake, "db:reset"
+            execute :rake, "db:schema:load"
+            execute :rake, "db:seed"
           end
-        end
+       end
+      end
     end
   end
+end
 
+namespace :deploy do
+  task :initial => [:deploy, 'setup:secret', 'webapp:start']
 end
