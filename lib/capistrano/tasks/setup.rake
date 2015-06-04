@@ -26,3 +26,9 @@ end
 namespace :deploy do
   task :initial => [:deploy, 'setup:secret', 'webapp:start']
 end
+
+namespace :test do
+  task :verify_deploy do
+    sh "/Users/chrischase/Dev/jmeter/apache-jmeter-2.13/bin/jmeter -n -t ./test/jmeter/scripts/test_home.jmx -l ./test/jmeter/log/test_home.jtl -j ./log/jmeter.log"
+  end
+end
