@@ -18,3 +18,5 @@
 # Ingore rubymine files
 /.idea
 
+# Ignore jtl file
+/test/jmeter/log/*.jtl
