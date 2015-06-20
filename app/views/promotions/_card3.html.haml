@@ -2,7 +2,8 @@
   .panel-body
     .row
       .col-md-12
-        = link_to image_tag(promotion.image.url(:medium), height:  200, width: 300, class: 'img-responsive'), [promotion.client, promotion]
+        = image_tag(promotion.image.url(:medium))
+        -#= link_to image_tag(promotion.image.url(:medium), height:  200, width: 300, class: 'img-responsive'), [promotion.client, promotion]
     .row.lead
       .col-md-11.col-md-offset-1
         = link_to promotion.description, [promotion.client, promotion]

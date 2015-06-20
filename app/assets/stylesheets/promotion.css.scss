@@ -2,29 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//.day_label {
-//  height: 30px;
-//  width: 30px;
-//  border-radius: 10%;
-//  background-color: lightgrey;
+
+//.promo-img {
+//  max-height: 200px;
+//  min-height: 200px;
+//  max-width: 300px;
+//  overflow: hidden;
 //}
 
 
-.thumbnail {
-  max-width: 290px;
-  max-height: 448px;
-  min-width: 290px;
-  box-shadow: 5px 5px 5px #888888;
+img {
+  max-width: 100%;
+  min-width: 100%;
+  max-height: 200px;
+  min-height: 200px;
+  overflow: hidden;
 }
+//
+//.thumbnail {
+//  max-width: 290px;
+//  max-height: 448px;
+//  min-width: 290px;
+//  box-shadow: 5px 5px 5px #888888;
+//}
 
-.thumbnail a img {
-  width: 300px;
-  height: 200px;
-}
+//.thumbnail a img {
+//  width: 300px;
+//  height: 200px;
+//}
 
-.thumbnail a {
-  color: #34AC98;
-}
+//.thumbnail a {
+//  color: #34AC98;
+//}
 
 .caption {
   position: relative;
@@ -42,11 +51,7 @@
   opacity: 0.75;
 }
 
-.thumbnail:hover {
-  //  width: 105%;
-  //  height: 105%;
-  //  left: -10px;
-}
+
 
 // text overlay for image
 .thumbnail .promo_tag {
