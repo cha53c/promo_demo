@@ -18,22 +18,12 @@ img {
   min-height: 200px;
   overflow: hidden;
 }
-//
-//.thumbnail {
-//  max-width: 290px;
-//  max-height: 448px;
-//  min-width: 290px;
-//  box-shadow: 5px 5px 5px #888888;
-//}
 
-//.thumbnail a img {
-//  width: 300px;
-//  height: 200px;
-//}
-
-//.thumbnail a {
-//  color: #34AC98;
-//}
+.panel {
+  max-width: 350px;
+  min-width: 310px;
+  max-height: 419px; //  this is a HACK!!!
+}
 
 .caption {
   position: relative;
