@@ -20,3 +20,6 @@
 
 # Ignore jtl file
 /test/jmeter/log/*.jtl
+
+# Ignore promo images added during development
+/public/system

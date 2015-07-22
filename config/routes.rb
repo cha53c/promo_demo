@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  # TODO change name of url
+  get 'administration/index'
+
   # get 'users/new'
   #
   # get 'users/create'
