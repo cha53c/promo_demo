@@ -6,10 +6,10 @@ class UsersController < ApplicationController
     authorize @users
   end
 
-  def new
-    @user = User.new
-    authorize @user
-  end
+  # def new
+  #   @user = User.new
+  #   authorize @user
+  # end
 
   def create
     @user = User.new(user_params)
@@ -22,6 +22,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    # TODO
+  end
+
+  def edit
     # TODO
   end
 
