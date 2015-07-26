@@ -1,23 +1,24 @@
 Rails.application.routes.draw do
 
+  # Administration
   # TODO change name of url
   get 'administration/index'
 
-  # get 'users/new'
-  #
-  # get 'users/create'
-  #
-  # get 'users/destroy'
+  # Users
+  get 'users/index'
+  get 'users/new'
+  post 'users/create'
+  get 'users/destroy'
 
   resources :users
 
+  # session
   get 'sessions/new', :as => 'login'
   post 'sessions/create'
-
   get 'sessions/destroy', :as => 'logout'
 
+  # search
   get 'search/index'
-
   get 'search/fuzzy'
 
   root 'home#index'

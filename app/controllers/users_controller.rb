@@ -6,11 +6,13 @@ class UsersController < ApplicationController
     authorize @users
   end
 
-  # def new
-  #   @user = User.new
-  #   authorize @user
-  # end
-
+  # new shows the page with the fields to create the user
+  # note the user is not created by this method, that is done by create
+  def new
+     @user = User.new
+     authorize @user
+   end
+  # create actually create the user in the database, using the data received from the form
   def create
     @user = User.new(user_params)
     authorize @user
