@@ -36,6 +36,7 @@ class PromotionsController < ApplicationController
     @client = Client.find(@promotion.client_id)
   end
 
+  # TODO can this just use show and update instead of having an edit action?
   def edit
     flash.clear
     @promotion = Promotion.find(params[:id])

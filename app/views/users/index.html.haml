@@ -26,4 +26,5 @@
             %td
               - if policy(User.new).destroy?
                 = link_to 'Delete', 'users/destroy'
-              = link_to 'Edit', 'users/edit'
+              = link_to 'Show', user
+

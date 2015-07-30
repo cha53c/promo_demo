@@ -25,13 +25,20 @@ class UsersController < ApplicationController
 
   def destroy
     # TODO
+    # only admins can do this
   end
 
-  def edit
+  def show
+    @user = User.find(params[:id])
+    authorize @user
+  end
+
+  def update
     # TODO
+  #   if admin set user role
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :role)
   end
 end
