@@ -24,6 +24,7 @@
             %td
               hh:mm:ss dd/MM/yyyy
             %td
+              -# TODO this should not be User.new it should be the actual user
               - if policy(User.new).destroy?
                 = link_to 'Delete', 'users/destroy'
               = link_to 'Show', user

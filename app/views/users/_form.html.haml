@@ -1,0 +1,4 @@
+= bootstrap_form_for :user, url: url, method: http_verb, html: {multipart: true, role: 'role'} do |f|
+  = f.text_field :email
+  = f.text_field :role
+  = f.submit class: 'btn btn-success'
