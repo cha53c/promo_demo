@@ -24,13 +24,6 @@
             %td
               hh:mm:ss dd/MM/yyyy
             %td
-              = link_to "Delete", 'users/destroy'
-              = link_to "Edit", 'users/edit'
-
-
-              -#%ul
-              -#  - @users.each do |user|
-              -#    %li
-              -#      %span
-              -#        = user.email
-              -#        = link_to "Delete", 'users/destroy'
+              - if policy(User.new).destroy?
+                = link_to 'Delete', 'users/destroy'
+              = link_to 'Edit', 'users/edit'

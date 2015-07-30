@@ -20,6 +20,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  #authorisation
+  def admin?
+    # TODO create role attribute on user
+    # if user.role == 'admin'
+    # TODO REMOVE HARD CODED VALUE
+    false;
+  end
+
   def encrypt_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt
@@ -27,3 +35,5 @@ class User < ActiveRecord::Base
     end
   end
 end
+
+

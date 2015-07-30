@@ -4,9 +4,9 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{localhost}
-role :web, %w{localhost}
-role :db,  %w{localhost}
+role :app, %w{178.62.55.77}
+role :web, %w{178.62.55.77}
+role :db,  %w{178.62.55.77}
 
 
 
@@ -16,7 +16,7 @@ role :db,  %w{localhost}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'localhost', user: 'deploy', roles: %w{web app db} 
+server '178.62.55.77', user: 'deploy', roles: %w{web app db}
 
 
 # Custom SSH Options
@@ -29,7 +29,7 @@ server 'localhost', user: 'deploy', roles: %w{web app db}
 
   set :ssh_options, {
     # verbose: :debug,
-    port: 2222,
+    port: 22,
     user: 'deploy',
     keys: %w(~/.ssh/id_rsa),
     forward_agent: true,
