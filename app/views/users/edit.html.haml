@@ -1,5 +1,5 @@
 %h1 User#edit
-= link_to 'Back', users_path, {class: "btn btn-default"}
+= link_to 'Back to Users', users_path, {class: "btn btn-default"}
 = link_to('Done', user_path(@user), {class: "btn btn-primary"})
 .container
   .row
@@ -8,5 +8,6 @@
         = render 'form', http_verb: :patch, url: user_path
     .col-md-6
       = render 'shared/form_error', model: @user
+      -# TODO is the need, what happens if there are no errors
       - if @user.errors.empty?
         -#= render

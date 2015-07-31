@@ -1,4 +1,16 @@
 .container
-  %h1 User Details
-  = link_to 'Edit', edit_user_path
+  %h1 User#Show
+  .row
+    = link_to 'Back to Users', users_path, {class: "btn btn-default"}
+    = link_to 'Edit', edit_user_path, {class: "btn btn-primary"}
+  .row
+    %p
+      Email:
+      = @user.email
+    %p
+      Role:
+      = @user.role
+    %p
+      Date Created:
+      = @user.created_at
 

@@ -24,8 +24,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    # TODO
+    # TODO implement destory
     # only admins can do this
+    redirect_to users_path
   end
 
   def show
@@ -39,8 +40,16 @@ class UsersController < ApplicationController
   end
 
   def update
-    # TODO
+    # TODO implement update
   #   if admin set user role
+    @user = User.find(params[:id])
+    authorize @user
+    if @user.update(user_params)
+      flash.now.notice="User details updated"
+      render 'edit'
+    else
+      flash.now.alert('User details update failed')
+    end
   end
 
   def user_params
