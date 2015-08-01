@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
 
-
+  ROLES = [['Admin', 'admin'], ['Client', 'client'],['Account Manager', 'acc_manager']]
   attr_accessor :password
   before_save :encrypt_password
-
+  validates_inclusion_of :role, within: %w(admin client acc_manager), message: '#{:role} is not a valid role'
   validates_confirmation_of :password
-  validates_presence_of :password, on: :create
+  validates_presence_of :password, :role, on: :create
   validates_presence_of :email
   validates_uniqueness_of :email
   validates_length_of :email, maximum: 50

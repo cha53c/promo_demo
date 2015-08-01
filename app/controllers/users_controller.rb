@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  # TODO log all audit trail of all actions
   after_filter :verify_authorized
 
   def index
@@ -40,8 +41,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    # TODO implement update
-  #   if admin set user role
     @user = User.find(params[:id])
     authorize @user
     if @user.update(user_params)
