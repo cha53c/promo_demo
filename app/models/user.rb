@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
   validates_inclusion_of :role, within: %w(admin client acc_manager), message: '#{:role} is not a valid role'
-  # TODO limit min size of password
+  # TODO limit min lenght of password
   validates_confirmation_of :password
   validates_presence_of :password, :role, on: :create
   validates_presence_of :email

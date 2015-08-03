@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  # TODO log all audit trail of all actions
   after_filter :verify_authorized
 
   def index
@@ -18,25 +17,22 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     authorize @user
     if @user.save
-      # TODO add name of user in flash message
-      logger.info('new user created')
-      flash.now.notice='New User created'
+      logger.info("user_id: #{current_user.id} create new user: #{@user.email}")
+      flash.now.notice="New user: #{@user.email} created"
       render 'show'
     else
-      logger.warn('failed to create new user')
-      flash.now.alert='User could not be created'
+      logger.warn("user_id: #{current_user.id} failed to create new user: #{@user.email}")
+      flash.now.alert="New user: #{@user.email} could not be created"
       render "new"
     end
   end
 
   def destroy
     @user = find_by_id(params[:id])
-    # only admins can do this
     authorize @user
     @user.destroy
-    puts '#{@user.id} deleted'
-    # TODO include user id in flash message
-    redirect_to users_path, notice: 'User x has been deleted'
+    logger.info("user_id: #{current_user.id} deleted user #{@user.email}")
+    redirect_to users_path, notice: "User #{@user.email} has been deleted"
   end
 
   def show
@@ -50,15 +46,17 @@ class UsersController < ApplicationController
   end
 
   def update
+    # TODO ask for confirmation before updating records
     @user = find_by_id(params[:id])
     authorize @user
+    org_user_email = @user.email
     if @user.update(user_params)
-      logger.info('user x updated user details for user y')
-      flash.now.notice="User details updated"
+      logger.info("user_id #{current_user.id} updated details for user #{org_user_email}")
+      flash.now.notice="User #{@user.email} details updated"
       render 'show'
     else
-      logger.warn('user x attempted to update details for user y, but update failed')
-      flash.now.alert='User details update failed'
+      logger.warn("user_id #{current_user.id} attempted to update details for user #{org_user_email}, but update failed")
+      flash.now.alert="Failed to update details for User #{org_user_email}"
       render 'edit'
     end
   end
