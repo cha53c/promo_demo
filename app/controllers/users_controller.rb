@@ -25,9 +25,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    # TODO implement destory
+    @user = User.find(params[:id])
     # only admins can do this
-    redirect_to users_path
+    authorize @user
+    # TODO implement destroy
+    # @user.destroy
+    puts '#{user.id} deleted'
+    # TODO include user id in flash message
+    redirect_to users_path, notice: 'User x has been deleted'
   end
 
   def show
@@ -47,7 +52,8 @@ class UsersController < ApplicationController
       flash.now.notice="User details updated"
       render 'edit'
     else
-      flash.now.alert('User details update failed')
+      flash.now.alert='User details update failed'
+      render 'edit'
     end
   end
 

@@ -1,11 +1,14 @@
 class UserPolicy < ApplicationPolicy
-  # class Scope < Scope
-  #   def resolve
-  #     scope
-  #   end
-  # end
+  attr_reader :crnt_user, :user
+
+  def initialize(crnt_user, user)
+    @crnt_user = crnt_user
+    @user = user
+  end
 
  def destroy?
-   user.admin?
+   puts '#{crnt_user.id} attempting to delete a user'
+   puts 'Check User has permissions to destroy'
+   crnt_user.admin?
  end
 end

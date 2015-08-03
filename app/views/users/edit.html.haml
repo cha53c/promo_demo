@@ -8,6 +8,6 @@
         = render 'form', http_verb: :patch, url: user_path
     .col-md-6
       = render 'shared/form_error', model: @user
-      -# TODO is the need, what happens if there are no errors
+      -# TODO is this needed, what happens if there are no errors
       - if @user.errors.empty?
         -#= render

@@ -22,10 +22,15 @@ class User < ActiveRecord::Base
 
   #authorisation
   def admin?
-    # TODO create role attribute on user
-    # if user.role == 'admin'
-    # TODO REMOVE HARD CODED VALUE
-    false;
+    role == 'admin'
+  end
+
+  def client?
+    role == 'client'
+  end
+
+  def account_manager?
+    role == 'acc_manager'
   end
 
   def encrypt_password

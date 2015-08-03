@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   get 'administration/index'
 
   # Users
-  get 'users/index'
-  get 'users/new'
-  post 'users/create'
-  get 'users/destroy'
+  # get 'users/index'
+  # get 'users/new'
+  # post 'users/create'
+  # delete 'users/destroy'
 
   resources :users
 
