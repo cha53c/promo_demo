@@ -6,15 +6,17 @@
     - if policy(User).destroy?
       = link_to 'Delete', user_path(@user), {method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure you want to delete this user?"}}
   .row
-    %h2
+    %h3
+      Name:
+      =@user.name
+    %h3
       Email:
       = @user.email
     %br
-    %h2
+    %h3
       Role:
       = @user.role
     %br
-    %h2
+    %h3
       Date Created:
       = @user.created_at
-

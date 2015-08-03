@@ -1,4 +1,5 @@
 = bootstrap_form_for :user, url: url, method: http_verb, html: {multipart: true, role: 'role'} do |f|
+  = f.text_field :name
   = f.text_field :email
   -# TODO add email confirmation?
   = f.select :role, User::ROLES , {include_blank: true}
