@@ -2,7 +2,7 @@
   %h1
     All Users
     = @users.length
-
+  = link_to "Add User", new_user_path, {method: :get, class: 'btn btn-success'}
   .table-responsive
     %table.table.table-striped
       %thead

@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'rails_helper'
 
 RSpec.describe UsersController, :type => :controller do
@@ -19,6 +20,7 @@ RSpec.describe UsersController, :type => :controller do
 
   describe "POST create" do
     subject(:post_create) { post :create, user: attributes_for(:user) }
+
     it 'call save on user' do
       expect(User).to receive(:new).and_return(user)
       expect(user).to receive(:save)

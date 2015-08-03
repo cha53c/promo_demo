@@ -1,40 +1,14 @@
 .container
   %h1 User#New
   = link_to 'Back to Users', users_path, {class: "btn btn-default"}
+  = link_to('Done', users_path, {class: "btn btn-primary"})
   .container
     .row
       .col-md-6
         .form-group
-          = render 'form', http_verb: :post, url: new_user_path
+          = render 'form', http_verb: :post, url: users_url
       .col-md-6
         = render 'shared/form_error', model: @user
         -# TODO is the need, what happens if there are no errors
         - if @user.errors.empty?
           -#= render
--#.container
--#  %h1 Users#new
--#  %p Find me in app/views/users/new.html.haml
--#.row
--#  .col-md-offset-4
--#  .col-md-4
--#    .well
--#      = form_for @user do |f|
--#        = render 'shared/form_error', model: @user
--#        %p
--#          = f.label :email
--#          %br
--#          = f.text_field :email
--#        %p
--#        %p
--#          = f.label :role
--#          %br
--#          = f.text
--#          = f.label :password
--#          %br
--#          = f.password_field :password
--#        %p
--#          = f.label :password_confirmation
--#          %br
--#          = f.password_field :password_confirmation
--#        %p
--#          = submit_tag 'Add User'
