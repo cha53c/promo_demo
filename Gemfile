@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
+# devise
+gem 'devise'
+
 # bootstrap forms
 gem 'bootstrap_form'
 
 # Assets
 gem 'rails-assets-readmore'
-
 
 gem 'haml-rails'
 
