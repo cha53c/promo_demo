@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
   # Administration
   # TODO change name of url
   get 'administration/index'
@@ -11,8 +12,10 @@ Rails.application.routes.draw do
   # post 'users/create'
   # delete 'users/destroy'
 
+  # TODO do I need this now I am using devise?
   resources :users
 
+  # TODO is this still needed, shouldn't it be managed by devise?
   # session
   get 'sessions/new', :as => 'login'
   post 'sessions/create'
