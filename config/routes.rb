@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   # Administration
   # TODO change name of url
   get 'administration/index'

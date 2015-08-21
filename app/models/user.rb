@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :timeoutable, :lockable
 
   ROLES = [['Admin', 'admin'], ['Client', 'client'],['Account Manager', 'acc_manager']]
   attr_accessor :password
