@@ -1,31 +1,44 @@
 .container
   %h1
-    All Users
-    = @users.length
-  = link_to "Add User", new_user_path, {method: :get, class: 'btn btn-success'}
-  .table-responsive
-    %table.table.table-striped
-      %thead
-        %tr
-          %th Name
-          %th Email
-          %th Role
-          %th Login Count
-          %th Last Login
-          %th Action
-      %tbody
-        - @users.each do |user|
+    Users
+  .row
+    %h2
+      Status Overview
+  .row
+    .col-md-4
+      %h3
+        Total:
+        = @users.length
+    .col-md-4
+      %h3
+        Unconfirmed:
+        = User.unconfirmed.length
+  -#  TODO write helper to show number of unconfirmed
+  .row
+    = link_to "Add User", new_user_path, {method: :get, class: 'btn btn-success'}
+    .table-responsive
+      %table.table.table-striped
+        %thead
           %tr
-            %td
-              = user.name
-            %td
-              = user.email
-            %td
-              = user.role
-            %td
-              n/a
-            %td
-              hh:mm:ss dd/MM/yyyy
-            %td
-              = link_to 'Show', user
+            %th Name
+            %th Email
+            %th Role
+            %th Login Count
+            %th Last Login
+            %th Action
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td
+                = user.name
+              %td
+                = user.email
+              %td
+                = user.role
+              %td
+                n/a
+              %td
+                hh:mm:ss dd/MM/yyyy
+              %td
+                = link_to 'Show', user
 
