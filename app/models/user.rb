@@ -14,20 +14,10 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   # TODO a default role will be set on registration - only and admin will be able to change it. so the
   validates_presence_of :password, on: :create
-  # TODO check these should now be handled by devise
+  # TODO check email validation should now be handled by devise
   validates_presence_of :email
   validates_uniqueness_of :email
   validates_length_of :email, maximum: 50
-
-  # TODO this should not be required with Devise and Pundit doeing te
-  def self.authenticate(email, password)
-    user = find_by_email(email)
-    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    else
-      nil
-    end
-  end
 
   #authorisation
   def admin?
