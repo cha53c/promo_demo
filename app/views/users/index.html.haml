@@ -13,7 +13,11 @@
       %h3
         Unconfirmed:
         = User.unconfirmed.length
-  -#  TODO write helper to show number of unconfirmed
+        -# TODO write helper to show number of unconfirmed
+    .col-md-4
+      %h3
+        Never signed in:
+        = User.nosignin.length
   .row
     = link_to "Add User", new_user_path, {method: :get, class: 'btn btn-success'}
     .table-responsive
