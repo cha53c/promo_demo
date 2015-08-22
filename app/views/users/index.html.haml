@@ -5,19 +5,23 @@
     %h2
       Status Overview
   .row
-    .col-md-4
+    .col-md-3
       %h3
         Total:
         = @users.length
-    .col-md-4
+    .col-md-3
       %h3
         Unconfirmed:
         = User.unconfirmed.length
         -# TODO write helper to show number of unconfirmed
-    .col-md-4
+    .col-md-3
       %h3
-        Never signed in:
-        = User.nosignin.length
+        Unconfirmed:
+        = User.unconfirmed.length
+    .col-md-3
+      %h3
+        Locked:
+        = User.locked.length
   .row
     = link_to "Add User", new_user_path, {method: :get, class: 'btn btn-success'}
     .table-responsive
