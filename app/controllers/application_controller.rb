@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
   def after_sign_up_path_for (resource)
     puts 'after_sign_up_path...'
     puts new_user_session_path
+    new_user_session_path
   end
 
   # def after_sign_in_path_for(resource)
