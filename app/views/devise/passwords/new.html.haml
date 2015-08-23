@@ -1,14 +1,11 @@
 .container
   .row
     .col-md-offset-4.col-md-4
-      %h2 Sign in
+      %h2 Forgot your password?
       .well.well-lg
-        = bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
           = f.email_field :email, autofocus: true
-          = f.password_field :password, autocomplete: "off"
-          - if devise_mapping.rememberable?
-            = f.check_box :remember_me
-          = f.submit "Sign in", {class: 'btn btn-success'}
+          = f.submit "Send me reset password instructions", {class: 'btn btn-success'}
       = render "devise/shared/links"
     .col-md-4
       = render 'shared/form_error', model: @user
