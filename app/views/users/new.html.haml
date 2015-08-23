@@ -7,7 +7,7 @@
     .row
       .col-md-6
         .form-group
-          = render 'form', http_verb: :post, url: users_url
+          = render 'edit_form', http_verb: :post, url: users_url
       .col-md-6
         = render 'shared/form_error', model: @user
         -# TODO is the need, what happens if there are no errors

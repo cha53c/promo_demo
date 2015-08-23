@@ -18,9 +18,6 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   # TODO a default role will be set on registration - only and admin will be able to change it. so the
   validates_presence_of :password, on: :create
-  # TODO check email validation should now be handled by devise
-  validates_presence_of :email
-  validates_uniqueness_of :email
   validates_length_of :email, maximum: 50
 
   #authorisation

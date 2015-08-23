@@ -2,7 +2,9 @@
   = f.text_field :name
   = f.text_field :email
   -# TODO remove role from registration, this will default to client
-  -#= f.select :role, User::ROLES , {include_blank: true}
+  -# TODO had been left in for development
+  -# TODO only allow for Admins to view on edit?????
+  = f.select :role, User::ROLES , {include_blank: true}
   = f.password_field :password
     - if @minimum_password_length
     %em

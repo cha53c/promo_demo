@@ -7,7 +7,31 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  # update strong params for devise
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    # TODO role is only allowed in sign_up for development - REMOVE
+    devise_parameter_sanitizer.for(:sign_up) << :role
+    devise_parameter_sanitizer.for(:sign_up) << :name
+    devise_parameter_sanitizer.for(:account_update) << :role
+  end
+
+  # added for pundit
   helper_method :current_user
+
+  # configure routes for devise workflow
+  # once confirmation is sent direct user to login page
+  def after_sign_up_path_for (resource)
+    puts 'after_sign_up_path...'
+    puts new_user_session_path
+  end
+
+  # def after_sign_in_path_for(resource)
+
+  # end
 
   # loads the menu items for the nav bar
   protected
