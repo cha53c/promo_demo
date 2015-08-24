@@ -1,0 +1,11 @@
+.container
+  .row
+    .col-md-offset-4.col-md-4
+      %h2 Get confirmation instructions
+      .well.well-lg
+        = bootstrap_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+          = f.email_field :email, placeholder: 'Enter your email here', autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+          = f.submit "Resend confirmation instructions", {class: 'btn btn-success'}
+      = render "devise/shared/links"
+    .col-md-4
+      = render 'shared/form_error', model: @user
