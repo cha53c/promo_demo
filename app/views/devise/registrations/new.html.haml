@@ -1,17 +1,13 @@
 .container
-  -# TODO remove devise from title
-  %h1 Devise Sign Up
   -# TODO these links may need to change
   = link_to 'Back to Users', users_path, {class: "btn btn-default"}
   = link_to('Done', users_path, {class: "btn btn-primary"})
   .container
     .row
-      .col-md-6
-        .form-group
+      .col-md-offset-4.col-md-4
+        %h1 Sign Up
+        .well.well-lg
           = render 'reg_form', http_verb: :post, url: registration_path(resource_name)
-          = render 'devise/shared/links'
-      .col-md-6
+        = render 'devise/shared/links'
+      .col-md-4
         = render 'shared/form_error', model: @user
-        -# TODO is the need, what happens if there are no errors
-        - if @user.errors.empty?
-          -#= render
