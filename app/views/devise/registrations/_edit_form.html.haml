@@ -2,6 +2,7 @@
   = f.text_field :name
   = f.text_field :email
   -# TODO this will only be available to and admin user
+  -#- if current_user.admin?
   = f.select :role, User::ROLES , {include_blank: true}
   = f.label 'New Password'
   %i (leave blank if you don't want to change it)
