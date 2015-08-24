@@ -1,12 +1,15 @@
-%h1 User#edit
+
 = link_to 'Back to Users', users_path, {class: "btn btn-default"}
 = link_to('Done', user_path(@user), {class: "btn btn-primary"})
+
 .container
   .row
-    .col-md-6
-      .form-group
-        = render 'edit_form', http_verb: :patch, url: registration_path(resource_name)
-    .col-md-6
+    .col-md-offset-4.col-md-4
+      %h1 User#edit
+      .well.well-lg
+        .form-group
+          = render 'edit_form', http_verb: :patch, url: registration_path(resource_name)
+    .col-md-4
       = render 'shared/form_error', model: @user
       -# TODO is this needed, what happens if there are no errors
       - if @user.errors.empty?

@@ -1,8 +1,13 @@
--# TODO depricated - this is replaced by devise
 = bootstrap_form_for :user, url: url, method: http_verb, html: {multipart: true, role: 'role'} do |f|
   = f.text_field :name
   = f.text_field :email
+  -# TODO this will only be available to and admin user
   = f.select :role, User::ROLES , {include_blank: true}
-  = f.password_field :password
-  = f.password_field :password_confirmation
+  = f.label 'New Password'
+  %i (leave blank if you don't want to change it)
+  = f.password_field :password, hide_label: true, placeholder: 'Enter new password'
+  = f.label 'Confirm new password'
+  = f.password_field :password_confirmation, hide_label: true, placeholder: 'Re-enter new password'
+  %i (we need your current password to confirm your changes)
+  = f.password_field :current_password, autocomplete: "off"
   = f.submit 'Save Changes', {class: 'btn btn-success'}
