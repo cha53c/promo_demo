@@ -20,11 +20,12 @@ class ApplicationController < ActionController::Base
   end
 
   # configure routes for devise workflow
-  # once confirmation is sent direct user to login page
-  def after_sign_up_path_for (resource)
-    puts 'after_sign_up_path...'
-    puts new_user_session_path
-    new_user_session_path
+
+  def after_sign_in_path_for (resource)
+    # TODO after sign in user should to the 'client' description page
+    # TODO if the have not created on then they will be sent new page.
+    # TODO once they of created a page they will be directed to that on signin
+    new_client_path
   end
 
   # def after_sign_in_path_for(resource)
