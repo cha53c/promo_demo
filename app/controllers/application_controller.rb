@@ -19,9 +19,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << :role
   end
 
-  # added for pundit
-  helper_method :current_user
-
   # configure routes for devise workflow
   # once confirmation is sent direct user to login page
   def after_sign_up_path_for (resource)
@@ -42,12 +39,6 @@ class ApplicationController < ActionController::Base
     @theme = Theme.all
     logger.debug 'loaded ' + @theme.length.to_s + ' Themes'
 
-  end
-
-  # private
-  public
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
 end
