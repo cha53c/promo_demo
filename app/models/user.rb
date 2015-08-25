@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
          :timeoutable, :lockable
 
   ROLES = [['Admin', 'admin'], ['Client', 'client'],['Account Manager', 'acc_manager']]
-  # TODO will need to pass the role in on account_update
   # TODO only admin will be able to change the role the default is 'client'
   validates_inclusion_of :role, within: %w(admin client acc_manager), message: "#{:role} is not a valid role"
   # TODO limit min lenght of password

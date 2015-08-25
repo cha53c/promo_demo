@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for (resource)
     # TODO after sign in user should to the 'client' description page
-    # TODO if the have not created on then they will be sent new page.
+    # TODO if they have not created one then they will be shown new page.
     # TODO once they of created a page they will be directed to that on signin
     new_client_path
   end

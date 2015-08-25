@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  # TODO this being replaced by devise
   # after_filter :verify_authorized, only: :destroy
 
   def new
@@ -14,7 +15,7 @@ class SessionsController < ApplicationController
       render "new"
     end
   end
-  # TODO you should only be able to call log out if you are logged in
+
   def destroy
     session[:user_id] = nil
     flash.now.notice = "You have been logged out"

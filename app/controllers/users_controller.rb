@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  # TODO CUD actions will be handled by devise and should be removed
+
+  # This will handle actions for desplaying and searching user.
+  # all account creation and updates and destroys are handled by devise
   after_filter :verify_authorized
 
   def index
@@ -17,6 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     authorize @user
     if @user.save
+      # TODO we need to make sure that devise logs and appropriate trail for audit purposes
       logger.info("user_id: #{current_user.id} create new user: #{@user.email}")
       flash.now.notice="New user: #{@user.email} created"
       render 'show'
