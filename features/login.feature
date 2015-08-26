@@ -1,12 +1,12 @@
-@done @admin
+@user
 Feature: User Authentication
-  As a site manager
-  I want admins to log in
-  So that they can access CUD operations
+  As a user
+  I want to log in
+  So that they can access my account
 
   Scenario Outline: Login
     Given email <email> and password <password>
-    When I click on sign in
+    When I click on "Sign In"
     Then I see <message> message
 
     Scenarios: correct email and password

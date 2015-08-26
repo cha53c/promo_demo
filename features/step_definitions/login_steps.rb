@@ -1,12 +1,12 @@
 Given(/^email (.*?) and password (\w+)$/) do |email, password|
-  visit 'sessions/new'
-  User.create!(email: email, password: 'abc123', password_confirmation: 'abc123')
-  fill_in 'email', :with => email
-  fill_in 'password', :with => password
+  visit 'users/sign_in'
+  User.create!(email: email, password: password, password_confirmation: password)
+  fill_in 'email', with: email
+  fill_in 'password', with: password
 end
 
-When(/^I click on sign in$/) do
-  click_on 'Log in'
+When(/^I click on "(.*?)"$/) do |arg1|
+  click_on arg1
 end
 
 Then(/^I see (.*?) message$/) do  |message|
