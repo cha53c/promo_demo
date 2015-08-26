@@ -8,14 +8,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :timeoutable, :lockable
-
+  # TODO a default role will be set on registration - only and admin will be able to change it.
   ROLES = [['Admin', 'admin'], ['Client', 'client'],['Account Manager', 'acc_manager']]
   # TODO only admin will be able to change the role the default is 'client'
   validates_inclusion_of :role, within: %w(admin client acc_manager), message: "#{:role} is not a valid role"
-  # TODO limit min lenght of password
-  validates_confirmation_of :password
-  # TODO a default role will be set on registration - only and admin will be able to change it. so the
-  validates_presence_of :password, on: :create
   validates_length_of :email, maximum: 50
 
   #authorisation
