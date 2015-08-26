@@ -17,6 +17,7 @@ Feature: User Authentication
       | email| password | message |
       | test@test.com| 123456   | Invalid email or password |
 
+
     Scenarios: No password
       | email         | password | message |
       | test@test.com | nil      | Invalid email or password |
