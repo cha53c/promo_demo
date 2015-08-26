@@ -80,4 +80,5 @@ group :test do
   gem 'capybara'
   gem 'guard-rspec'
   gem 'launchy'
+  gem 'email_spec'
 end

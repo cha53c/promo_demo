@@ -12,6 +12,8 @@ Feature: Register User
      And I click on Sign Up
      Then I see <message> message
      Then I receive an 'email confirmation' email
+     Then I click on "Confirm my account" link in email
+       And I see Your email address has been successfully confirmed. message
         
     Scenarios: Valid registration
       | email | password | message |
