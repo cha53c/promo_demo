@@ -1,20 +1,16 @@
-Given(/^I am logged in$/) do
-  visit 'user/sign'
-  User.create!(email: "test@test.com", password: 'abc123', password_confirmation: 'abc123')
-  fill_in 'email', :with => "test@test.com"
-  fill_in 'password', :with => 'abc123'
-  click_on 'Sign In'
-  expect(page).to have_content('Log Out')
+Given(/^(.*?) is signed in$/) do |user|
+  steps %Q{
+    Given I am on the "users/sign_in" page
+    Given I have a confirmed account with email #{user}
+    Given email #{user} and password 12345678
+    When I click on "Sign in"
+  }
 end
 
-# When(/^I click on 'log out'$/) do
-#   click_on 'Log Out'
-# end
-
-Then(/^I should be redirected to the log out page$/) do
-  expect(page.current_path).to eq("/sessions/destroy")
+Then(/^I should be redirected to "(.*?)"$/) do |path|
+  expect(page.current_path).to eq(path)
 end
 
-Then(/^not see the 'log out' link$/) do
-  expect(page).not_to have_content('Log Out')
+Then(/^not see the "(.*?)" link$/) do |link|
+  expect(page).not_to have_content(link)
 end
