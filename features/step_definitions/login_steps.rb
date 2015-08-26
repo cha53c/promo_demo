@@ -1,12 +1,14 @@
-Given(/^email (.*?) and password (\w+)$/) do |email, password|
-  visit 'users/sign_in'
-  User.create!(email: email, password: password, password_confirmation: password)
-  fill_in 'email', with: email
-  fill_in 'password', with: password
+Given(/^I have a confirmed account with email (.*?)$/) do |email|
+  User.create!(email: email, password: '12345678', password_confirmation: '12345678', confirmed_at: DateTime.new(1970,1,1))
 end
 
-When(/^I click on "(.*?)"$/) do |arg1|
-  click_on arg1
+Given(/^email (.*?) and password (\w+)$/) do |email, password|
+  fill_in 'user_email', with: email
+  fill_in 'user_password', with: password
+end
+
+When(/^I click on "(.*?)"$/) do |link|
+  click_on link
 end
 
 Then(/^I see (.*?) message$/) do  |message|

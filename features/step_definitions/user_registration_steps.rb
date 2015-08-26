@@ -1,5 +1,5 @@
-Given(/^I am on the Sign Up page$/) do
- visit 'users/sign_up'
+Given(/^I am on the "(.*?)" page$/) do | path|
+ visit path
 end
 
 When(/^I fill in email (.*?) and password (\w+)$/) do |email, password|
