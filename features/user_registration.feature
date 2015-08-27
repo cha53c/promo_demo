@@ -1,4 +1,4 @@
-@user
+@user @authentication
 Feature: Register User
   As a User
   I want to register for an account

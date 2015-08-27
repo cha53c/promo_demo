@@ -1,4 +1,4 @@
-@user
+@user @authentication
 Feature: User Authentication
   As a user
   I want to log in
