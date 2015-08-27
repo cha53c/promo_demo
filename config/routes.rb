@@ -6,20 +6,8 @@ Rails.application.routes.draw do
   # TODO change name of url
   get 'administration/index'
 
-  # Users
-  # get 'users/index'
-  # get 'users/new'
-  # post 'users/create'
-  # delete 'users/destroy'
-
-  # TODO do I need this now I am using devise?
-  resources :users
-
-  # TODO is this still needed, shouldn't it be managed by devise?
-  # session
-  get 'sessions/new', :as => 'login'
-  post 'sessions/create'
-  get 'sessions/destroy', :as => 'logout'
+  get 'users/:id', to: 'users#show', as: :user
+  get 'users/', to: 'users#index'
 
   # search
   get 'search/index'
@@ -30,6 +18,7 @@ Rails.application.routes.draw do
   resources :clients do
     resources :promotions
   end
+
   # TODO should not need this should be able to use the standard resources without the new
   post '/clients/:client_id/promotions/new' => 'promotions#create'
 

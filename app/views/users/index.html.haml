@@ -23,7 +23,8 @@
         Locked:
         = User.locked.length
   .row
-    = link_to "Add User", new_user_path, {method: :get, class: 'btn btn-success'}
+    -# TODO decide how admins should add users - invitation or manually?
+      = link_to "Add User", new_user_path, {method: :get, class: 'btn btn-success'}
     .table-responsive
       %table.table.table-striped
         %thead
