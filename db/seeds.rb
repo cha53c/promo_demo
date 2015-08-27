@@ -6,8 +6,8 @@
 #   cities = City.create( cuisine: [{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create( cuisine: name: 'Emanuel', city: cities.first)
 
-User.create( email: 'test@test1.com', password: '12345678', password_confirmation: '1234568', role: 'client')
-User.create!(email: 'admin@admin.com', password: '12345678', password_confirmation: '12345678', confirmed_at: DateTime.new(1970,1,1), role: 'admin')
+User.create( email: 'test@test1.com', password: '12345678', password_confirmation: '1234568', role: 'client', confirmed_at: DateTime.now())
+User.create!(email: 'admin@admin.com', password: '12345678', password_confirmation: '12345678', role: 'admin', confirmed_at: DateTime.now())
 
 
 indian = Cuisine.create(cuisine: 'Indian')
