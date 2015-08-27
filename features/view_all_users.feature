@@ -1,0 +1,18 @@
+@admin @authorisation
+Feature:
+  As an Administrator
+  I want to view all users
+  So that I can manage them
+    
+  Scenario:
+    Given I am signed in as role "admin"
+    When I visit 'users' page
+    Then I should see 'users'
+    
+#    Scenario Outline:
+#        Given
+#        When
+#        Then
+        
+ #       Scenarios:
+ #       | var1 | var2 |
