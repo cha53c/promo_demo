@@ -6,7 +6,7 @@ Feature: User Authentication
 
   Scenario Outline: Login
 
-    Given I am on the "users/sign_in" page
+    Given I visit users/sign_in
     Given I have a confirmed account with email <email>
     Given email <email> and password <password>
     When I click on "Sign in"

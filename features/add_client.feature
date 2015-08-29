@@ -13,7 +13,7 @@ Feature: Add Client
 
   Scenario: Failed add client
     Given I am logged in
-    And I am on the new client page
+    And I visit clients/new
     And I incorrectly complete the new client form
     When I submit new client
     Then I should see a flash message

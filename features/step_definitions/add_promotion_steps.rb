@@ -16,6 +16,7 @@ end
 
 
 Given(/^I am on the new promotion page$/) do
+  # TODO this should be a either a Given I x client exists or I am Client x
   client = Client.create!(name: "testclient", tel: "123", email: "me@home.com",
                           website: "www.bookme.com",
                           photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/promotions/test_image.jpg', 'image/jpg'))

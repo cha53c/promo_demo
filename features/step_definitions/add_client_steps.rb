@@ -1,7 +1,4 @@
-Given(/^I am on the new client page$/) do
-  visit("clients/new")
-  # pending # express the regexp above with the code you wish you had
-end
+
 
 When(/^I enter the client details$/) do
   pending # express the regexp above with the code you wish you had

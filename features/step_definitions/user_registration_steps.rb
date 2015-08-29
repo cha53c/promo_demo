@@ -1,4 +1,4 @@
-Given(/^I am on the "(.*?)" page$/) do | path|
+Given(/^I visit (.*?)$/) do | path|
  visit path
 end
 

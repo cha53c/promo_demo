@@ -7,7 +7,7 @@ Feature: Register User
 #
     
    Scenario Outline: Registration
-     Given I am on the "users/sign_up" page
+     Given I visit users/sign_up
      When  I fill in email <email> and password <password>
      And I click on "Sign Up"
      Then I see <message> message

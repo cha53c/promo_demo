@@ -1,8 +1,13 @@
-Given(/^I am on the home page$/) do
-  visit("/")
+# Given(/^I am on the home page$/) do
+#   # TODO this should use I visit x step
+#   visit("/")
+#   # TODO There is too much going on here, it needs to be moved to dry up the visit step
+# end
+
+Given(/^The promotion exists$/) do
   client = Client.create!(name: "testclient", tel: "123", email: "me@home.com",
-                website: "www.bookme.com",
-                photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/promotions/test_image.jpg', 'image/jpg'))
+                          website: "www.bookme.com",
+                          photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/promotions/test_image.jpg', 'image/jpg'))
   Promotion.create!(client_id: client.id,
                     image: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/images/promotions/test_image.jpg', 'image/jpg'),
                     description: "Burger Madness",  promo_type: "2 for 1", wed: '1',
