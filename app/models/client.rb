@@ -1,5 +1,6 @@
 class Client < ActiveRecord::Base
   has_many :promotions, dependent: :destroy
+  has_many :users
   has_one :address
   accepts_nested_attributes_for :address, allow_destroy: true
   validates :photo, :tel, :website, :email, :name, presence: true

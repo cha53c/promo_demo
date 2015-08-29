@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821165458) do
+ActiveRecord::Schema.define(version: 20150829084330) do
 
   create_table "addresses", force: true do |t|
     t.string   "line1"
@@ -103,8 +103,10 @@ ActiveRecord::Schema.define(version: 20150821165458) do
     t.integer  "failed_attempts",        default: 0,        null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.integer  "client_id"
   end
 
+  add_index "users", ["client_id"], name: "index_users_on_client_id"
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

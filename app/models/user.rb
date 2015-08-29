@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  belongs_to :client
+
   scope :unconfirmed, -> {where(confirmed_at: nil)}
   scope :nosignin, -> {where(sign_in_count: 0)}
   scope :locked, -> {where.not(locked_at: nil)}
