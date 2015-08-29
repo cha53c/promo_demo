@@ -70,6 +70,7 @@ group :development,:test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'factory_girl_rails'
   gem 'rspec-activemodel-mocks'
+  gem 'hirb'
 end
 group :test do
   gem 'cucumber-rails', :require => false
