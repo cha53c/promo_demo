@@ -17,16 +17,3 @@ end
 Then(/^I should see promotions with '(.*?)'$/) do |keyword|
   expect(page).to have_content(keyword)
 end
-
-Given(/^a keyword$/) do
-  visit("/")
-  fill_in 'keyword', with: 'Burger'
-end
-
-When(/^I search$/) do
-  click_on('submit_search')
-end
-
-Then(/^I should see the message 'No results Found'$/) do
-  expect(page).to have_content("No results found")
-end

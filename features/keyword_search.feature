@@ -2,7 +2,7 @@
 Feature: Keyword search
   As a Visitor
   I want to search for promotions using a keyword
-  So that I can find promotions I am interested in
+  So that I can find ALL promotions with the keyword
 
   Scenario: Successful keyword search
     Given I visit /
@@ -11,9 +11,9 @@ Feature: Keyword search
     Then I should see promotions with 'Burger'
 
   Scenario: No results keyword search
-    Given a keyword
-    When I search
-    Then I should see the message 'No results Found'
+    Given I visit /
+    When I search for 'Burger'
+    Then I see No results found message
 
 #    Scenario Outline:
 #        Given
