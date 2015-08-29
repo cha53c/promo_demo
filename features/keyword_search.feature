@@ -7,8 +7,8 @@ Feature: Keyword search
   Scenario: Successful keyword search
     Given I visit /
     Given The promotion exists
-    When I enter a word for an existing promotion
-    Then I should see all the promotions with that word
+    When I search for 'Burger'
+    Then I should see promotions with 'Burger'
 
   Scenario: No results keyword search
     Given a keyword

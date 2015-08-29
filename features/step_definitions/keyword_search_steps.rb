@@ -1,9 +1,3 @@
-# Given(/^I am on the home page$/) do
-#   # TODO this should use I visit x step
-#   visit("/")
-#   # TODO There is too much going on here, it needs to be moved to dry up the visit step
-# end
-
 Given(/^The promotion exists$/) do
   client = Client.create!(name: "testclient", tel: "123", email: "me@home.com",
                           website: "www.bookme.com",
@@ -15,16 +9,14 @@ Given(/^The promotion exists$/) do
                     starts: Date.today.strftime('%d-%m-%Y'), ends: Date.today.strftime('%d-%m-%Y'))
 end
 
-When(/^I enter a word for an existing promotion$/) do
-  fill_in 'keyword', with: 'Burger'
+When(/^I search for '(.*?)'/) do |keyword|
+  fill_in 'keyword', with: keyword
   click_on('submit_search')
 end
 
-Then(/^I should see all the promotions with that word$/) do
-  expect(page).to have_content("Madness")
+Then(/^I should see promotions with '(.*?)'$/) do |keyword|
+  expect(page).to have_content(keyword)
 end
-
-
 
 Given(/^a keyword$/) do
   visit("/")
