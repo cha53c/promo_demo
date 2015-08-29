@@ -32,6 +32,7 @@
             %th Name
             %th Email
             %th Role
+            %th Client Id
             %th Login Count
             %th Last Login
             %th Action
@@ -44,6 +45,8 @@
                 = user.email
               %td
                 = user.role
+              %td
+                = user.client_id
               %td
                 = user.sign_in_count
               %td
