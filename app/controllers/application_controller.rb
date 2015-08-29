@@ -25,7 +25,11 @@ class ApplicationController < ActionController::Base
     # TODO after sign in user should to the 'client' description page
     # TODO if they have not created one then they will be shown new page.
     # TODO once they of created a page they will be directed to that on signin
-    new_client_path
+    if current_user.client_id == nil
+      new_client_path
+    end
+    # else
+  #   TODO open pre-existing client show page
   end
 
   # def after_sign_in_path_for(resource)
