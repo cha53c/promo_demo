@@ -9,7 +9,9 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_params)
     authorize @client
+    # TODO update message to match business use
     if @client.save
+      current_user.update({client_id: @client.id})
       redirect_to @client, notice: "Successfully added client"
     else
       flash.now.alert="Could not add new client"

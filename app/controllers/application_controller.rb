@@ -13,28 +13,20 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    # TODO role is only allowed in sign_up for development - REMOVE
+    # TODO role is only allowed in sign_up for development - REMOVE once permission are working
     devise_parameter_sanitizer.for(:sign_up) << :role
     devise_parameter_sanitizer.for(:sign_up) << :name
     devise_parameter_sanitizer.for(:account_update) << :role
+    devise_parameter_sanitizer.for(:account_update) << :client_id
   end
-
-  # configure routes for devise workflow
 
   def after_sign_in_path_for (resource)
-    # TODO after sign in user should to the 'client' description page
-    # TODO if they have not created one then they will be shown new page.
-    # TODO once they of created a page they will be directed to that on signin
     if current_user.client_id == nil
       new_client_path
+    else
+      client_path(current_user.client_id)
     end
-    # else
-  #   TODO open pre-existing client show page
   end
-
-  # def after_sign_in_path_for(resource)
-
-  # end
 
   # loads the menu items for the nav bar
   protected
@@ -43,7 +35,6 @@ class ApplicationController < ActionController::Base
     logger.debug 'loaded ' + @cuisines.length.to_s + ' Cuisines'
     @theme = Theme.all
     logger.debug 'loaded ' + @theme.length.to_s + ' Themes'
-
   end
 
 end
