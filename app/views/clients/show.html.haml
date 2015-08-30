@@ -11,7 +11,7 @@
       -#.col-lg-6.col-md-6 #map-canvas
 .container_fluid
   = render 'promotions/card_grid', promotions: @client.promotions
+-# TODO is the if needed, it is only checking the user is logged in? where are the permissions for this page
 - if current_user
-  = link_to 'Add Promotion', new_client_promotion_path(@client.id), {class: "btn btn-default"}
-= link_to 'Back', clients_path
-= link_to 'Edit', edit_client_path(@client)
+  = link_to 'Add Promotion', new_client_promotion_path(@client.id), {class: "btn btn-success"}
+= link_to 'Edit', edit_client_path(@client), {class: 'btn btn-primary'}
