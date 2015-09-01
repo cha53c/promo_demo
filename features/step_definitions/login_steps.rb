@@ -27,19 +27,9 @@ Then(/^I should be on the (.*?) page$/) do |path|
   expect(current_path).to eq(path)
 end
 
-# Given(/^I saved my promoters details$/) do
-#   promoter_details = Client.create!(name: "Cucumbers are us")
-#   @client_id = promoter_details.id
-#   @confirmed_user.update({client_id: @client_id})
-# end
-
 Given(/^I saved my promoters details for (.*?)$/) do |email|
   User.find_by_email(email).update({client_id: Client.create!(name: "Cucumbers are us").id})
 end
-
-# Then(/^I should be on my promoters details page$/) do
-#   expect(current_path).to eq("/clients/#{@client_id}")
-# end
 
 Then(/^I should be on my promoters details page for (.*?)$/) do |email|
   expect(current_path).to eq("/clients/#{User.find_by_email(email).client_id}")
