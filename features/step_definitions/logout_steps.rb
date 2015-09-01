@@ -1,4 +1,4 @@
-Given(/^I signed is as (.*?)$/) do |user|
+Given(/^I signed in as (.*?)$/) do |user|
   steps %Q{
     Given I visit users/sign_in
     Given I have a confirmed account with email #{user}

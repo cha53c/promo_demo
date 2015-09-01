@@ -25,7 +25,7 @@ Feature: User Authentication
       | test@test.com | nil      | Invalid email or password |
 
   Scenario: First Time Sign In
-    Given I signed is as test@test.com
+    Given I signed in as test@test.com
     Then I should be on the /clients/new page
 
   Scenario:
