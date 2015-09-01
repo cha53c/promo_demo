@@ -1,14 +1,10 @@
-Given(/^(.*?) is signed in$/) do |user|
+Given(/^I signed is as (.*?)$/) do |user|
   steps %Q{
-    Given I am on the "users/sign_in" page
+    Given I visit users/sign_in
     Given I have a confirmed account with email #{user}
-    Given email #{user} and password 12345678
+    Given I fill in #{user} and 12345678
     When I click on "Sign in"
   }
-end
-
-Then(/^I should be redirected to "(.*?)"$/) do |path|
-  expect(page.current_path).to eq(path)
 end
 
 Then(/^not see the "(.*?)" link$/) do |link|

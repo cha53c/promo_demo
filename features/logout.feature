@@ -1,15 +1,15 @@
-@user @authentication
+@user @authentication @logout
 Feature: Log out user
   As a user
   I want to log out
   So that my account in secure
 
   Scenario Outline: Log out
-    Given <email> is signed in
+    Given I signed is as <email>
     When I click on "Log Out"
-    Then I should be redirected to "/"
+    Then I should be on the / page
     And  not see the "log out" link
 
     Scenarios: Successful sign out
-      | email |
+      | email         |
       | test@test.com |
