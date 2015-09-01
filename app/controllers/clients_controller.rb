@@ -21,6 +21,7 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
+    @address = Address.find_by_client_id(@client.id)
   end
 
   def index
@@ -35,6 +36,7 @@ class ClientsController < ApplicationController
   def update
     @client = Client.find(params[:id])
     authorize @client
+    # TODO need to update address
     if @client.update(client_params)
       redirect_to @client, notice: 'Successfully updated'
     else
