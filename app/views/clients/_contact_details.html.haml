@@ -1,19 +1,31 @@
 .glyphicon.glyphicon-earphone
-  = number_to_phone(client.tel)
+  - unless client.tel == ''
+    = number_to_phone(client.tel)
+  - else
+    To add a number go to
+
   %br
 %address
   .glyphicon.glyphicon-envelope
-  = mail_to client.email
+    - unless client.email == ''
+      = mail_to client.email
+    - else
+      To add an email go to edit
   %br
   .glyphicon.glyphicon-globe
-  = link_to client.website
+    - unless client.website == ''
+      = link_to client.website
+    - else
+      To add a website link go to edit
   %br
   .glyphicon.glyphicon-map-marker
-  101 The Plaza
-  %br
-  Near nowhere
-  %br
-  Somewhere
-  %br
-  224455
-  %br
+  - if @address == nil
+    To add an address go to edit
+  - else
+    = @address.line1
+    %br
+    = @address.line2
+    %br
+    = @address.town
+    %br
+    = @address.zipcode

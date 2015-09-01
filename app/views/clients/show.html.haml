@@ -4,7 +4,11 @@
   .container
     .row
       .col-lg-6.col-md-6
-        = image_tag @client.photo.url(:medium)
+        - msg = 'Promoters image'
+        - if @client.photo_file_name == nil
+          - msg = 'There is no image, to edit to upload one'
+        .thumbnail
+          = image_tag @client.photo.url(:medium), alt: msg
       .col-lg-6.col-md-6
         %p
           = render 'clients/contact_details', client: @client
