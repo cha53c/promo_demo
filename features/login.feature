@@ -28,4 +28,6 @@ Feature: User Authentication
     Given I signed in as test@test.com
     Then I should be on the /clients/new page
 
-  Scenario:
+  Scenario: Sign In after saved promoters details
+    Given I signed in as test@test.com
+    Given I saved promoters details
