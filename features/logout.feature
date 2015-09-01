@@ -5,7 +5,8 @@ Feature: Log out user
   So that my account in secure
 
   Scenario Outline: Log out
-    Given I signed is as <email>
+    Given I have a confirmed account for email <email>
+    Given I sign in as <email>
     When I click on "Log Out"
     Then I should be on the / page
     And  not see the "log out" link
