@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
+  # TODO these are being loaded every time an action is called on a controller
   before_filter :load_menu_items
 
   # Prevent CSRF attacks by raising an exception.
@@ -27,6 +28,7 @@ class ApplicationController < ActionController::Base
       client_path(current_user.client_id)
     end
   end
+
 
   # loads the menu items for the nav bar
   protected
