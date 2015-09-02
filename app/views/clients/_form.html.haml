@@ -28,7 +28,7 @@
     .row.well.well-sm
       .col-md-6
         %h2 Address
-        = f.fields_for :address, @client.address do |a|
+        = f.fields_for :address do |a|
           = a.text_field :line1, label: 'First line'
           = a.text_field :line2, label: 'Second line'
           = a.text_field :town

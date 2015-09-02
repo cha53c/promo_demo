@@ -47,6 +47,7 @@ class PromotionsController < ApplicationController
   def update
     @promotion = Promotion.find(params[:id])
     authorize @promotion
+    # TODO is the client still used here
     @client = Client.find(params[:client_id])
     if @promotion.update(promotion_params)
       flash.now.notice = "Successfully updated promotion"

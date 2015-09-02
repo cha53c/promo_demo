@@ -11,10 +11,11 @@ class ClientsController < ApplicationController
     authorize @client
     # TODO update message to match business use
     if @client.save
+      # link the client to the user
       current_user.update({client_id: @client.id})
-      redirect_to @client, notice: "Successfully added client"
+      redirect_to @client, notice: 'Successfully added client'
     else
-      flash.now.alert="Could not add new client"
+      flash.now.alert='Could not add new client'
       render 'new'
     end
   end
@@ -49,16 +50,17 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
     authorize @client
     if @client.destroy
-      message = "Item deleted"
+      message = 'Item deleted'
     else
-      message = "Could not delete item"
+      message = 'Could not delete item'
     end
     redirect_to clients_path, notice: message
   end
 
   private
   def client_params
-    params.require(:client).permit(:name, :tel, :email, :website, :photo)
+    params.require(:client).permit(:name, :tel, :email, :website, :photo,
+                                  address_attributes: [:id, :line1, :line2, :town, :country, :zip_code])
   end
 
 end

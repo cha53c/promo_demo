@@ -2,7 +2,7 @@ Given(/^I have a confirmed account for email (.*?)$/) do |email|
   @confirmed_user = User.create!(email: email, password: '12345678', password_confirmation: '12345678', confirmed_at: DateTime.new(1970,1,1))
 end
 
-Given(/^I fill in (.*?) and (\w+)$/) do |email, password|
+Given(/^I fill in (.*?) and (.*?)$/) do |email, password|
   fill_in 'user_email', with: email
   fill_in 'user_password', with: password
 end
