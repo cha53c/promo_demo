@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get 'users/:id', to: 'users#show', as: :user
   get 'users/', to: 'users#index'
+  delete 'users/:id', to: 'users#destroy', as: :destroy_user
 
   # search
   get 'search/index'

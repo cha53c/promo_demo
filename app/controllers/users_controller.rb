@@ -13,6 +13,16 @@ class UsersController < ApplicationController
     authorize @user
   end
 
+  # Used by admin to delete a user
+  # Devise only provides for a user to delete itself
+  def destroy
+    @user = find_by_id(params[:id])
+    authorize @user
+    email = @user.email
+    @user.destroy
+    redirect_to users_path, notice: "User #{email} deleted"
+  end
+
   private
   def find_by_id(params_id)
     User.find(params_id)
