@@ -6,9 +6,35 @@ class UserPolicy < ApplicationPolicy
     @user = user
   end
 
- def destroy?
-   puts '#{crnt_user.id} attempting to delete a user'
-   puts 'Check User has permissions to destroy'
-   crnt_user.admin?
- end
+  def index?
+    @crnt_user && @crnt_user.admin?
+  end
+
+  def show?
+    (@crnt_user && @crnt_user.admin?) || (@crnt_user.id == @user.id)
+  end
+
+  def destroy?
+    @crnt_user && @crnt_user.admin?
+  end
+
+  # def create?
+  #   user
+  # end
+  #
+  # def new?
+  #   create?
+  # end
+  #
+  # def update?
+  #   user
+  # end
+  #
+  # def edit?
+  #   update?
+  # end
+
+  def scope
+    Pundit.policy_scope!(user, record.class)
+  end
 end
