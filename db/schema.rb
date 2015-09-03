@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903084818) do
+ActiveRecord::Schema.define(version: 20150903170756) do
 
   create_table "addresses", force: true do |t|
     t.string   "line1"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20150903084818) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.boolean  "publish"
+    t.boolean  "publish",            default: false
   end
 
   create_table "cuisines", force: true do |t|
