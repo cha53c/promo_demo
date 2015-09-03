@@ -62,7 +62,16 @@ RSpec.describe ClientPolicy do
          expect(subject).not_to permit(User.create(client_id: 1), Client.create(id: 2, publish: false))
        end
      end
-  end
 
+     permissions :destroy? do
+       it 'allows user with admin role' do
+         expect(subject).to permit(User.create(role: 'admin'), Client.create(id: 1, publish: false))
+       end
+
+       it 'denies user with admin role' do
+         expect(subject).not_to permit(User.create(role: 'client'), Client.create(id: 1, publish: false))
+       end
+     end
+  end
 end
 
