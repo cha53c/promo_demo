@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'rails_helper'
 
+# TODO these are failing due to pundit authorisation errors
 RSpec.describe ClientsController do
   let(:params) { {client: {name: "testclient", tel: "123", email: "me@home.com",
                            website: "www.bookme.com",
@@ -9,7 +10,8 @@ RSpec.describe ClientsController do
 
   before {
     allow(User).to receive(:find).and_return(user)
-    session[:user_id] = user.id
+    # session[:user_id] = user.id
+    sign_in user
   }
 
   describe "GET new", focus: true do

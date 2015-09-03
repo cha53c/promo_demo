@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# TODO these are failing due to pundit authorisation errors
 RSpec.describe PromotionsController do
   let(:client) { mock_model(Client) }
   let(:promotion) { mock_model(Promotion) }
@@ -9,6 +10,7 @@ RSpec.describe PromotionsController do
   let(:user) { FactoryGirl.build_stubbed(:user) }
 
   before {
+    # TODO try using devise test helpers (sign_in) instead
     allow(User).to receive(:find).and_return(user)
     session[:user_id] = user.id
     allow(Client).to receive(:find).and_return(client)
