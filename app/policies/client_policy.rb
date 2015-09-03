@@ -6,30 +6,17 @@ class ClientPolicy < ApplicationPolicy
   end
 
   def index?
-    user
-    # all non logged in users can see published clients
-    # scope.where(:id => record.id).published?
+  #   there is no restriction on this
+  #   unpublished clients are filtered in the controller
   end
 
   def show?
-    # TODO this is for development only
-    # false
-    # user
-
-    # All non logged in users can see records that are published
-    puts "Is published: #{@client.publish?} "
-    @client.publish?
-
-    # admins can view unpublished records
-    # user.admin?
-
-    # user is a member of the client
-    # user && user.client_id == record.id
+    @client.publish? || (user && @user.admin?) || (user && @user.client_id == @client.id)
   end
 
   def create?
-    # user have to be logged in to create
-    user
+    # user has to be logged in to create
+    user && @user.client_id == nil
   end
 
   def new?

@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-# TODO rewrite to avoid clash with the shoulda permit method
-
 RSpec.describe ClientPolicy do
 
   subject { described_class }
@@ -11,10 +9,13 @@ RSpec.describe ClientPolicy do
   # let(:user_logged_in) { FactoryGirl.build_stubbed(:user) }
   # let(:client) { mock_model(Client) }
 
-
-
   context 'for a visitor' do
     let(:user) {nil}
+    permissions :new? do
+      it 'denies access' do
+        expect(subject).not_to permit(nil, :client)
+      end
+    end
     permissions :show? do
       it 'denies access if client is not published' do
           expect(subject).not_to permit(nil, Client.create(publish: false))
@@ -26,89 +27,36 @@ RSpec.describe ClientPolicy do
     end
   end
 
-  # context 'for a visitor' do
-  #   # permissions ".scope" do
-  #   #   pending "add some examples to (or delete) #{__FILE__}"
-  #   # end
-  #   permissions :new? do
-  #     it 'should not permit_it action' do
-  #       expect(policy).not_to permit_it(user_not_logged_in, client)
-  #     end
-  #   end
-  #
-  #   permissions :create? do
-  #     it 'should not permit action' do
-  #       expect(policy).not_to permit_it(user_not_logged_in, client)
-  #     end
-  #   end
-  #
-  #   permissions :show? do
-  #     pending "add some examples to (or delete) #{__FILE__}"
-  #     # it 'should permit action' do
-  #     #   expect(policy).to permit_it(user_not_logged_in, client)
-  #     # end
-  #   end
-  #
-  #   permissions :show? do
-  #     pending "add some examples to (or delete) #{__FILE__}"
-  #     # it 'should permit action' do
-  #     #   expect(policy).to permit_it(user_not_logged_in, client)
-  #     # end
-  #   end
-  #
-  #   permissions :update? do
-  #     it 'should not permit action' do
-  #       expect(policy).not_to permit_it(user_not_logged_in, client)
-  #     end
-  #   end
-  #
-  #   permissions :destroy? do
-  #     it 'should not permit action' do
-  #       expect(policy).not_to permit_it(user_not_logged_in, client)
-  #     end
-  #   end
-  #
-  # end
-  #
-  # context 'for a logged in user' do
-  #   # permissions ".scope" do
-  #   #   pending "add some examples to (or delete) #{__FILE__}"
-  #   # end
-  #
-  #   permissions :index? do
-  #     it 'should permit action' do
-  #       expect(policy).to permit_it(user_logged_in, client)
-  #     end
-  #   end
-  #
-  #   permissions :new? do
-  #     it 'should permit action' do
-  #       expect(policy).to permit_it(user_logged_in, client)
-  #     end
-  #   end
-  #
-  #   permissions :create? do
-  #     it 'should permit action' do
-  #       expect(policy).to permit_it(user_logged_in, client)
-  #     end
-  #   end
-  #
-  #   permissions :show? do
-  #     it 'should permit action' do
-  #       expect(policy).to permit_it(user_logged_in, client)
-  #     end
-  #   end
-  #
-  #   permissions :update? do
-  #     it 'should permit action' do
-  #       expect(policy).to permit_it(user_logged_in, client)
-  #     end
-  #   end
-  #
-  #   permissions :destroy? do
-  #     it 'should permit action' do
-  #       expect(policy).to permit_it(user_logged_in, client)
-  #     end
-  #   end
-  # end
+  context 'for a logged in user without client details' do
+    let(:user)  {FactoryGirl.build_stubbed(:user)}
+     permissions :new? do
+       it 'allows access' do
+         expect(subject).to permit(User.create(client_id: nil), :client)
+       end
+     end
+  end
+
+  context 'for a logged in user with client details' do
+    permissions :new? do
+      it 'denies access' do
+        expect(subject).not_to permit(User.create(client_id: 1), :client)
+      end
+    end
+
+    permissions :show? do
+      it 'allows if not published and user is owner' do
+        expect(subject).to permit(User.create(client_id: 1), Client.create(id: 1, publish: false))
+      end
+
+      it 'denies if not published and user is not owner' do
+        expect(subject).not_to permit(User.create(client_id: 2), Client.create(id: 1, publish: false))
+      end
+
+      it 'allows if not published, user is not owner, but user is admin' do
+        expect(subject).to permit(User.create(role: 'admin'), Client.create(id: 1, publish: false))
+      end
+    end
+  end
+
 end
+
