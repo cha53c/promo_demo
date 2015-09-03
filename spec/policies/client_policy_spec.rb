@@ -5,12 +5,7 @@ RSpec.describe ClientPolicy do
   subject { described_class }
   let (:client) {Client.create(publish: true)}
 
-  # let(:user_not_logged_in) { nil }
-  # let(:user_logged_in) { FactoryGirl.build_stubbed(:user) }
-  # let(:client) { mock_model(Client) }
-
   context 'for a visitor' do
-    let(:user) {nil}
     permissions :new? do
       it 'denies access' do
         expect(subject).not_to permit(nil, :client)
@@ -27,18 +22,15 @@ RSpec.describe ClientPolicy do
     end
   end
 
-  context 'for a logged in user without client details' do
-    let(:user)  {FactoryGirl.build_stubbed(:user)}
+  context 'for a logged in user' do
      permissions :new? do
-       it 'allows access' do
+       it 'allows access if user does not have client details' do
          expect(subject).to permit(User.create(client_id: nil), :client)
        end
      end
-  end
 
-  context 'for a logged in user with client details' do
     permissions :new? do
-      it 'denies access' do
+      it 'denies access if user has client details' do
         expect(subject).not_to permit(User.create(client_id: 1), :client)
       end
     end
@@ -56,6 +48,20 @@ RSpec.describe ClientPolicy do
         expect(subject).to permit(User.create(role: 'admin'), Client.create(id: 1, publish: false))
       end
     end
+
+     permissions :update? do
+       it 'allows user with admin role' do
+         expect(subject).to permit(User.create(role: 'admin'), Client.create(id: 1, publish: false))
+       end
+
+       it 'allows user who is a member of the client' do
+         expect(subject).to permit(User.create(client_id: 1), Client.create(id: 1, publish: false))
+       end
+
+       it 'denies user who is a not member of the client' do
+         expect(subject).not_to permit(User.create(client_id: 1), Client.create(id: 2, publish: false))
+       end
+     end
   end
 
 end

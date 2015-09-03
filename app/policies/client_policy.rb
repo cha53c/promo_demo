@@ -24,15 +24,7 @@ class ClientPolicy < ApplicationPolicy
   end
 
   def update?
-    user
-
-
-    # admins can view unpublished records
-    # user.admin?
-
-    # user is a member of the client
-    # user.client_id == record.id
-
+    user.admin? || (user && @user.client_id == @client.id)
   end
 
   def edit?
