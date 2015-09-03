@@ -11,7 +11,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    (@crnt_user && @crnt_user.admin?) || (@crnt_user.id == @user.id)
+    (@crnt_user && @crnt_user.admin?) || (@crnt_user && @crnt_user.id == @user.id)
   end
 
   def destroy?
