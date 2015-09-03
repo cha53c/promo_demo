@@ -1,15 +1,30 @@
-require 'spec_helper'
 require 'rails_helper'
 
 # TODO rewrite to avoid clash with the shoulda permit method
 
 RSpec.describe ClientPolicy do
 
-  let(:user_not_logged_in) { nil }
-  let(:user_logged_in) { FactoryGirl.build_stubbed(:user) }
-  let(:client) { mock_model(Client) }
+  subject { described_class }
+  let (:client) {Client.create(publish: true)}
 
-  subject(:policy) { described_class }
+  # let(:user_not_logged_in) { nil }
+  # let(:user_logged_in) { FactoryGirl.build_stubbed(:user) }
+  # let(:client) { mock_model(Client) }
+
+
+
+  context 'for a visitor' do
+    let(:user) {nil}
+    permissions :show? do
+      it 'denies access if client is not published' do
+          expect(subject).not_to permit(nil, Client.create(publish: false))
+      end
+
+      it 'allows access if client is published' do
+        expect(subject).to permit(nil, Client.create(publish: true))
+      end
+    end
+  end
 
   # context 'for a visitor' do
   #   # permissions ".scope" do

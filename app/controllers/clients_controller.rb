@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  after_action :verify_authorized, except: [:index, :show]
+  after_action :verify_authorized, except: [:index]
 
   def new
     @client = Client.new
@@ -23,6 +23,7 @@ class ClientsController < ApplicationController
   def show
     @client = Client.find(params[:id])
     @address = Address.find_by_client_id(@client.id)
+    authorize @client
   end
 
   def index

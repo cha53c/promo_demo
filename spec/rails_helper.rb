@@ -43,4 +43,9 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.include Devise::TestHelpers, type: :controller
+
+  # Make shoulda-matcher behave as a good rspec citizen
+  config.include(Shoulda::Matchers::ActiveModel, { type: :model, file_path: /spec\/models/})
+  config.include(Shoulda::Matchers::ActiveRecord, { type: :model, file_path: /spec\/models/})
+  config.include(Shoulda::Matchers::ActionController, { type: :model, file_path: /spec\/controllers/})
 end

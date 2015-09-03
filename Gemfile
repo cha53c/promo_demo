@@ -67,14 +67,14 @@ gem 'capistrano', '~> 3.4.0'
 
 # from how i learned to test my rails app article
 group :development,:test do
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails', '~> 3.2.3  '
   gem 'factory_girl_rails'
   gem 'rspec-activemodel-mocks'
   gem 'hirb'
 end
 group :test do
   gem 'cucumber-rails', :require => false
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers', '~> 3.0.0.rc1', require: false
   gem 'database_cleaner'
   gem 'webrat'
   gem 'faker'
