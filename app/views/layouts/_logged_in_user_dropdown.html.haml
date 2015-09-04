@@ -4,8 +4,11 @@
     = current_user.email
     %span.caret
   %ul.dropdown-menu(role='menu')
-    %li line one
-    %li line two
+    %li
+      = link_to 'Personal Details', current_user
+    %li Dashboard
+    %li Business Details
+    %li Promotions
     %li.divider(role='separator')
     %li
       = link_to "Log Out", destroy_user_session_path, method: :delete
