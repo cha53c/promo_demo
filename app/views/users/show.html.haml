@@ -49,7 +49,7 @@
           Password reset sent at:
           = @user.reset_password_sent_at
   -# Admin can view his own edit, but no one elses (see Devise)
-  - if current_user.admin? && current_user.id == @user.id
+  - if current_user.admin? || current_user.id == @user.id
     = link_to 'Edit', edit_user_registration_path(@user), {class: "btn btn-primary"}
     -#   admin cannot delete his own account
   - if current_user.admin? && current_user.id != @user.id
