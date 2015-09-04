@@ -2,10 +2,8 @@ Given(/^I visit (.*?)$/) do | path|
  visit path
 end
 
-# TODO change this to registration details
-When(/^I fill in email (.*?) and password (\w+)$/) do |email, password|
-  # TODO add name
-  @user_mail = email
+When(/^I fill in sign up credentials (.*?), (.*?), (\w+)$/) do |name, email, password|
+  fill_in 'user_name', with: name
   fill_in 'user_email', with: email
   fill_in 'user_password', with: password
   fill_in 'user_password_confirmation', with: password
@@ -13,9 +11,9 @@ When(/^I fill in email (.*?) and password (\w+)$/) do |email, password|
 end
 
 #   TODO I want this to go to the sign in page after clicking the link
-Then(/^I receive an 'email confirmation' email$/) do
-  expect(unread_emails_for(@user_mail).size).to eql 1
-  open_email(@user_mail)
+Then(/^I receive an 'email confirmation' in (.*?)$/) do |email|
+  expect(unread_emails_for(email).size).to eql 1
+  open_email(@email)
   expect(current_email).to have_content('Confirm my account')
 end
 
