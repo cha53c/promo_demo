@@ -14,9 +14,14 @@ Feature:
     And I should not see 'Delete'
 
   Scenario: Edit my user details
-    Given
-    When
-    Then
+    Given I have a confirmed account for email cucumber@test.com
+    Given I sign in as cucumber@test.com
+    And I am on edit user details page for cucumber@test.com
+    And I change the user_name field to Bob
+    Then I fill in my current password
+    Then I click on "Save Changes"
+    Then I should be on the user details page for user cucumber@test.com
+    And I should see 'Bob' in field user_name
 
   Scenario: Change my password
     Given
