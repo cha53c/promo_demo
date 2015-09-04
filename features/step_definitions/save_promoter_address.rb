@@ -12,7 +12,7 @@ When(/^I fill in address with (.*?), (.*?)$/) do |line1, line2|
   fill_in 'Second line', with: line2
 end
 
-Then(/^I should see (.*?)$/) do |text|
+Then(/^I should see '(.*?)'$/) do |text|
   expect(page).to have_content(text)
 end
 

@@ -5,10 +5,13 @@ Feature:
   So that I can manage them
     
   Scenario:
-    Given I am signed in as role "admin"
-    When I visit 'users' page
-    Then I should see 'users'
-    
+    Given I have an admin account for cucumber@test.com
+    And I sign in as cucumber@test.com
+    When I visit /users
+    Then I should see 'Users'
+    And  I should see 'Status Overview'
+
+
 #    Scenario Outline:
 #        Given
 #        When
