@@ -8,7 +8,7 @@ Feature: Log out user
     Given I have a confirmed account for email <email>
     Given I sign in as <email>
     When I click on "Log Out"
-    Then I should be on the / page
+    Then I should be on the /users/sign_in page
     And  not see the "log out" link
 
     Scenarios: Successful sign out
