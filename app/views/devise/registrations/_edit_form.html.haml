@@ -1,4 +1,4 @@
-= bootstrap_form_for :user, url: url, method: http_verb, html: {multipart: true, role: 'role'} do |f|
+= bootstrap_form_for @user, url: url, method: http_verb, html: {multipart: true, role: 'role'} do |f|
   = f.text_field :name
   = f.text_field :email
   -# TODO this will only be available to and admin user
