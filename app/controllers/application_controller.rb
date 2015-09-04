@@ -21,6 +21,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << :client_id
   end
 
+
+  # Overwriting the sign_out redirect path method
+  def after_sign_out_path_for(resource_or_scope)
+    '/users/sign_up'
+  end
+
   def after_sign_in_path_for (resource)
     if current_user.client_id == nil
       new_client_path
@@ -29,9 +35,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   # loads the menu items for the nav bar
-  protected
   def load_menu_items
     @cuisines = Cuisine.all
     logger.debug 'loaded ' + @cuisines.length.to_s + ' Cuisines'
