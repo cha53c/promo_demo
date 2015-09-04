@@ -1,0 +1,11 @@
+%li.dropdown
+  -#<a href="#" class="dropdown-toggle" data-toggle="dropdown"> By Theme <span class="caret"></span></a>
+  %a.btn-mini.dropdown-toggle(data-toggle="dropdown" href='#')
+    = current_user.email
+    %span.caret
+  %ul.dropdown-menu(role='menu')
+    %li line one
+    %li line two
+    %li.divider(role='separator')
+    %li
+      = link_to "Log Out", destroy_user_session_path, method: :delete
