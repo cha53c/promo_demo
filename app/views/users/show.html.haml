@@ -4,11 +4,6 @@
       Your Details
     - else
       User Details
-    -# TODO add helpers for admin checks
-    -#- if current_user.admin? && current_user.id != @user.id
-    -#  User Details
-    -#- else
-    -#  Your Details
   .row
     - if current_user.admin? && ! users_own_details?
       = link_to 'Back to Users', users_path, {class: "btn btn-default"}
