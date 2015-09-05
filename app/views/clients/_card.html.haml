@@ -8,9 +8,11 @@
         = render 'clients/contact_details', client: client
       %p
         - if current_user
-          = link_to 'Edit', edit_client_path(client)
-          = link_to 'Destroy', client_path(client),
-                        method: :delete, data: {confirm: 'Are you sure?'}
+          -#= link_to 'Edit', edit_client_path(client)
+          = edit_button(edit_client_path(client))
+        - if current_user.admin?
+          = delete_button(client_path(client), client.name)
+          -#= link_to 'Destroy', client_path(client), method: :delete, data: {confirm: 'Are you sure?'}
 
     
   

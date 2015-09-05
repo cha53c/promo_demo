@@ -3,6 +3,13 @@ module ApplicationHelper
     "http://maps.googleapis.com/maps/api/js"
   end
 
+  def edit_button path
+    link_to 'Edit', path, {class: 'btn btn-primary'}
+  end
+
+  def delete_button path, obj_desc
+    link_to 'Delete', path, {method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure you want to delete #{obj_desc}"}}
+  end
 
   # module BootstrapExtension
   #   FORM_CONTROL_CLASS = "form-control"

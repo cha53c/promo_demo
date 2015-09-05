@@ -4,7 +4,8 @@
     Published
     %span{class: published_yes_no(@client.publish?)}
     = link_to 'Add Promotion', new_client_promotion_path(@client.id), {class: "btn btn-success"}
-    = link_to 'Edit', edit_client_path(@client), {class: 'btn btn-primary'}
+    = edit_button(edit_client_path(@client))
+    -#= link_to 'Edit', edit_client_path(@client), {class: 'btn btn-primary'}
 .jumbotron
   %h1
     = @client.name

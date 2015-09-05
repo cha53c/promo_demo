@@ -49,7 +49,9 @@
           = @user.reset_password_sent_at
   -# Admin can view his own edit, but no one elses (see Devise)
   - if users_own_details?
-    = link_to 'Edit', edit_user_registration_path(@user), {class: "btn btn-primary"}
+    = edit_button(edit_user_registration_path(@user))
+    -#= link_to 'Edit', edit_user_registration_path(@user), {class: "btn btn-primary"}
     -#   admin cannot delete his own account
   - if current_user.admin? && ! users_own_details?
-    = link_to 'Delete', destroy_user_path, {method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure you want to delete this user?"}}
+    = delete_button(destroy_user_path, @user.email)
+    -#= link_to 'Delete', destroy_user_path, {method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure you want to delete this user?"}}
