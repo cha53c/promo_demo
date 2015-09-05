@@ -7,10 +7,10 @@ Given(/^I fill in (.*?) and (.*?)$/) do |email, password|
   fill_in 'user_password', with: password
 end
 
-Given(/^I sign in as (.*?)$/) do |user|
+Given(/^I sign in as (.*?)$/) do |email|
   steps %Q{
     Given I visit users/sign_in
-    Given I fill in #{user} and 12345678
+    Given I fill in #{email} and 12345678
     When I click on "Sign in"
   }
 end
