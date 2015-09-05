@@ -10,6 +10,7 @@ Feature:
     When I click on "cucumber@test.com"
     And I click on "Personal Details"
     Then I should be on the user details page for user cucumber@test.com
+    Then I should see 'Your Details'
     And I should see 'Edit'
     And I should not see 'Delete'
 
@@ -21,7 +22,6 @@ Feature:
     Then I fill in my current password
     Then I click on "Save Changes"
     Then I should be on the user details page for user cucumber@test.com
-#    And I should see 'Bob' in field Name
     And I should see 'Bob'
 
   Scenario: Change my password
@@ -33,6 +33,16 @@ Feature:
     Given
     When
     Then
+
+  Scenario: Admin role view my user details
+    Given I have an admin account for admin@test.com
+    And I sign in as admin@test.com
+    And I click on "Personal Details"
+    Then I should be on the user details page for user admin@test.com
+    Then I should see 'Your Details'
+    And I should see 'Edit'
+    And I should not see 'Delete'
+    Then I should see 'Your Details'
     
 #    Scenario Outline:
 #        Given
