@@ -1,4 +1,6 @@
 .container
-  %h1 Edit Your Details
-  %h4 The details you enter here will be used in your promotions
-  = render 'form', mymethod: 'patch', path: client_path
+  .row
+    %h1 Edit Your Details
+    = link_to 'Back', client_path(current_user.client_id), {class: 'btn btn-default'}
+    %h4 The details you enter here will be used in your promotions
+    = render 'form', mymethod: 'patch', path: client_path
