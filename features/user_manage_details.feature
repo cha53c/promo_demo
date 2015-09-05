@@ -6,7 +6,8 @@ Feature:
 
   Scenario: View my user details
     Given I have a confirmed account for email cucumber@test.com
-    Given I sign in as cucumber@test.com
+    And I saved my promoters details for cucumber@test.com
+    And I sign in as cucumber@test.com
     When I click on "cucumber@test.com"
     And I click on "Personal Details"
     Then I should be on the user details page for user cucumber@test.com
@@ -16,6 +17,7 @@ Feature:
 
   Scenario: Edit my user details
     Given I have a confirmed account for email cucumber@test.com
+    And I saved my promoters details for cucumber@test.com
     Given I sign in as cucumber@test.com
     And I am on edit user details page for cucumber@test.com
     Then I should see 'Edit Your Details'
