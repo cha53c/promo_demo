@@ -7,10 +7,7 @@
   .row
     .col-md-offset-4.col-md-4
       %h1
-        - if current_user.admin?
-          Edit User Details
-        - else
-          Edit Your Details
+        Edit Your Details
       .well.well-lg
         .form-group
           = render 'edit_form', http_verb: :patch, url: registration_path(resource_name)

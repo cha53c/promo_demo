@@ -18,6 +18,7 @@ Feature:
     Given I have a confirmed account for email cucumber@test.com
     Given I sign in as cucumber@test.com
     And I am on edit user details page for cucumber@test.com
+    Then I should see 'Edit Your Details'
     And I change the Name field to Bob
     Then I fill in my current password
     Then I click on "Save Changes"
