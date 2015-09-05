@@ -1,3 +1,10 @@
+-# TODO is the if needed, it is only checking the user is logged in? where are the permissions for this page
+- if current_user
+  %h3
+    Published
+    %span{class: published_yes_no(@client.publish?)}
+    = link_to 'Add Promotion', new_client_promotion_path(@client.id), {class: "btn btn-success"}
+    = link_to 'Edit', edit_client_path(@client), {class: 'btn btn-primary'}
 .jumbotron
   %h1
     = @client.name
@@ -15,7 +22,3 @@
       -#.col-lg-6.col-md-6 #map-canvas
 .container_fluid
   = render 'promotions/card_grid', promotions: @client.promotions
--# TODO is the if needed, it is only checking the user is logged in? where are the permissions for this page
-- if current_user
-  = link_to 'Add Promotion', new_client_promotion_path(@client.id), {class: "btn btn-success"}
-= link_to 'Edit', edit_client_path(@client), {class: 'btn btn-primary'}
