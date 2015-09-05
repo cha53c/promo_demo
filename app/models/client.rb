@@ -3,6 +3,9 @@ class Client < ActiveRecord::Base
   has_many :users
   has_one :address
   accepts_nested_attributes_for :address
+
+  scope :published, -> {where(publish: true)}
+
   validates_uniqueness_of :name
   has_attached_file :photo, :styles => {:medium => "400x400>", :small => "200x200>"}
   validates_attachment :photo, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }

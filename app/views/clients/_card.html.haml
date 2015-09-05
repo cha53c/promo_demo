@@ -13,9 +13,8 @@
             Published
             %span{class: published_yes_no(client.publish?)}
           = edit_button(edit_client_path(client))
-        - if current_user.admin?
+        - if user_signed_in? && current_user.admin?
           = delete_button(client_path(client), client.name)
-          -#= link_to 'Destroy', client_path(client), method: :delete, data: {confirm: 'Are you sure?'}
 
     
   

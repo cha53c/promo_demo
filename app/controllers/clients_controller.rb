@@ -27,7 +27,11 @@ class ClientsController < ApplicationController
   end
 
   def index
-    @clients = Client.all
+    if user_signed_in? && current_user.admin?
+      @clients = Client.all
+    else
+      @clients = Client.published
+    end
   end
 
   def edit
