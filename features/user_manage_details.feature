@@ -42,8 +42,7 @@ Feature:
     Then I should see 'Your Details'
     And I should see 'Edit'
     And I should not see 'Delete'
-    Then I should see 'Your Details'
-    
+
 #    Scenario Outline:
 #        Given
 #        When
