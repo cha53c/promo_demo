@@ -41,6 +41,7 @@ Feature:
     Then I should be on the user details page for user admin@test.com
     Then I should see 'Your Details'
     And I should see 'Edit'
+    And I should not see 'Back to Users'
     And I should not see 'Delete'
 
 #    Scenario Outline:
