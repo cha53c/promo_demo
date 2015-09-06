@@ -3,7 +3,9 @@
     Admin
     %span.caret
   %ul.dropdown-menu(role='menu')
-    %li View User
-    %li View Clients
+    %li
+      = link_to 'View User', users_path
+    %li
+      = link_to 'View Promoters', clients_path
     %li
       = link_to 'View Promotions', promotions_path
