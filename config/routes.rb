@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :promotions
   end
 
+  get 'promotions', to: 'promotions#index', as: :promotions
+
   # TODO should not need this should be able to use the standard resources without the new
   post '/clients/:client_id/promotions/new' => 'promotions#create'
 

@@ -28,9 +28,9 @@ class PromotionsController < ApplicationController
   end
 
   def index
-    unless user_signed_in?
+    if !user_signed_in?
       @promotions = Promotion.published
-    elseif current_user.admin?
+    elsif current_user.admin?
       @promotions =  Promotion.all
     else
       @promotions = Promotion.my_promotions(current_user.client_id)
