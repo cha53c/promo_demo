@@ -1,0 +1,19 @@
+%h3
+  Days and Times
+.row
+  .col-md-1
+    = f.check_box :mon
+  .col-md-1
+    = f.check_box :tue
+  .col-md-1
+    = f.check_box :wed
+  .col-md-1
+    = f.check_box :thu
+  .col-md-1
+    = f.check_box :fri
+  .col-md-1
+    = f.check_box :sat
+  .col-md-1
+    = f.check_box :sun
+= f.time_select :from, minute_step: 15
+= f.time_select :to, minute_step: 15

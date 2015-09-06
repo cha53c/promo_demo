@@ -1,34 +1,33 @@
 = bootstrap_form_for :promotion, url: url, method: http_verb, html: {multipart: true, role: 'role'} do |f|
-  %h3 Describe the Promotion
-  = f.text_field :description
-  = f.text_field :promo_type
-  = f.text_area :details
-  = f.label :cuisine
-  = select('promotion', 'cuisine_id', Cuisine.all.collect { |c| [c.cuisine, c.id] }, {include_blank: true})
-  = f.label :theme
-  = select('promotion', 'theme_id', Theme.all.collect { |t| [t.name, t.id] }, {include_blank: true})
-  %h3 Upload Image for the promotion
-  = f.file_field :image
-  %h3 Enter the Dates the Promotion will run for
-  = f.text_field :starts, class: 'date'
-  = f.text_field :ends, class: 'date'
-  %h3 Days and Times
-  .row
-    .col-md-1
-      = f.check_box :mon
-    .col-md-1
-      = f.check_box :tue
-    .col-md-1
-      = f.check_box :wed
-    .col-md-1
-      = f.check_box :thu
-    .col-md-1
-      = f.check_box :fri
-    .col-md-1
-      = f.check_box :sat
-    .col-md-1
-      = f.check_box :sun
-  = f.time_select :from, minute_step: 15
-  = f.time_select :to, minute_step: 15
-  = f.check_box :active
+  - if @promotion != nil
+    = render 'shared/form_error', model: @promotion
+  .row.well.well-sm
+    .col-md-6
+      = render 'promotions/promotion_description_fields', f: f
+    .col-md-6
+      = render 'promotions/help_texts/promotion_description_help_text'
+  -#  TODO replace theme and cuisine with category
+    = select('promotion', 'cuisine_id', Cuisine.all.collect { |c| [c.cuisine, c.id] }, {include_blank: true})
+    = f.label :theme
+    = select('promotion', 'theme_id', Theme.all.collect { |t| [t.name, t.id] }, {include_blank: true})
+  .row.well.well-sm
+    .col-md-6
+      = render 'image_upload', f: f
+    .col-md-6
+      = render 'promotions/help_texts/promotion_image_help_text'
+  .row.well.well-sm
+    .col-md-6
+      = render 'promotion_duration', f: f
+    .col-md-6
+      = render 'promotions/help_texts/promotion_duration_help_text'
+  .row.well.well-sm
+    .col-md-6
+      = render 'day_and_times', f: f
+    .col-md-6
+      = render 'promotions/help_texts/days_and_time_help_text'
+  .row.well.well-sm
+    .col-md-6
+      = render 'active_flag', f: f
+    .col-md-6
+      = render 'promotions/help_texts/active_help_text'
   = f.submit class: 'btn btn-success'
