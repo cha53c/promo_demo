@@ -1,5 +1,4 @@
 = bootstrap_form_for :client, url: path, method: mymethod, html: {multipart: true, role: 'form'} do |f|
-  -# TODO create partials for description
   -# TODO this if is only needed because the form is shared between new(which does not have a client) and edit
   - if @client != nil
     = render 'shared/form_error', model: @client
