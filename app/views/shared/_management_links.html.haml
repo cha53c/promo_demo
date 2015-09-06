@@ -1,0 +1,7 @@
+- if current_user
+  %h4
+    Published
+    %span{class: published_yes_no(published)}
+  = edit_button(edit_path)
+  - if allow_delete
+    = delete_button(delete_path, description)

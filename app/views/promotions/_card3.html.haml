@@ -28,3 +28,10 @@
         %i
         .glyphicon.glyphicon-map-marker
         10 The Test Rd, Gibraltar
+    .row
+      = render 'shared/management_links',
+        published: promotion.active,
+        edit_path: edit_client_promotion_path(client.id,promotion.id),
+        allow_delete: user_signed_in?,
+        delete_path: client_promotion_path(client.id, promotion.id),
+        description: promotion.description
