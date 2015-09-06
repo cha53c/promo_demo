@@ -1,0 +1,8 @@
+%h2
+  Address
+= f.fields_for :address do |a|
+  = a.text_field :line1, label: 'First line'
+  = a.text_field :line2, label: 'Second line'
+  = a.text_field :town
+  = a.text_field :country
+  = a.text_field :zip_code

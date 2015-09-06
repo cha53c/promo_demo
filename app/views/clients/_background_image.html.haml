@@ -1,0 +1,4 @@
+-# TODO replace with jansy bootstrap
+= f.file_field :photo, label: 'Background Image'
+.thumbnail.placeholder
+  = image_tag(@client.photo.url(:medium), size: '200x300', alt: 'client image')

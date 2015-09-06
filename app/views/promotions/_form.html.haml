@@ -7,9 +7,6 @@
     .col-md-6
       = render 'promotions/help_texts/promotion_description_help_text'
   -#  TODO replace theme and cuisine with category
-    = select('promotion', 'cuisine_id', Cuisine.all.collect { |c| [c.cuisine, c.id] }, {include_blank: true})
-    = f.label :theme
-    = select('promotion', 'theme_id', Theme.all.collect { |t| [t.name, t.id] }, {include_blank: true})
   .row.well.well-sm
     .col-md-6
       = render 'image_upload', f: f

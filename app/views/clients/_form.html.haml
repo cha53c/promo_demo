@@ -5,35 +5,22 @@
     = render 'shared/form_error', model: @client
     .row.well.well-sm
       .col-md-6
-        = f.label 'Brand/Business Name'
-        = f.text_field :name, hide_label: true
+        = render  'business_name', f: f
       .col-md-6
-        %em This is the name of your want to appear on your promotions and shown on the promoters page
+        = render 'clients/help_texts/business_name_help_text'
     .row.well.well-lg
       .col-md-6
-        -# TODO replace with jansy bootstrap
-        = f.file_field :photo, label: 'Background Image'
-        .thumbnail.placeholder
-          = image_tag(@client.photo.url(:medium), size: '200x300', alt: 'client image')
+        = render 'background_image', f: f
       .col-md-6
-        %em Upload an image that represents your business. This will be shown in the description of you business
+        = render 'clients/help_texts/background_image_help_text'
     .row.well.well-sm
       .col-md-6
-        %h2 Contact Details
-        = f.email_field :email
-        = f.telephone_field :tel
-        = f.url_field :website
+        = render 'form_contact_details', f: f
       .col-md-6
-        %em This are the details customers will use to contact you. You should have at least one, but the more you have the better
+        = render 'clients/help_texts/contact_details_help_text'
     .row.well.well-sm
       .col-md-6
-        %h2 Address
-        = f.fields_for :address do |a|
-          = a.text_field :line1, label: 'First line'
-          = a.text_field :line2, label: 'Second line'
-          = a.text_field :town
-          = a.text_field :country
-          = a.text_field :zip_code
+        = render 'address_fields', f: f
       .col-md-6
-        %em This address is the location of your business and will show where you are on google maps (see below).
+        = render 'clients/help_texts/address_fields_help_text'
     = f.submit 'Save Details', class: 'btn btn-success'
