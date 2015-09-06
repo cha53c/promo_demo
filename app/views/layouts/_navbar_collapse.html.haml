@@ -5,8 +5,8 @@
       - unless user_signed_in?
         = render 'layouts/data_search_dropdown'
         -# TODO move these so they are only included on certain pages
-        = render 'layouts/cuisine_search_dropdown'
-        = render 'layouts/theme_search_dropdown'
+          = render 'layouts/cuisine_search_dropdown'
+          = render 'layouts/theme_search_dropdown'
       - if user_signed_in? && current_user.admin?
         = render 'layouts/admin_dropdown'
       - if user_signed_in? 
