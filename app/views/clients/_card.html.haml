@@ -7,14 +7,13 @@
       %p
         = render 'clients/contact_details', client: client
       %p
-        -# TODO refactor to a partial for clients and promotions
-        - if current_user
-          %h4
-            Published
-            %span{class: published_yes_no(client.publish?)}
-          = edit_button(edit_client_path(client))
-        - if user_signed_in? && current_user.admin?
-          = delete_button(client_path(client), client.name)
+        = render 'shared/management_links',
+        published: client.publish?,
+        edit_path: edit_client_path(client),
+        allow_delete: user_signed_in? && current_user.admin?,
+        delete_path: client_path(client),
+        description: client.name
+
 
     
   
