@@ -5,6 +5,9 @@ class Promotion < ActiveRecord::Base
   belongs_to :cuisine
   belongs_to :theme
 
+  scope :published, -> {where(active: true)}
+  scope :my_promotions, -> (user_client_id) {where(client_id: user_client_id)}
+
   # attr_accessor( :cuisine_id)
 
   # TODO set accessible attributes

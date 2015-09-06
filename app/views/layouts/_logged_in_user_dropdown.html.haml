@@ -8,7 +8,9 @@
     - if current_user.client_id
       %li
         = link_to 'Business Details', client_path(current_user.client_id)
-    %li Promotions
+    - if current_user.client_id
+      %li
+        = link_to 'My Promotions', client_promotions_path(current_user.client_id)
     %li Dashboard
     %li.divider(role='separator')
     %li
