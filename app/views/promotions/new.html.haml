@@ -1,11 +1,15 @@
 .container
-  %h1 Promotions#new
   .row
-    .col-md-6
-      .form-group
-        = render 'form', http_verb: :post, url: new_client_promotion_path
-  .col-md-6
-    = render 'shared/form_error', model: @promotion
-    - if @promotion.errors.empty?
-      .thumbnail
+    %h1 Enter Promotion Details
+    = back_button(client_path(current_user.client_id))
+    %h4 These details will show on your promotion cards
+    = render 'form', http_verb: :post, url: new_client_promotion_path
+  -#.row
+  -#  .col-md-6
+  -#    .form-group
+  -#      = render 'form', http_verb: :post, url: new_client_promotion_path
+  -#.col-md-6
+  -#  = render 'shared/form_error', model: @promotion
+  -#  - if @promotion.errors.empty?
+  -#    .thumbnail
 

@@ -11,6 +11,10 @@ module ApplicationHelper
     link_to 'Delete', path, {method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure you want to delete #{obj_desc}"}}
   end
 
+  def back_button path
+    link_to 'Back', path, {class: 'btn btn-default'}
+  end
+
   # module BootstrapExtension
   #   FORM_CONTROL_CLASS = "form-control"
   #
