@@ -1,0 +1,13 @@
+-# Collect the nav links, forms, and other content for toggling
+.collapse.navbar-collapse#bs-example-navbar-collapse-1
+  %ul.nav.navbar-nav.navbar-left
+    %ul.nav.navbar-nav
+      - unless user_signed_in?
+        = render 'layouts/data_search_dropdown'
+        -# TODO move these so they are only included on certain pages
+        = render 'layouts/cuisine_search_dropdown'
+        = render 'layouts/theme_search_dropdown'
+      - if user_signed_in? && current_user.admin?
+        = render 'layouts/admin_dropdown'
+      - if user_signed_in? 
+        = render 'layouts/logged_in_user_dropdown'

@@ -8,7 +8,6 @@
         = render 'clients/contact_details', client: client
       %p
         - if current_user
-          -#= link_to 'Edit', edit_client_path(client)
           %h4
             Published
             %span{class: published_yes_no(client.publish?)}
