@@ -1,0 +1,3 @@
+image: dockerfile/centos
+script:
+- echo hello world
