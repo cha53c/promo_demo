@@ -1,3 +1,3 @@
-image: ubuntu
+image: yesops/git
 script:
 - echo hello world
