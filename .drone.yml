@@ -1,3 +1,6 @@
 image: cha53c/basic_builds
 script:
-- echo hello world
+  - echo hello world
+  - bundle install
+  - bundle exec db:migrate
+  - bundle exec cucumber
