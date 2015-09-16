@@ -1,4 +1,4 @@
-image: cha53c/basic_builds
+image: cha53c/basic_builds:v2
 script:
   - echo hello world
   - bundle install
