@@ -4,4 +4,3 @@ script:
   - bundle install
   - bundle exec db:migrate
   - bundle exec cucumber
-
