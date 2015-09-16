@@ -2,6 +2,7 @@ image: cha53c/basic_builds:v2
 script:
   - echo hello world
   - ls
-#  - bundle install
-  #- bundle exec db:migrate
-  #- bundle exec cucumber
+  - pwd
+  - bundle install
+  - bundle exec rake db:migrate
+  - bundle exec cucumber
