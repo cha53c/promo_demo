@@ -1,4 +1,4 @@
-@save_details
+@wip @save_details
 Feature: Promoter can add an address to their promoter details
   As a Promoter
   I want add my address details
