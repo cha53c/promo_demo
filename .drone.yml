@@ -1,8 +1,7 @@
 image: cha53c/basic_builds:v4
 script:
-  - echo hello world
-  - ls
   - pwd
   - bundle install
   - bundle exec rake db:migrate
+  - ls spec/fixtures/images/promotions/test_image.jpg
   - bundle exec cucumber
