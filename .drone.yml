@@ -1,4 +1,4 @@
-image: cha53c/basic_builds:v3
+image: cha53c/basic_builds:v4
 script:
   - echo hello world
   - ls
