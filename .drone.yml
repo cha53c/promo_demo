@@ -4,4 +4,5 @@ script:
   - bundle install
   - bundle exec rake db:migrate
   - ls spec/fixtures/images/promotions/test_image.jpg
+  - ls spec/fixtures/images/promotions/no_test_image.jpg
   - bundle exec cucumber
