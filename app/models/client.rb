@@ -15,4 +15,3 @@ class Client < ActiveRecord::Base
   validates_length_of :website, maximum: 50
   validates_format_of :email, with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/, allow_blank: true
 end
-v
