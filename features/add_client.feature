@@ -11,12 +11,12 @@ Feature: Add Client
 #    Then I should see the client in the list of clients
 #    And I should see the client successfully added message
 
-  Scenario: Failed add client
-    Given I am logged in
-    And I visit clients/new
-    And I incorrectly complete the new client form
-    When I submit new client
-    Then I should see a flash message
+#  Scenario: Failed add client
+#    Given I am logged in
+#    And I visit clients/new
+#    And I incorrectly complete the new client form
+#    When I submit new client
+#    Then I should see a flash message
 
 
 #    Scenario Outline:
