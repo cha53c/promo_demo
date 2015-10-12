@@ -1,8 +1,5 @@
-image: cha53c/basic_builds:v4
+image: cha53c/basic_builds:v5
 script:
-  - pwd
   - bundle install
   - bundle exec rake db:migrate
-  - ls spec/fixtures/images/promotions/test_image.jpg
-  - ls spec/fixtures/images/promotions/no_test_image.jpg
   - bundle exec cucumber
