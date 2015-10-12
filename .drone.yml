@@ -2,4 +2,4 @@ image: cha53c/basic_builds:v5
 script:
   - bundle install
   - bundle exec rake db:migrate
-  - bundle exec cucumber
+#  - bundle exec cucumber
