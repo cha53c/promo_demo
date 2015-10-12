@@ -20,6 +20,7 @@ Then(/^I fill in my current password$/) do
 end
 
 Then(/^I should see '(.*?)' in field (.*?)$/) do |value, field_name|
+  # TODO remove this
   save_and_open_page
   exepect(find_field(field_name)).to have_content(value)
 end
