@@ -6,21 +6,25 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+  2.2.1
 
 * System dependencies
-
+  ImageMagick, Postfix, Nodejs
+  
 * Configuration
 
 * Database creation
+  currently using default sqlite file
 
 * Database initialization
 
 * How to run the test suite
+  cucumber, rspec
 
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
+  see cha53c/web_server
 * ...
 
 
